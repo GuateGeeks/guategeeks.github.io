@@ -93,20 +93,20 @@ rive_blog.on('load', () => {
 
 riveComponents.push(rive_blog);
 
-guategeeks.waitForReady('rive_robot');
-let rive_robot = new rive.Rive({
-    src: "assets/rive/robot.riv",
-    canvas: document.getElementsByClassName("rive-robot")[0],
-    animations: ["lid", "particles", "floating"],
-    artboard: "artboard",
-    autoplay: false
-});
+// guategeeks.waitForReady('rive_robot');
+// let rive_robot = new rive.Rive({
+//     src: "assets/rive/robot.riv",
+//     canvas: document.getElementsByClassName("rive-robot")[0],
+//     animations: ["lid", "particles", "floating"],
+//     artboard: "artboard",
+//     autoplay: false
+// });
 
-rive_robot.on('load', () => {
-    guategeeks.isReady('rive_robot');
-});
+// rive_robot.on('load', () => {
+//     guategeeks.isReady('rive_robot');
+// });
 
-riveComponents.push(rive_robot);
+// riveComponents.push(rive_robot);
 
 // Listeners for the animations
 Reveal.on( 'slidechanged', event => {
@@ -127,9 +127,9 @@ Reveal.on( 'slidechanged', event => {
         rive_ai.play(["brain", "data1"]);
     } 
 
-    if (event.currentSlide === document.querySelector('.guategeeks-course-robotics')) {
-        rive_robot.play(["lid", "particles", "floating"]);
-    }
+    // if (event.currentSlide === document.querySelector('.guategeeks-course-robotics')) {
+    //     rive_robot.play(["lid", "particles", "floating"]);
+    // }
 
     if (event.currentSlide === document.querySelector('.guategeeks-about-us')) {
         rive_about_us.play(["pc", "phone", "pc-laptop", "laptop-pc", "phone-laptop", "pc-light"]);
