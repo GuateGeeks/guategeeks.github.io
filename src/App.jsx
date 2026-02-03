@@ -5,6 +5,7 @@ import About from './components/About';
 import Services from './components/Services';
 import Team from './components/Team';
 import Footer from './components/Footer';
+import ThreeBackground from './components/ThreeBackground';
 
 function App() {
     const [isDark, setIsDark] = useState(false);
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <div className={`min-h-screen font-sans ${isDark ? 'dark' : ''}`}>
+      <ThreeBackground />
       <Navbar toggleTheme={toggleTheme} isDark={isDark} />
       <Hero />
       <About />

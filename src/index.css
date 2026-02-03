@@ -73,10 +73,10 @@
 
 /* CSS Variables for Theme Mode */
 :root {
-  /* Light Mode Defaults */
-  --bg-primary: #ffffff;
-  --bg-secondary: var(--color-prussian-blue-900); /* Very light blue */
-  --bg-card: #ffffff;
+  /* Light Mode Defaults - Transparent for Background Animation */
+  --bg-primary: rgba(255, 255, 255, 0.9); /* 90% opacity */
+  --bg-secondary: rgba(172, 212, 250, 0.5); /* Prussian Blue 900 with low opacity */
+  --bg-card: rgba(255, 255, 255, 0.95);
   
   --text-primary: var(--color-prussian-blue-100); /* Almost black */
   --text-secondary: var(--color-baltic-blue-400); 
@@ -86,9 +86,9 @@
 
 .dark {
   /* Dark Mode Overrides - Using the new 100/200 shades as the dark bases */
-  --bg-primary: var(--color-prussian-blue-100);
-  --bg-secondary: var(--color-prussian-blue-200);
-  --bg-card: var(--color-prussian-blue-200);
+  --bg-primary: rgba(1, 7, 12, 0.9); /* Prussian Blue 100 90% opacity */
+  --bg-secondary: rgba(2, 14, 25, 0.7); /* Prussian Blue 200 70% opacity */
+  --bg-card: rgba(2, 14, 25, 0.95);
   
   --text-primary: #ffffff;
   --text-secondary: var(--color-cerulean-800);
@@ -98,7 +98,7 @@
 
 @layer base {
   body {
-    background-color: var(--bg-primary);
+    background-color: var(--bg-primary); /* Uses the semi-transparent color */
     color: var(--text-primary);
     @apply antialiased transition-colors duration-300;
   }
