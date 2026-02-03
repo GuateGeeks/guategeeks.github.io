@@ -25,16 +25,30 @@ const SunIcon = () => (
   </svg>
 );
 
-const LegoBrick = ({ color, className = "" }) => (
-  <div className={`w-full h-full rounded-sm relative ${color} ${className} shadow-sm border-b-4 border-black/10`}>
-    <div className="absolute top-0 left-0 w-full h-full flex flex-wrap gap-1 p-1 opacity-20">
-       <div className="w-1/4 h-1/4 rounded-full bg-black/20 transform scale-50"></div>
-       <div className="w-1/4 h-1/4 rounded-full bg-black/20 transform scale-50"></div>
-       <div className="w-1/4 h-1/4 rounded-full bg-black/20 transform scale-50"></div>
-       <div className="w-1/4 h-1/4 rounded-full bg-black/20 transform scale-50"></div>
-    </div>
-  </div>
-);
+// Enhanced Lego Brick Component
+const LegoBrick = ({ color, className = "", style = {}, width = 1, height = 1 }) => {
+    // Generate stud array based on dimensions (assuming 1 unit = 2x2 grid of studs roughly, or just fill space)
+    // For simplicity, let's say 1 grid cell = 4 studs (2x2)
+    const studCount = width * height * 4; 
+    const studs = Array.from({ length: studCount });
+
+    return (
+      <div 
+        className={`lego-brick w-full h-full ${color} ${className}`} 
+        style={style}
+      >
+        <div className="absolute top-0 left-0 w-full h-full grid gap-1 p-1" 
+             style={{ 
+                 gridTemplateColumns: `repeat(${width * 2}, 1fr)`, 
+                 gridTemplateRows: `repeat(${height * 2}, 1fr)` 
+             }}>
+           {studs.map((_, i) => (
+               <div key={i} className={`lego-stud w-full h-full ${color} brightness-110`}></div>
+           ))}
+        </div>
+      </div>
+    );
+};
 
 function Navbar({ toggleTheme, isDark }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -94,10 +108,49 @@ function Navbar({ toggleTheme, isDark }) {
 }
 
 function Hero() {
+  const [assembled, setAssembled] = useState(false);
+  const [randomPositions, setRandomPositions] = useState([]);
+
+  // Brick Configuration Data
+  // Grid is 6x6. Each unit is roughly 1 brick size.
+  // span defines width/height in grid units.
+  const bricks = [
+    { id: 1, color: "bg-camel", colSpan: 2, rowSpan: 2, colStart: 1, rowStart: 1, w: 2, h: 2 },
+    { id: 2, color: "bg-cerulean", colSpan: 1, rowSpan: 2, colStart: 3, rowStart: 1, w: 1, h: 2 },
+    { id: 3, color: "bg-baltic-blue", colSpan: 3, rowSpan: 1, colStart: 4, rowStart: 1, w: 3, h: 1 },
+    { id: 4, color: "bg-prussian-blue", colSpan: 1, rowSpan: 1, colStart: 4, rowStart: 2, w: 1, h: 1 }, // Gap filler?
+    // Let's stick to the visual pattern from before but mapped
+    { id: 5, color: "bg-camel", colSpan: 2, rowSpan: 2, colStart: 1, rowStart: 3, w: 2, h: 2 },
+    { id: 6, color: "bg-cerulean", colSpan: 2, rowSpan: 2, colStart: 3, rowStart: 3, w: 2, h: 2 },
+    { id: 7, color: "bg-baltic-blue", colSpan: 2, rowSpan: 1, colStart: 5, rowStart: 2, w: 2, h: 1 }, // Adjusted
+    { id: 8, color: "bg-prussian-blue", colSpan: 2, rowSpan: 2, colStart: 5, rowStart: 3, w: 2, h: 2 },
+    { id: 9, color: "bg-cerulean", colSpan: 3, rowSpan: 2, colStart: 4, rowStart: 5, w: 3, h: 2 },
+    { id: 10, color: "bg-baltic-blue", colSpan: 2, rowSpan: 2, colStart: 1, rowStart: 5, w: 2, h: 2 } // Corner
+  ];
+
+  useEffect(() => {
+     // Generate random start positions
+     const positions = bricks.map(() => ({
+         x: (Math.random() - 0.5) * 800, // Random X between -400 and 400
+         y: (Math.random() - 0.5) * 800, // Random Y
+         rotate: (Math.random() - 0.5) * 360, // Random rotation
+         scale: 0.5 + Math.random() * 0.5,
+         delay: Math.random() * 0.5 // Staggered start
+     }));
+     setRandomPositions(positions);
+
+     // Trigger assembly after a short delay
+     const timer = setTimeout(() => {
+         setAssembled(true);
+     }, 100);
+
+     return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <section id="inicio" className="relative bg-[var(--bg-primary)] overflow-hidden transition-colors duration-300">
-      <div className="max-w-7xl mx-auto">
-        <div className="relative z-10 pb-12 bg-[var(--bg-primary)] sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32 pt-10 px-4 sm:px-6 lg:px-8 text-center sm:text-left transition-colors duration-300">
+    <section id="inicio" className="relative bg-[var(--bg-primary)] overflow-hidden transition-colors duration-300 min-h-[600px] flex items-center">
+      <div className="max-w-7xl mx-auto w-full">
+        <div className="relative z-10 pb-12 bg-transparent sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32 pt-10 px-4 sm:px-6 lg:px-8 text-center sm:text-left transition-colors duration-300">
           <main className="mt-8 mx-auto max-w-7xl sm:mt-12 md:mt-16 lg:mt-20 xl:mt-28">
             <div className="">
               <h1 className="text-4xl tracking-tight font-extrabold text-[var(--text-primary)] sm:text-5xl md:text-6xl">
@@ -119,19 +172,38 @@ function Hero() {
           </main>
         </div>
       </div>
-      {/* Abstract Lego Design */}
-      <div className="hidden sm:flex lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-[var(--bg-secondary)] items-center justify-center overflow-hidden h-64 sm:h-auto transition-colors duration-300">
-        <div className="relative w-full h-full grid grid-cols-6 grid-rows-6 gap-2 p-10 opacity-90 transform rotate-3 scale-110">
-            <LegoBrick color="bg-camel" className="col-span-2 row-span-2" />
-            <LegoBrick color="bg-cerulean" className="col-span-1 row-span-2" />
-            <LegoBrick color="bg-baltic-blue" className="col-span-3 row-span-1" />
-            <LegoBrick color="bg-prussian-blue" className="col-span-1 row-span-1" />
-            <LegoBrick color="bg-camel" className="col-span-2 row-span-2" />
-            <LegoBrick color="bg-cerulean" className="col-span-2 row-span-2" />
-            <LegoBrick color="bg-baltic-blue" className="col-span-2 row-span-1" />
-            <div className="col-span-1 row-span-1"></div>
-            <LegoBrick color="bg-prussian-blue" className="col-span-2 row-span-2" />
-             <LegoBrick color="bg-cerulean" className="col-span-3 row-span-2" />
+      
+      {/* Animated Lego Design */}
+      <div className="hidden sm:flex lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-[var(--bg-secondary)] items-center justify-center overflow-visible h-64 sm:h-full transition-colors duration-300">
+        <div className="relative w-96 h-96 grid grid-cols-6 grid-rows-6 gap-2 p-10 transform rotate-3 scale-110 perspective-1000">
+            {bricks.map((brick, index) => {
+                const startPos = randomPositions[index] || { x: 0, y: 0, rotate: 0, scale: 0, delay: 0 };
+                
+                const style = assembled ? {
+                    transform: 'translate(0, 0) rotate(0deg) scale(1)',
+                    opacity: 1,
+                    transition: `all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) ${startPos.delay}s`
+                } : {
+                    transform: `translate(${startPos.x}px, ${startPos.y}px) rotate(${startPos.rotate}deg) scale(${startPos.scale})`,
+                    opacity: 0,
+                    transition: 'none' // Instant reset if needed, or allow transition out
+                };
+
+                return (
+                    <div 
+                        key={brick.id}
+                        className={`col-span-${brick.colSpan} row-span-${brick.rowSpan} col-start-${brick.colStart} row-start-${brick.rowStart} relative`}
+                        style={{ zIndex: assembled ? 10 : 0 }} // Ensure proper layering
+                    >
+                        <LegoBrick 
+                            color={brick.color} 
+                            style={style}
+                            width={brick.w}
+                            height={brick.h}
+                        />
+                    </div>
+                );
+            })}
         </div>
       </div>
        {/* Mobile background decoration */}
