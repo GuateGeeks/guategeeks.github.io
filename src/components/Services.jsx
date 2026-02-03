@@ -59,7 +59,7 @@ function Services() {
   ];
 
   return (
-    <section id="servicios" className="py-12 sm:py-16 bg-[var(--bg-primary)] transition-colors duration-300">
+    <section id="servicios" className="py-12 sm:py-16 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-extrabold text-[var(--text-primary)] sm:text-4xl">
