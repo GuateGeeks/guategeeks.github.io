@@ -1,0 +1,61 @@
+import React, { useState } from 'react';
+import { MenuIcon, CloseIcon, MoonIcon, SunIcon } from './Icons';
+
+function Navbar({ toggleTheme, isDark }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <nav className="bg-[var(--bg-primary)] border-b-4 border-camel sticky top-0 z-50 shadow-sm transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-20 items-center">
+          <div className="flex-shrink-0 flex items-center">
+            <span className="font-extrabold text-3xl tracking-tight">
+              <span className="text-camel">Guate</span>
+              <span className="text-cerulean">Geeks</span>
+            </span>
+          </div>
+          <div className="hidden md:flex items-center space-x-8">
+            <a href="#inicio" className="text-[var(--text-primary)] hover:text-cerulean font-bold text-lg transition-colors">Inicio</a>
+            <a href="#nosotros" className="text-[var(--text-primary)] hover:text-cerulean font-bold text-lg transition-colors">Nosotros</a>
+            <a href="#servicios" className="text-[var(--text-primary)] hover:text-cerulean font-bold text-lg transition-colors">Acelerador</a>
+            <a href="#contacto" className="text-[var(--text-primary)] hover:text-cerulean font-bold text-lg transition-colors">Contacto</a>
+            <button 
+                onClick={toggleTheme} 
+                className="p-2 rounded-full text-[var(--text-primary)] hover:bg-gray-100 dark:hover:bg-prussian-blue-300 transition-colors"
+                aria-label="Toggle Dark Mode"
+            >
+                {isDark ? <SunIcon /> : <MoonIcon />}
+            </button>
+            <a href="#contacto" className="btn-primary">Únete</a>
+          </div>
+          <div className="md:hidden flex items-center gap-4">
+             <button 
+                onClick={toggleTheme} 
+                className="p-2 rounded-full text-[var(--text-primary)] hover:bg-gray-100 dark:hover:bg-prussian-blue-300 transition-colors"
+            >
+                {isDark ? <SunIcon /> : <MoonIcon />}
+            </button>
+            <button onClick={() => setIsOpen(!isOpen)} className="text-[var(--text-primary)] hover:text-cerulean p-2 focus:outline-none focus:ring-2 focus:ring-cerulean rounded-md">
+              {isOpen ? <CloseIcon /> : <MenuIcon />}
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="md:hidden absolute top-20 left-0 w-full bg-[var(--bg-primary)] shadow-lg border-b-4 border-camel animate-fade-in-down z-40">
+          <div className="px-4 py-4 space-y-2 text-center">
+            <a href="#inicio" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-prussian-blue-200 hover:text-cerulean">Inicio</a>
+            <a href="#nosotros" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-prussian-blue-200 hover:text-cerulean">Nosotros</a>
+            <a href="#servicios" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-prussian-blue-200 hover:text-cerulean">Acelerador</a>
+            <a href="#contacto" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-prussian-blue-200 hover:text-cerulean">Contacto</a>
+             <a href="#contacto" onClick={() => setIsOpen(false)} className="block px-3 py-3 mt-4 rounded-md text-lg font-bold bg-camel text-prussian-blue-100 hover:bg-camel-600">Únete</a>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+}
+
+export default Navbar;
