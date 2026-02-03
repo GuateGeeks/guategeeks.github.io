@@ -1,26 +1,49 @@
 import React from 'react';
 
-// Enhanced Lego Brick Component
+// Isometric 3D Block Component
 const LegoBrick = ({ color, className = "", style = {}, width = 1, height = 1 }) => {
-    // Generate stud array based on dimensions (assuming 1 unit = 2x2 grid of studs roughly, or just fill space)
-    // For simplicity, let's say 1 grid cell = 4 studs (2x2)
-    const studCount = width * height * 4; 
-    const studs = Array.from({ length: studCount });
+    // Depth of the block in pixels
+    const depth = 16; 
 
     return (
       <div 
-        className={`lego-brick w-full h-full ${color} ${className}`} 
-        style={style}
+        className={`lego-brick relative w-full h-full ${className}`} 
+        style={{
+            ...style,
+            transformStyle: 'preserve-3d'
+        }}
       >
-        <div className="absolute top-0 left-0 w-full h-full grid gap-1 p-1" 
-             style={{ 
-                 gridTemplateColumns: `repeat(${width * 2}, 1fr)`, 
-                 gridTemplateRows: `repeat(${height * 2}, 1fr)` 
-             }}>
-           {studs.map((_, i) => (
-               <div key={i} className={`lego-stud w-full h-full ${color} brightness-110`}></div>
-           ))}
-        </div>
+        {/* Top Face (The main colored face that faces the viewer) */}
+        <div 
+            className={`absolute inset-0 ${color} z-10 border border-white/20`} 
+            style={{ transform: `translateZ(${depth}px)` }}
+        ></div>
+
+        {/* South/Bottom Face (Simulating thickness) */}
+        <div 
+            className={`absolute bottom-0 left-0 w-full ${color} brightness-75 border border-white/10`} 
+            style={{ 
+                height: `${depth}px`,
+                transformOrigin: 'bottom',
+                transform: 'rotateX(-90deg)'
+            }}
+        ></div>
+
+        {/* East/Right Face (Simulating thickness) */}
+        <div 
+            className={`absolute top-0 right-0 h-full ${color} brightness-50 border border-white/10`} 
+            style={{ 
+                width: `${depth}px`,
+                transformOrigin: 'right',
+                transform: 'rotateY(90deg)'
+            }}
+        ></div>
+        
+        {/* Base Shadow (Optional, helps float effect) */}
+        <div 
+            className="absolute inset-0 bg-black/20 blur-sm"
+            style={{ transform: 'translateZ(-10px)' }}
+        ></div>
       </div>
     );
 };

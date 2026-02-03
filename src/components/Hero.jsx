@@ -1,44 +1,129 @@
 import React, { useState, useEffect } from 'react';
 import LegoBrick from './LegoBrick';
 
+// Available colors for random selection
+const COLORS = [
+  "bg-camel",
+  "bg-cerulean", 
+  "bg-baltic-blue",
+  "bg-prussian-blue"
+];
+
+// Helper to generate a random integer
+const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+// Grid dimensions
+const GRID_SIZE = 8; // Larger grid for smaller blocks
+const MAX_LEVELS = 3; 
+const BLOCK_DEPTH = 48; // Taller blocks (visual depth)
+
 function Hero() {
   const [assembled, setAssembled] = useState(false);
+  const [shapes, setShapes] = useState([]);
   const [randomPositions, setRandomPositions] = useState([]);
 
-  // Brick Configuration Data
-  // Grid is 6x6. Each unit is roughly 1 brick size.
-  // span defines width/height in grid units.
-  const bricks = [
-    { id: 1, color: "bg-camel", colSpan: 2, rowSpan: 2, colStart: 1, rowStart: 1, w: 2, h: 2 },
-    { id: 2, color: "bg-cerulean", colSpan: 1, rowSpan: 2, colStart: 3, rowStart: 1, w: 1, h: 2 },
-    { id: 3, color: "bg-baltic-blue", colSpan: 3, rowSpan: 1, colStart: 4, rowStart: 1, w: 3, h: 1 },
-    { id: 4, color: "bg-prussian-blue", colSpan: 1, rowSpan: 1, colStart: 4, rowStart: 2, w: 1, h: 1 }, // Gap filler?
-    // Let's stick to the visual pattern from before but mapped
-    { id: 5, color: "bg-camel", colSpan: 2, rowSpan: 2, colStart: 1, rowStart: 3, w: 2, h: 2 },
-    { id: 6, color: "bg-cerulean", colSpan: 2, rowSpan: 2, colStart: 3, rowStart: 3, w: 2, h: 2 },
-    { id: 7, color: "bg-baltic-blue", colSpan: 2, rowSpan: 1, colStart: 5, rowStart: 2, w: 2, h: 1 }, // Adjusted
-    { id: 8, color: "bg-prussian-blue", colSpan: 2, rowSpan: 2, colStart: 5, rowStart: 3, w: 2, h: 2 },
-    { id: 9, color: "bg-cerulean", colSpan: 3, rowSpan: 2, colStart: 4, rowStart: 5, w: 3, h: 2 },
-    { id: 10, color: "bg-baltic-blue", colSpan: 2, rowSpan: 2, colStart: 1, rowStart: 5, w: 2, h: 2 } // Corner
-  ];
-
   useEffect(() => {
-     // Generate random start positions
-     const positions = bricks.map(() => ({
-         x: (Math.random() - 0.5) * 800, // Random X between -400 and 400
-         y: (Math.random() - 0.5) * 800, // Random Y
-         rotate: (Math.random() - 0.5) * 360, // Random rotation
-         scale: 0.5 + Math.random() * 0.5,
-         delay: Math.random() * 0.5 // Staggered start
-     }));
-     setRandomPositions(positions);
+    // 1. Generate Random Shapes and Layout
+    const generateLayout = () => {
+        const newShapes = [];
+        const grid = Array(MAX_LEVELS).fill(null).map(() => 
+            Array(GRID_SIZE).fill(null).map(() => Array(GRID_SIZE).fill(false))
+        );
 
-     // Trigger assembly after a short delay
-     const timer = setTimeout(() => {
-         setAssembled(true);
-     }, 100);
+        // Defined small shapes (Max 1x2)
+        const allowedShapes = [
+            { w: 1, h: 1 },
+            { w: 2, h: 1 }, { w: 1, h: 2 }
+        ];
 
-     return () => clearTimeout(timer);
+        // Helper to try placing a specific shape type
+        const tryPlaceShape = (shapeDef) => {
+             // Try random positions
+             const col = randInt(0, GRID_SIZE - shapeDef.w);
+             const row = randInt(0, GRID_SIZE - shapeDef.h);
+             
+             let placedZ = -1;
+             // Try levels (Gravity: lowest first)
+             for (let z = 0; z < MAX_LEVELS; z++) {
+                let isFree = true;
+                for (let dy = 0; dy < shapeDef.h; dy++) {
+                    for (let dx = 0; dx < shapeDef.w; dx++) {
+                        if (grid[z][row + dy][col + dx]) {
+                            isFree = false;
+                            break;
+                        }
+                    }
+                    if (!isFree) break;
+                }
+                if (isFree) {
+                    placedZ = z;
+                    break;
+                }
+             }
+
+             if (placedZ !== -1) {
+                 // Place it
+                for (let dy = 0; dy < shapeDef.h; dy++) {
+                    for (let dx = 0; dx < shapeDef.w; dx++) {
+                        grid[placedZ][row + dy][col + dx] = true;
+                    }
+                }
+                newShapes.push({
+                    id: newShapes.length,
+                    colStart: col + 1,
+                    rowStart: row + 1,
+                    w: shapeDef.w,
+                    h: shapeDef.h,
+                    z: placedZ,
+                    color: COLORS[Math.floor(Math.random() * COLORS.length)]
+                });
+                return true;
+             }
+             return false;
+        };
+
+        let attempts = 0;
+        // Increase block count slightly since they are smaller, but keep it dispersed
+        while (newShapes.length < 24 && attempts < 200) { 
+            attempts++;
+            const def = allowedShapes[Math.floor(Math.random() * allowedShapes.length)];
+            tryPlaceShape(def);
+        }
+
+        return newShapes;
+    };
+
+    const layout = generateLayout();
+    setShapes(layout);
+
+    // 2. Generate Random Animation Start Positions
+    const positions = layout.map((shape) => {
+        // Calculate delay based on Z-level (bottom first)
+        // shape.z is 0, 1, or 2.
+        // Base delay + z * factor + random variance
+        const zDelay = shape.z * 0.4; // 0.4s gap between layers
+        const randomDelay = Math.random() * 0.3;
+        
+        return {
+            x: (Math.random() - 0.5) * 1500, 
+            y: (Math.random() - 0.5) * 1500, 
+            z: 1000 + Math.random() * 1000, 
+            rotateX: Math.random() * 360,
+            rotateY: Math.random() * 360,
+            rotateZ: Math.random() * 360,
+            scale: 0.2 + Math.random() * 0.5,
+            delay: zDelay + randomDelay
+       };
+    });
+    setRandomPositions(positions);
+
+
+    // 3. Trigger Animation
+    const timer = setTimeout(() => {
+        setAssembled(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -68,32 +153,54 @@ function Hero() {
       </div>
       
       {/* Animated Lego Design */}
-      <div className="hidden sm:flex lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-[var(--bg-secondary)] items-center justify-center overflow-visible h-64 sm:h-full transition-colors duration-300">
-        <div className="relative w-96 h-96 grid grid-cols-6 grid-rows-6 gap-2 p-10 transform rotate-3 scale-110 perspective-1000">
-            {bricks.map((brick, index) => {
-                const startPos = randomPositions[index] || { x: 0, y: 0, rotate: 0, scale: 0, delay: 0 };
+      <div 
+        className="hidden sm:flex lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-[var(--bg-secondary)] items-center justify-center overflow-visible h-64 sm:h-full transition-colors duration-300"
+        style={{ perspective: '2000px' }} 
+      >
+        <div 
+            className="relative w-[30rem] h-[30rem] grid gap-2 p-10 transform transition-transform duration-1000"
+            style={{ 
+                gridTemplateColumns: `repeat(${GRID_SIZE}, 1fr)`,
+                gridTemplateRows: `repeat(${GRID_SIZE}, 1fr)`,
+                transformStyle: 'preserve-3d', 
+                transform: 'rotateX(55deg) rotateZ(45deg) scale(0.9) translateZ(-50px)', 
+            }}
+        >
+            {/* Grid Base Plate (Optional visual guide) */}
+             <div className="absolute inset-0 border-4 border-white/5 bg-white/5 rounded-xl transform -translate-z-2" style={{ transform: 'translateZ(-2px)' }}></div>
+
+            {shapes.map((shape, index) => {
+                const startPos = randomPositions[index] || { x: 0, y: 0, z: 800, rotateX: 0, rotateY: 0, scale: 0, delay: 0 };
                 
+                // Calculate final Z position based on stacking level
+                const finalZ = shape.z * BLOCK_DEPTH; 
+
                 const style = assembled ? {
-                    transform: 'translate(0, 0) rotate(0deg) scale(1)',
-                    opacity: 1,
-                    transition: `all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) ${startPos.delay}s`
+                    transform: `translate3d(0, 0, ${finalZ}px) rotate(0deg) scale(1)`, 
+                    transition: `transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${startPos.delay}s`
                 } : {
-                    transform: `translate(${startPos.x}px, ${startPos.y}px) rotate(${startPos.rotate}deg) scale(${startPos.scale})`,
-                    opacity: 0,
-                    transition: 'none' // Instant reset if needed, or allow transition out
+                    transform: `translate3d(${startPos.x}px, ${startPos.y}px, ${startPos.z}px) rotateX(${startPos.rotateX}deg) rotateY(${startPos.rotateY}deg) rotateZ(${startPos.rotateZ}deg) scale(${startPos.scale})`, 
+                    transition: 'none'
                 };
 
                 return (
                     <div 
-                        key={brick.id}
-                        className={`col-span-${brick.colSpan} row-span-${brick.rowSpan} col-start-${brick.colStart} row-start-${brick.rowStart} relative`}
-                        style={{ zIndex: assembled ? 10 : 0 }} // Ensure proper layering
+                        key={shape.id}
+                        className="relative"
+                        style={{ 
+                            gridColumnStart: shape.colStart,
+                            gridColumnEnd: `span ${shape.w}`,
+                            gridRowStart: shape.rowStart,
+                            gridRowEnd: `span ${shape.h}`,
+                            zIndex: assembled ? (shape.z + 10) : 0, // Higher levels visually on top (mostly for handling overlap glitches if any)
+                            transformStyle: 'preserve-3d',
+                            ...style
+                        }} 
                     >
                         <LegoBrick 
-                            color={brick.color} 
-                            style={style}
-                            width={brick.w}
-                            height={brick.h}
+                            color={shape.color} 
+                            width={1} 
+                            height={1}
                         />
                     </div>
                 );

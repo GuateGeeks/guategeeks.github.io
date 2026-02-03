@@ -129,40 +129,12 @@
     @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-cerulean-900/50 dark:hover:shadow-camel-500/10;
   }
 
-  /* Improved Lego Brick Styles */
+  /* Improved Lego Brick Styles - REMOVED for True 3D */
   .lego-brick {
-    position: relative;
-    /* 3D Depth effect */
-    box-shadow: 
-      inset 1px 1px 0 rgba(255,255,255,0.2), 
-      inset -1px -1px 0 rgba(0,0,0,0.1), 
-      1px 4px 6px rgba(0,0,0,0.3);
-    border-bottom: 4px solid rgba(0,0,0,0.2);
-    border-right: 2px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    z-index: 10;
+    /* kept empty or minimal if needed, mostly handled by component now */
   }
 
   .lego-stud {
-    position: relative;
-    border-radius: 9999px;
-    box-shadow: 
-      inset 2px 2px 2px rgba(255,255,255,0.25), 
-      inset -1px -1px 1px rgba(0,0,0,0.1),
-      1px 1px 2px rgba(0,0,0,0.2);
-  }
-  
-  .lego-stud::after {
-      content: "LEGO";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 8px; /* Very small text */
-      font-family: sans-serif;
-      font-weight: bold;
-      opacity: 0.3;
-      pointer-events: none;
-      display: none; /* Hidden for now as it might be too small/messy, toggle if needed */
+    /* removed */
   }
 }
