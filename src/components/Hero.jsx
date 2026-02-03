@@ -127,7 +127,7 @@ function Hero() {
   }, []);
 
   return (
-    <section id="inicio" className="relative overflow-hidden transition-colors duration-300 min-h-[600px] flex items-center">
+    <section id="inicio" className="relative bg-[var(--bg-primary)] overflow-hidden transition-colors duration-300 min-h-[600px] flex items-center">
       <div className="max-w-7xl mx-auto w-full">
         <div className="relative z-10 pb-12 bg-transparent sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32 pt-10 px-4 sm:px-6 lg:px-8 text-center sm:text-left transition-colors duration-300">
           <main className="mt-8 mx-auto max-w-7xl sm:mt-12 md:mt-16 lg:mt-20 xl:mt-28">

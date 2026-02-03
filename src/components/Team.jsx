@@ -2,7 +2,7 @@ import React from 'react';
 
 function Team() {
   return (
-    <section className="py-12 sm:py-16 bg-baltic-blue text-white">
+    <section className="py-12 sm:py-16 bg-baltic-blue opacity-40 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl font-extrabold sm:text-4xl mb-6">Nuestros Instructores</h2>
         <p className="text-lg sm:text-xl max-w-3xl mx-auto mb-8 sm:mb-10 text-white/90">

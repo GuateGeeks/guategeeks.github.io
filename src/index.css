@@ -74,7 +74,7 @@
 /* CSS Variables for Theme Mode */
 :root {
   /* Light Mode Defaults - Transparent for Background Animation */
-  --bg-primary: rgba(255, 255, 255, 0.9); /* 90% opacity */
+  --bg-primary: rgba(255, 255, 255, 0.4); /* 90% opacity */
   --bg-secondary: rgba(172, 212, 250, 0.5); /* Prussian Blue 900 with low opacity */
   --bg-card: rgba(255, 255, 255, 0.95);
   
@@ -86,7 +86,7 @@
 
 .dark {
   /* Dark Mode Overrides - Using the new 100/200 shades as the dark bases */
-  --bg-primary: rgba(1, 7, 12, 0.9); /* Prussian Blue 100 90% opacity */
+  --bg-primary: rgba(1, 7, 12, 0.4); /* Prussian Blue 100 90% opacity */
   --bg-secondary: rgba(2, 14, 25, 0.7); /* Prussian Blue 200 70% opacity */
   --bg-card: rgba(2, 14, 25, 0.95);
   

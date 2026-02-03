@@ -1,16 +1,24 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useScroll } from '@react-three/drei';
 import * as THREE from 'three';
 
+const COLORS = ["#cba063", "#1e587c", "#3783a0", "#04223f", "#d5b282"];
+
 // Lego Brick 3D Model
-const LegoBrick3D = ({ position, rotation, color, scale = 1 }) => {
+const LegoBrick3D = ({ type = '2x4', color, position, rotation, scale = 1 }) => {
   const mesh = useRef();
   
-  // Base dimensions for a 2x4 brick roughly
-  const width = 4;
+  // Dimensions
+  // 1 unit = stud spacing approx
+  const width = type === '2x4' ? 4 : 2;
   const height = 1.2;
   const depth = 2;
+  const studsX = type === '2x4' ? 4 : 2;
+
+  // Calculate starting X for studs to center them
+  // e.g. Width 4: studs at -1.5, -0.5, 0.5, 1.5
+  // Width 2: studs at -0.5, 0.5
+  const startX = -((width - 1) / 2);
 
   return (
     <group position={position} rotation={rotation} scale={scale} ref={mesh}>
@@ -20,16 +28,16 @@ const LegoBrick3D = ({ position, rotation, color, scale = 1 }) => {
         <meshStandardMaterial color={color} roughness={0.3} metalness={0.1} />
       </mesh>
 
-      {/* Studs (2x4 arrangement) */}
-      {Array.from({ length: 4 }).map((_, i) => (
+      {/* Studs */}
+      {Array.from({ length: studsX }).map((_, i) => (
         <group key={i}>
              {/* Front row */}
-            <mesh position={[-1.5 + i * 1, height/2 + 0.1, 0.5]}>
+            <mesh position={[startX + i, height/2 + 0.1, 0.5]}>
                 <cylinderGeometry args={[0.35, 0.35, 0.2, 16]} />
                 <meshStandardMaterial color={color} roughness={0.3} metalness={0.1} />
             </mesh>
             {/* Back row */}
-            <mesh position={[-1.5 + i * 1, height/2 + 0.1, -0.5]}>
+            <mesh position={[startX + i, height/2 + 0.1, -0.5]}>
                 <cylinderGeometry args={[0.35, 0.35, 0.2, 16]} />
                 <meshStandardMaterial color={color} roughness={0.3} metalness={0.1} />
             </mesh>
@@ -44,48 +52,88 @@ const Scene = () => {
     const groupRef = useRef();
     const [scrollProgress, setScrollProgress] = useState(0);
 
+    // Generate random configuration on mount
+    const blocks = useMemo(() => {
+        const count = 30; // Increased count to fill the larger space
+        return Array.from({ length: count }).map((_, i) => ({
+            id: i,
+            type: Math.random() > 0.5 ? '2x4' : '2x2', // 50/50 chance
+            color: COLORS[Math.floor(Math.random() * COLORS.length)],
+            // Random spread around center - Significantly increased range
+            initialPos: new THREE.Vector3(
+                (Math.random() - 0.5) * 50, // Much wider X spread
+                (Math.random() - 0.5) * 40, // Much taller Y spread
+                (Math.random() - 0.5) * 20  // Deeper Z spread
+            ),
+            rotation: [
+                Math.random() * Math.PI * 2,
+                Math.random() * Math.PI * 2,
+                Math.random() * Math.PI * 2
+            ],
+            scale: 0.4 + Math.random() * 0.5, // Slightly larger scale variation
+            // Individual rotation speeds
+            rotSpeed: {
+                x: (Math.random() - 0.5) * 0.02,
+                y: (Math.random() - 0.5) * 0.02,
+                z: (Math.random() - 0.5) * 0.02
+            }
+        }));
+    }, []);
+
     useEffect(() => {
         const handleScroll = () => {
             const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = window.scrollY / totalHeight;
+            // Prevent division by zero
+            const progress = totalHeight > 0 ? window.scrollY / totalHeight : 0;
             setScrollProgress(progress);
         };
 
         window.addEventListener('scroll', handleScroll);
+        // Initial call
+        handleScroll();
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     useFrame((state, delta) => {
         if (groupRef.current) {
-            // Interpolate position based on scroll
-            // Start: Top Left (-5, 2, 0)
-            // End: Bottom Right (5, -5, 0)
-            const x = -10 + (scrollProgress * 20); // Move across screen
-            const y = 5 - (scrollProgress * 15);  // Move down
+            // Move the entire group based on scroll
+            // Scroll 0 -> Group at top
+            // Scroll 1 -> Group moves down and across
+            const targetY = 5 - (scrollProgress * 25); 
+            // Add some horizontal parallax drift
+            const targetX = (scrollProgress * 5); 
+
+            // Smoothly interpolate group position
+            groupRef.current.position.y = THREE.MathUtils.lerp(groupRef.current.position.y, targetY, 0.1);
+            groupRef.current.position.x = THREE.MathUtils.lerp(groupRef.current.position.x, targetX, 0.1);
             
-            // Smooth lerp
-            groupRef.current.position.x = THREE.MathUtils.lerp(groupRef.current.position.x, x, 0.1);
-            groupRef.current.position.y = THREE.MathUtils.lerp(groupRef.current.position.y, y, 0.1);
-            
-            // Continuous rotation + scroll based rotation
-            groupRef.current.rotation.x += delta * 0.5;
-            groupRef.current.rotation.y += delta * 0.2;
-            groupRef.current.rotation.z = scrollProgress * Math.PI * 4;
+            // Rotate the whole cluster slowly based on scroll
+            groupRef.current.rotation.z = scrollProgress * 0.2;
+
+            // Animate individual blocks
+            groupRef.current.children.forEach((child, i) => {
+                const blockData = blocks[i];
+                if (blockData) {
+                    child.rotation.x += blockData.rotSpeed.x;
+                    child.rotation.y += blockData.rotSpeed.y;
+                    child.rotation.z += blockData.rotSpeed.z;
+                }
+            });
         }
     });
 
     return (
         <group ref={groupRef}>
-             {/* Primary "Hero" Block */}
-            <LegoBrick3D color="#cba063" scale={0.8} />
-            
-            {/* Satellite blocks floating around */}
-            <group position={[2, 1, -1]} rotation={[1,1,0]}>
-                 <LegoBrick3D color="#1e587c" scale={0.4} />
-            </group>
-            <group position={[-2, -1, 1]} rotation={[0,1,1]}>
-                 <LegoBrick3D color="#3783a0" scale={0.3} />
-            </group>
+            {blocks.map((block) => (
+                <LegoBrick3D 
+                    key={block.id}
+                    type={block.type}
+                    color={block.color}
+                    position={block.initialPos}
+                    rotation={block.rotation}
+                    scale={block.scale}
+                />
+            ))}
         </group>
     );
 };
@@ -93,7 +141,7 @@ const Scene = () => {
 const ThreeBackground = () => {
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none">
-      <Canvas camera={{ position: [0, 0, 10], fov: 45 }} gl={{ alpha: true }} transparent>
+      <Canvas camera={{ position: [0, 0, 15], fov: 50 }} gl={{ alpha: true }} transparent>
         <ambientLight intensity={0.8} />
         <directionalLight position={[10, 10, 5]} intensity={1.5} />
         <pointLight position={[-10, -10, -5]} intensity={0.5} color="#04223f" />
