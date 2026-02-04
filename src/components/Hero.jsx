@@ -133,8 +133,8 @@ function Hero() {
         <div className="relative z-10 pb-12 bg-transparent sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32 pt-10 px-4 sm:px-6 lg:px-8 text-center sm:text-left transition-colors duration-300">
           <main className="mt-8 mx-auto max-w-7xl sm:mt-12 md:mt-16 lg:mt-20 xl:mt-28">
             <div className="">
-              <h1 className="text-4xl tracking-tight font-extrabold text-[var(--text-primary)] sm:text-5xl md:text-6xl">
-                <span className="block xl:inline">Aceleración Tecnológica</span>{' '}
+              <h1 className="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl">
+                <span className="block text-strong-gray-900 dark:text-white xl:inline">Aceleración Tecnológica</span>{' '}
                 <span className="block text-royal-violet xl:inline">para Instituciones Educativas</span>
               </h1>
               <p className="mt-4 text-base text-[var(--text-secondary)] sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-0 md:mt-5 md:text-xl">
