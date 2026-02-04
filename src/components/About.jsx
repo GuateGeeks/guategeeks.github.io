@@ -2,7 +2,7 @@ import React from 'react';
 
 function About() {
   return (
-    <section id="nosotros" className="py-12 sm:py-16 bg-[var(--bg-secondary)] transition-colors duration-300">
+    <section id="nosotros" className="py-12 sm:py-16 bg-[var(--bg-secondary)] backdrop-blur-md transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-base text-royal-violet font-semibold tracking-wide uppercase">Sobre Nosotros</h2>

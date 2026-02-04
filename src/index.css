@@ -117,10 +117,10 @@
 
 /* CSS Variables for Theme Mode */
 :root {
-  /* Light Mode */
-  --bg-primary: #ffffff;
-  --bg-secondary: var(--color-soft-gray-50);
-  --bg-card: #ffffff;
+  /* Light Mode - 80% opacity */
+  --bg-primary: rgba(255, 255, 255, 0.75);
+  --bg-secondary: rgba(249, 250, 251, 0.8);
+  --bg-card: rgba(255, 255, 255, 0.9);
   
   --text-primary: var(--color-strong-gray-900);
   --text-secondary: var(--color-soft-gray-600); 
@@ -129,10 +129,10 @@
 }
 
 .dark {
-  /* Dark Mode Overrides */
-  --bg-primary: var(--color-strong-gray-950, #020617);
-  --bg-secondary: var(--color-strong-gray-900);
-  --bg-card: var(--color-strong-gray-800);
+  /* Dark Mode Overrides - 85% opacity */
+  --bg-primary: rgba(2, 6, 23, 0.85);
+  --bg-secondary: rgba(15, 23, 42, 0.85);
+  --bg-card: rgba(30, 41, 59, 0.9);
   
   --text-primary: #f8fafc;
   --text-secondary: var(--color-soft-gray-400);
@@ -142,7 +142,11 @@
 
 @layer base {
   body {
-    background-color: var(--bg-primary);
+    /* Main body background needs to be transparent to see the canvas, 
+       but we apply the primary color loosely to handle overscroll areas 
+       or we can just leave it transparent if the canvas covers all.
+    */
+    background-color: transparent;
     color: var(--text-primary);
     font-weight: 300; /* Barlow Light */
     @apply antialiased transition-colors duration-300;

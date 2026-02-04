@@ -80,7 +80,7 @@ function Services() {
   ];
 
   return (
-    <section id="servicios" className="py-16 sm:py-24 bg-[var(--bg-secondary)] transition-colors duration-300">
+    <section id="servicios" className="py-16 sm:py-24 bg-[var(--bg-secondary)] backdrop-blur-md transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-base text-royal-violet font-semibold tracking-wide uppercase">Nuestros Servicios</h2>

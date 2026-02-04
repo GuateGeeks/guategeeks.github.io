@@ -2,11 +2,13 @@ import React from 'react';
 
 function Footer() {
   return (
-    <footer id="contacto" className="bg-strong-gray-200 text-[var(--text-primary)] border-t border-strong-gray-300 transition-colors duration-300">
+    <footer id="contacto" className="bg-[var(--bg-secondary)] backdrop-blur-md text-[var(--text-primary)] border-t border-strong-gray-300 transition-colors duration-300">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
           <div>
-            <h3 className="text-2xl font-bold mb-4"><span className="text-royal-violet">Guate</span><span className="text-blue">Geeks</span></h3>
+            <a href="#inicio" className="inline-block mb-4">
+               <img src="/logo.svg" alt="GuateGeeks Logo" className="h-12 w-auto mx-auto md:mx-0" />
+            </a>
             <p className="text-[var(--text-secondary)]">Imagina, diseña y crea el futuro.</p>
           </div>
           <div>

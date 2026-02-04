@@ -35,7 +35,7 @@ function ProcessSection() {
   ];
 
   return (
-    <section className="py-16 bg-[var(--bg-primary)] transition-colors duration-300">
+    <section className="py-16 bg-[var(--bg-primary)] backdrop-blur-md transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-base text-royal-violet font-semibold tracking-wide uppercase">Nuestro Proceso</h2>

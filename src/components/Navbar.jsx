@@ -5,14 +5,13 @@ function Navbar({ toggleTheme, isDark }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-[var(--bg-primary)] border-b-4 border-royal-violet sticky top-0 z-50 shadow-sm transition-colors duration-300">
+    <nav className="bg-[var(--bg-primary)] backdrop-blur-md border-b-4 border-royal-violet sticky top-0 z-50 shadow-sm transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           <div className="flex-shrink-0 flex items-center">
-            <span className="font-extrabold text-3xl tracking-tight">
-              <span className="text-royal-violet">Guate</span>
-              <span className="text-blue">Geeks</span>
-            </span>
+            <a href="#inicio" className="flex items-center gap-2">
+                <img src="/logo.svg" alt="GuateGeeks Logo" className="h-12 w-auto" />
+            </a>
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <a href="#inicio" className="text-[var(--text-primary)] hover:text-royal-violet font-bold text-lg transition-colors">Inicio</a>
@@ -45,7 +44,7 @@ function Navbar({ toggleTheme, isDark }) {
       
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden absolute top-20 left-0 w-full bg-[var(--bg-primary)] shadow-lg border-b-4 border-royal-violet animate-fade-in-down z-40">
+        <div className="md:hidden absolute top-20 left-0 w-full bg-[var(--bg-primary)] backdrop-blur-md shadow-lg border-b-4 border-royal-violet animate-fade-in-down z-40">
           <div className="px-4 py-4 space-y-2 text-center">
             <a href="#inicio" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-strong-gray-200 hover:text-royal-violet">Inicio</a>
             <a href="#servicios" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-strong-gray-200 hover:text-royal-violet">Servicios</a>

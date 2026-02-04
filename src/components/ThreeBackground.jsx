@@ -140,7 +140,7 @@ const Scene = () => {
 
 const ThreeBackground = () => {
   return (
-    <div className="fixed inset-0 -z-10 pointer-events-none">
+    <div className="fixed inset-0 z-0 pointer-events-none">
       <Canvas camera={{ position: [0, 0, 15], fov: 50 }} gl={{ alpha: true }} transparent>
         <ambientLight intensity={0.8} />
         <directionalLight position={[10, 10, 5]} intensity={1.5} />

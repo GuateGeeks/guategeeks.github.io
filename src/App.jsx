@@ -40,16 +40,18 @@ function App() {
   return (
     <div className={`min-h-screen font-sans`}>
       <ThreeBackground />
-      <Navbar toggleTheme={toggleTheme} isDark={isDark} />
-      <Hero />
-      <Services />
-      <ProcessSection />
-      <ProgramsSection />
-      <BenefitsSection />
-      <About />
-      <ContactSection />
-      <FloatingWhatsApp />
-      <Footer />
+      <div className="relative z-10 bg-transparent">
+        <Navbar toggleTheme={toggleTheme} isDark={isDark} />
+        <Hero />
+        <Services />
+        <ProcessSection />
+        <ProgramsSection />
+        <BenefitsSection />
+        <About />
+        <ContactSection />
+        <FloatingWhatsApp />
+        <Footer />
+      </div>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 function BenefitsSection() {
   return (
-    <section className="py-16 bg-[var(--bg-primary)] transition-colors duration-300">
+    <section className="py-16 bg-[var(--bg-primary)] backdrop-blur-md transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
           <div>
