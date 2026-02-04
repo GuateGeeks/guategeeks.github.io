@@ -25,6 +25,23 @@ function Hero() {
                    Agendar Asesoría
                 </a>
               </div>
+
+              {/* Mobile Image View (Visible only on < lg screens) */}
+              <div className="mt-12 relative max-w-sm mx-auto w-full lg:hidden">
+                <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3] rotate-2 hover:rotate-0 transition-transform duration-500">
+                    <img src={heroImg1} alt="Estudiantes STEAM" className="object-cover w-full h-full" />
+                    {/* Overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-royal-violet/20 to-transparent pointer-events-none"></div>
+                </div>
+                {/* Floating decorative mini-images */}
+                <div className="absolute -bottom-6 -right-4 w-24 h-24 rounded-lg overflow-hidden shadow-lg border-2 border-white dark:border-strong-gray-800 rotate-[-6deg] animate-float" style={{ animationDelay: '1s' }}>
+                    <img src={heroImg2} alt="Detalle clase" className="object-cover w-full h-full" />
+                </div>
+                {/* Decorative glows */}
+                <div className="absolute -top-4 -left-4 w-20 h-20 bg-chartreuse/30 rounded-full blur-2xl -z-10"></div>
+                <div className="absolute -bottom-4 right-10 w-20 h-20 bg-blue/30 rounded-full blur-2xl -z-10"></div>
+              </div>
+
             </div>
           </main>
         </div>
