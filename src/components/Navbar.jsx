@@ -15,10 +15,11 @@ function Navbar({ toggleTheme, isDark }) {
             </span>
           </div>
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#inicio" className="text-[var(--text-primary)] hover:text-soft-gray font-bold text-lg transition-colors">Inicio</a>
-            <a href="#nosotros" className="text-[var(--text-primary)] hover:text-soft-gray font-bold text-lg transition-colors">Nosotros</a>
-            <a href="#servicios" className="text-[var(--text-primary)] hover:text-soft-gray font-bold text-lg transition-colors">Acelerador</a>
-            <a href="#contacto" className="text-[var(--text-primary)] hover:text-soft-gray font-bold text-lg transition-colors">Contacto</a>
+            <a href="#inicio" className="text-[var(--text-primary)] hover:text-royal-violet font-bold text-lg transition-colors">Inicio</a>
+            <a href="#servicios" className="text-[var(--text-primary)] hover:text-royal-violet font-bold text-lg transition-colors">Servicios</a>
+            <a href="#programas" className="text-[var(--text-primary)] hover:text-royal-violet font-bold text-lg transition-colors">Programas</a>
+            <a href="#nosotros" className="text-[var(--text-primary)] hover:text-royal-violet font-bold text-lg transition-colors">Nosotros</a>
+            <a href="#contacto" className="text-[var(--text-primary)] hover:text-royal-violet font-bold text-lg transition-colors">Contacto</a>
             <button 
                 onClick={toggleTheme} 
                 className="p-2 rounded-full text-[var(--text-primary)] hover:bg-gray-100 dark:hover:bg-strong-gray-300 transition-colors"
@@ -26,7 +27,7 @@ function Navbar({ toggleTheme, isDark }) {
             >
                 {isDark ? <SunIcon /> : <MoonIcon />}
             </button>
-            <a href="#contacto" className="btn-primary">Únete</a>
+            <a href="#contacto" className="btn-primary">Agendar</a>
           </div>
           <div className="md:hidden flex items-center gap-4">
              <button 
@@ -46,11 +47,12 @@ function Navbar({ toggleTheme, isDark }) {
       {isOpen && (
         <div className="md:hidden absolute top-20 left-0 w-full bg-[var(--bg-primary)] shadow-lg border-b-4 border-royal-violet animate-fade-in-down z-40">
           <div className="px-4 py-4 space-y-2 text-center">
-            <a href="#inicio" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-strong-gray-200 hover:text-soft-gray">Inicio</a>
-            <a href="#nosotros" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-strong-gray-200 hover:text-soft-gray">Nosotros</a>
-            <a href="#servicios" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-strong-gray-200 hover:text-soft-gray">Acelerador</a>
-            <a href="#contacto" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-strong-gray-200 hover:text-soft-gray">Contacto</a>
-             <a href="#contacto" onClick={() => setIsOpen(false)} className="block px-3 py-3 mt-4 rounded-md text-lg font-bold bg-royal-violet text-strong-gray-100 hover:bg-royal-violet-600">Únete</a>
+            <a href="#inicio" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-strong-gray-200 hover:text-royal-violet">Inicio</a>
+            <a href="#servicios" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-strong-gray-200 hover:text-royal-violet">Servicios</a>
+            <a href="#programas" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-strong-gray-200 hover:text-royal-violet">Programas</a>
+            <a href="#nosotros" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-strong-gray-200 hover:text-royal-violet">Nosotros</a>
+            <a href="#contacto" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-strong-gray-200 hover:text-royal-violet">Contacto</a>
+             <a href="#contacto" onClick={() => setIsOpen(false)} className="block px-3 py-3 mt-4 rounded-md text-lg font-bold bg-royal-violet text-strong-gray-100 hover:bg-royal-violet-600">Agendar Asesoría</a>
           </div>
         </div>
       )}

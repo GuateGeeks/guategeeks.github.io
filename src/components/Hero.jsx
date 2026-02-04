@@ -134,18 +134,18 @@ function Hero() {
           <main className="mt-8 mx-auto max-w-7xl sm:mt-12 md:mt-16 lg:mt-20 xl:mt-28">
             <div className="">
               <h1 className="text-4xl tracking-tight font-extrabold text-[var(--text-primary)] sm:text-5xl md:text-6xl">
-                <span className="block xl:inline">Imagina, Diseña y</span>{' '}
-                <span className="block text-soft-gray xl:inline">Crea el Futuro</span>
+                <span className="block xl:inline">Aceleración Tecnológica</span>{' '}
+                <span className="block text-royal-violet xl:inline">para Instituciones Educativas</span>
               </h1>
               <p className="mt-4 text-base text-[var(--text-secondary)] sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-0 md:mt-5 md:text-xl">
-                Desarrolla tus habilidades tecnológicas en un entorno inmersivo y sé parte de esta evolución digital.
+                Transformamos tu colegio con educación STEAM, robótica y capacitación docente de alto impacto. Preparamos a tus estudiantes para el futuro hoy.
               </p>
               <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                <a href="#nosotros" className="btn-primary w-full sm:w-auto">
-                  Conócenos
+                <a href="#contacto" className="btn-primary w-full sm:w-auto">
+                  Solicitar Propuesta
                 </a>
-                <a href="#servicios" className="btn-secondary w-full sm:w-auto">
-                  Ver Programas
+                <a href="https://wa.me/50230044972" target="_blank" rel="noopener noreferrer" className="btn-outline w-full sm:w-auto flex items-center justify-center gap-2">
+                   Agendar Asesoría
                 </a>
               </div>
             </div>

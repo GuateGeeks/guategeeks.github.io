@@ -3,7 +3,11 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
-import Team from './components/Team';
+import ProcessSection from './components/ProcessSection';
+import ProgramsSection from './components/ProgramsSection';
+import BenefitsSection from './components/BenefitsSection';
+import ContactSection from './components/ContactSection';
+import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Footer from './components/Footer';
 import ThreeBackground from './components/ThreeBackground';
 
@@ -38,9 +42,13 @@ function App() {
       <ThreeBackground />
       <Navbar toggleTheme={toggleTheme} isDark={isDark} />
       <Hero />
-      <About />
       <Services />
-      <Team />
+      <ProcessSection />
+      <ProgramsSection />
+      <BenefitsSection />
+      <About />
+      <ContactSection />
+      <FloatingWhatsApp />
       <Footer />
     </div>
   );
