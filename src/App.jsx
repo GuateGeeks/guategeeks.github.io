@@ -11,24 +11,30 @@ function App() {
     const [isDark, setIsDark] = useState(false);
 
     useEffect(() => {
-        // Check system preference or saved preference
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             setIsDark(true);
             document.documentElement.classList.add('dark');
+        } else {
+            setIsDark(false);
+            document.documentElement.classList.remove('dark');
         }
     }, []);
 
     const toggleTheme = () => {
-        setIsDark(!isDark);
-        if (!isDark) {
-            document.documentElement.classList.add('dark');
-        } else {
+        if (isDark) {
             document.documentElement.classList.remove('dark');
+            localStorage.theme = 'light';
+            setIsDark(false);
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.theme = 'dark';
+            setIsDark(true);
         }
     };
 
   return (
-    <div className={`min-h-screen font-sans ${isDark ? 'dark' : ''}`}>
+    <div className={`min-h-screen font-sans`}>
       <ThreeBackground />
       <Navbar toggleTheme={toggleTheme} isDark={isDark} />
       <Hero />
