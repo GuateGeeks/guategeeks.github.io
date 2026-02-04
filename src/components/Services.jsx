@@ -4,14 +4,14 @@ const ServiceCard = ({ title, description, color, link, icon }) => (
   <div className={`flex flex-col overflow-hidden rounded-lg shadow-lg card-hover bg-[var(--bg-card)] border-t-8 ${color} touch-manipulation transition-colors duration-300`}>
     <div className="flex-1 p-6 flex flex-col justify-between">
       <div className="flex-1">
-        <div className="h-12 w-12 rounded-md bg-gray-100 dark:bg-prussian-blue-300 flex items-center justify-center mb-4 text-2xl transition-colors duration-300">
+        <div className={`h-12 w-12 rounded-md bg-gray-100 dark:bg-strong-gray-300 flex items-center justify-center mb-4 text-2xl transition-colors duration-300 ${color.replace('border-', 'text-')}`}>
             {icon}
         </div>
         <p className="text-xl font-bold text-[var(--text-primary)]">{title}</p>
         <p className="mt-3 text-base text-[var(--text-secondary)]">{description}</p>
       </div>
       <div className="mt-6">
-        <a href={link} className="inline-flex items-center justify-center w-full sm:w-auto px-4 py-2 border border-transparent text-base font-bold rounded-md text-baltic-blue dark:text-camel bg-gray-100 dark:bg-prussian-blue-400 hover:bg-gray-200 dark:hover:bg-prussian-blue-300 transition-colors">
+        <a href={link} className={`inline-flex items-center justify-center w-full sm:w-auto px-4 py-2 border border-transparent text-base font-bold rounded-md bg-gray-100 dark:bg-strong-gray-400 hover:bg-gray-200 dark:hover:bg-strong-gray-300 transition-colors ${color.replace('border-', 'text-')}`}>
           Saber más <span aria-hidden="true" className="ml-1">&rarr;</span>
         </a>
       </div>
@@ -24,35 +24,35 @@ function Services() {
     {
       title: "Acelerador Educativo",
       description: "Brindamos equipo educativo y formación docente para integrar tecnología y metodologías STEAM en el aula.",
-      color: "border-camel",
+      color: "border-royal-violet",
       icon: "🚀",
       link: "#"
     },
     {
       title: "Inteligencia Artificial",
       description: "Explora cómo integrar la IA en el aula para diseñar actividades prácticas que personalicen el aprendizaje.",
-      color: "border-cerulean",
+      color: "border-blue",
       icon: "🤖",
       link: "#"
     },
     {
       title: "Robótica Educativa",
       description: "Formación en programación por bloques y diseño con LEGO Education para resolver retos STEAM.",
-      color: "border-baltic-blue",
+      color: "border-raspberry-red",
       icon: "🧱",
       link: "#"
     },
     {
       title: "Recursos 3D",
       description: "Diseñamos modelos 3D low‑poly y recursos optimizados para VR/AR y simuladores educativos.",
-      color: "border-prussian-blue-600",
+      color: "border-emerald",
       icon: "🧊",
       link: "#"
     },
     {
       title: "Simuladores Virtuales",
       description: "Capacitación para usar simuladores y entornos 3D que facilitan la enseñanza de electricidad y electrónica.",
-      color: "border-camel",
+      color: "border-chartreuse",
       icon: "⚡",
       link: "#"
     }

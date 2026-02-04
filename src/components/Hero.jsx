@@ -3,10 +3,11 @@ import LegoBrick from './LegoBrick';
 
 // Available colors for random selection
 const COLORS = [
-  "bg-camel",
-  "bg-cerulean", 
-  "bg-baltic-blue",
-  "bg-prussian-blue"
+  "bg-royal-violet",
+  "bg-blue", 
+  "bg-emerald",
+  "bg-raspberry-red",
+  "bg-chartreuse"
 ];
 
 // Helper to generate a random integer
@@ -134,7 +135,7 @@ function Hero() {
             <div className="">
               <h1 className="text-4xl tracking-tight font-extrabold text-[var(--text-primary)] sm:text-5xl md:text-6xl">
                 <span className="block xl:inline">Imagina, Diseña y</span>{' '}
-                <span className="block text-cerulean xl:inline">Crea el Futuro</span>
+                <span className="block text-soft-gray xl:inline">Crea el Futuro</span>
               </h1>
               <p className="mt-4 text-base text-[var(--text-secondary)] sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-0 md:mt-5 md:text-xl">
                 Desarrolla tus habilidades tecnológicas en un entorno inmersivo y sé parte de esta evolución digital.
@@ -210,9 +211,9 @@ function Hero() {
        {/* Mobile background decoration */}
        <div className="absolute top-0 right-0 -z-10 w-full h-full opacity-5 sm:hidden pointer-events-none">
           <div className="grid grid-cols-4 gap-4 p-4">
-             <div className="w-full h-20 bg-camel rounded-lg"></div>
-             <div className="w-full h-20 bg-baltic-blue rounded-lg col-span-2"></div>
-             <div className="w-full h-20 bg-cerulean rounded-lg"></div>
+             <div className="w-full h-20 bg-royal-violet rounded-lg"></div>
+             <div className="w-full h-20 bg-blue rounded-lg col-span-2"></div>
+             <div className="w-full h-20 bg-emerald rounded-lg"></div>
           </div>
        </div>
     </section>

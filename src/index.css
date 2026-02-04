@@ -1,57 +1,99 @@
 @import "tailwindcss";
 
+/* Import Barlow font (Light 300, Regular 400, Medium 500, Bold 700) */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;700&display=swap');
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* Prussian Blue */
-  --color-prussian-blue-100: #01070c;
-  --color-prussian-blue-200: #020e19;
-  --color-prussian-blue-300: #021425;
-  --color-prussian-blue-400: #031b32;
-  --color-prussian-blue-500: #04223f;
-  --color-prussian-blue-600: #095092;
-  --color-prussian-blue-700: #0f7de5;
-  --color-prussian-blue-800: #58a9f4;
-  --color-prussian-blue-900: #acd4fa;
-  --color-prussian-blue: #04223f;
+  /* Raspberry Red */
+  --color-raspberry-red-100: #2f0014;
+  --color-raspberry-red-200: #5e0027;
+  --color-raspberry-red-300: #8d003b;
+  --color-raspberry-red-400: #bc004e;
+  --color-raspberry-red-500: #ed0062;
+  --color-raspberry-red-600: #ff237e;
+  --color-raspberry-red-700: #ff5a9f;
+  --color-raspberry-red-800: #ff91bf;
+  --color-raspberry-red-900: #ffc8df;
+  --color-raspberry-red: #ed0062;
 
-  /* Baltic Blue */
-  --color-baltic-blue-100: #061119;
-  --color-baltic-blue-200: #0c2331;
-  --color-baltic-blue-300: #12344a;
-  --color-baltic-blue-400: #184663;
-  --color-baltic-blue-500: #1e587c;
-  --color-baltic-blue-600: #2c80b5;
-  --color-baltic-blue-700: #53a3d5;
-  --color-baltic-blue-800: #8cc2e3;
-  --color-baltic-blue-900: #c6e0f1;
-  --color-baltic-blue: #1e587c;
+  /* Blue */
+  --color-blue-100: #0d002f;
+  --color-blue-200: #1b005e;
+  --color-blue-300: #28008d;
+  --color-blue-400: #3500bc;
+  --color-blue-500: #4300ed;
+  --color-blue-600: #6123ff;
+  --color-blue-700: #895aff;
+  --color-blue-800: #b091ff;
+  --color-blue-900: #d8c8ff;
+  --color-blue: #4300ed;
 
-  /* Cerulean */
-  --color-cerulean-100: #0b1a20;
-  --color-cerulean-200: #163440;
-  --color-cerulean-300: #214e60;
-  --color-cerulean-400: #2c6880;
-  --color-cerulean-500: #3783a0;
-  --color-cerulean-600: #4fa2c3;
-  --color-cerulean-700: #7bb9d2;
-  --color-cerulean-800: #a7d0e1;
-  --color-cerulean-900: #d3e8f0;
-  --color-cerulean: #3783a0;
+  /* Emerald */
+  --color-emerald-100: #002a18;
+  --color-emerald-200: #005431;
+  --color-emerald-300: #007d49;
+  --color-emerald-400: #00a762;
+  --color-emerald-500: #00d37b;
+  --color-emerald-600: #0eff9b;
+  --color-emerald-700: #4affb4;
+  --color-emerald-800: #87ffcd;
+  --color-emerald-900: #c3ffe6;
+  --color-emerald: #00d37b;
 
-  /* Camel */
-  --color-camel-100: #2d210f;
-  --color-camel-200: #5a411e;
-  --color-camel-300: #87622d;
-  --color-camel-400: #b5823c;
-  --color-camel-500: #cba063;
-  --color-camel-600: #d5b282;
-  --color-camel-700: #e0c5a1;
-  --color-camel-800: #ead9c0;
-  --color-camel-900: #f5ece0;
-  --color-camel: #cba063;
+  /* Royal Violet */
+  --color-royal-violet-100: #1a002d;
+  --color-royal-violet-200: #34005a;
+  --color-royal-violet-300: #4f0087;
+  --color-royal-violet-400: #6900b4;
+  --color-royal-violet-500: #8400e2;
+  --color-royal-violet-600: #a01bff;
+  --color-royal-violet-700: #b854ff;
+  --color-royal-violet-800: #cf8dff;
+  --color-royal-violet-900: #e7c6ff;
+  --color-royal-violet: #8400e2;
+
+  /* Chartreuse */
+  --color-chartreuse-100: #273100;
+  --color-chartreuse-200: #4e6200;
+  --color-chartreuse-300: #769300;
+  --color-chartreuse-400: #9dc400;
+  --color-chartreuse-500: #c5f700;
+  --color-chartreuse-600: #d5ff2b;
+  --color-chartreuse-700: #dfff60;
+  --color-chartreuse-800: #eaff95;
+  --color-chartreuse-900: #f4ffca;
+  --color-chartreuse: #c5f700;
+
+  /* Strong Gray (Preserved) */
+  --color-strong-gray-50: #f8fafc;
+  --color-strong-gray-100: #f1f5f9;
+  --color-strong-gray-200: #e2e8f0;
+  --color-strong-gray-300: #cbd5e1;
+  --color-strong-gray-400: #94a3b8;
+  --color-strong-gray-500: #64748b;
+  --color-strong-gray-600: #475569;
+  --color-strong-gray-700: #334155;
+  --color-strong-gray-800: #1e293b;
+  --color-strong-gray-900: #0f172a;
+  --color-strong-gray: #1e293b;
+
+  /* Soft Gray (Preserved) */
+  --color-soft-gray-50: #f9fafb;
+  --color-soft-gray-100: #f3f4f6;
+  --color-soft-gray-200: #e5e7eb;
+  --color-soft-gray-300: #d1d5db;
+  --color-soft-gray-400: #9ca3af;
+  --color-soft-gray-500: #6b7280;
+  --color-soft-gray-600: #4b5563;
+  --color-soft-gray-700: #374151;
+  --color-soft-gray-800: #1f2937;
+  --color-soft-gray-900: #111827;
+  --color-soft-gray: #6b7280;
+
+  --font-sans: "Barlow", system-ui, sans-serif;
   
-  --font-sans: Inter, system-ui, sans-serif;
   --animate-fade-in-down: fadeInDown 0.3s ease-out forwards;
   --animate-float: float 6s ease-in-out infinite;
 
@@ -75,68 +117,62 @@
 
 /* CSS Variables for Theme Mode */
 :root {
-  /* Light Mode Defaults - Transparent for Background Animation */
-  --bg-primary: rgba(255, 255, 255, 0.4); /* 90% opacity */
-  --bg-secondary: rgba(172, 212, 250, 0.5); /* Prussian Blue 900 with low opacity */
-  --bg-card: rgba(255, 255, 255, 0.95);
+  /* Light Mode */
+  --bg-primary: #ffffff;
+  --bg-secondary: var(--color-soft-gray-50);
+  --bg-card: #ffffff;
   
-  --text-primary: var(--color-prussian-blue-100); /* Almost black */
-  --text-secondary: var(--color-baltic-blue-400); 
+  --text-primary: var(--color-strong-gray-900);
+  --text-secondary: var(--color-soft-gray-600); 
   
-  --border-color: var(--color-cerulean-800);
+  --border-color: var(--color-soft-gray-200);
 }
 
 .dark {
-  /* Dark Mode Overrides - Using the new 100/200 shades as the dark bases */
-  --bg-primary: rgba(1, 7, 12, 0.4); /* Prussian Blue 100 90% opacity */
-  --bg-secondary: rgba(2, 14, 25, 0.7); /* Prussian Blue 200 70% opacity */
-  --bg-card: rgba(2, 14, 25, 0.95);
+  /* Dark Mode Overrides */
+  --bg-primary: var(--color-strong-gray-950, #020617);
+  --bg-secondary: var(--color-strong-gray-900);
+  --bg-card: var(--color-strong-gray-800);
   
-  --text-primary: #ffffff;
-  --text-secondary: var(--color-cerulean-800);
+  --text-primary: #f8fafc;
+  --text-secondary: var(--color-soft-gray-400);
   
-  --border-color: var(--color-prussian-blue-300);
+  --border-color: var(--color-strong-gray-700);
 }
 
 @layer base {
   body {
-    background-color: var(--bg-primary); /* Uses the semi-transparent color */
+    background-color: var(--bg-primary);
     color: var(--text-primary);
+    font-weight: 300; /* Barlow Light */
     @apply antialiased transition-colors duration-300;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold tracking-tight;
+    @apply font-bold tracking-tight text-strong-gray-900 dark:text-white;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply px-6 py-3 rounded-md font-bold transition-all active:scale-95 shadow-md hover:shadow-lg inline-block text-center cursor-pointer no-underline bg-camel text-prussian-blue-100 hover:bg-camel-600 dark:hover:bg-camel-400;
+    /* Using Royal Violet as the new Primary Action Color (swapped from Raspberry Red) */
+    @apply px-6 py-3 rounded-md font-medium transition-all active:scale-95 shadow-md hover:shadow-lg inline-block text-center cursor-pointer no-underline bg-royal-violet text-white hover:bg-royal-violet-600 dark:hover:bg-royal-violet-400 border border-transparent;
   }
 
   .btn-secondary {
-    @apply px-6 py-3 rounded-md font-bold transition-all active:scale-95 shadow-md hover:shadow-lg inline-block text-center cursor-pointer no-underline bg-baltic-blue text-white hover:bg-baltic-blue-600 dark:hover:bg-baltic-blue-400;
+    @apply px-6 py-3 rounded-md font-medium transition-all active:scale-95 shadow-md hover:shadow-lg inline-block text-center cursor-pointer no-underline bg-strong-gray-100 text-strong-gray-900 hover:bg-strong-gray-200 dark:bg-strong-gray-700 dark:text-white dark:hover:bg-strong-gray-600;
   }
 
   .btn-outline {
-    @apply px-6 py-3 rounded-md font-bold transition-all active:scale-95 shadow-md hover:shadow-lg inline-block text-center cursor-pointer no-underline border-2 border-current text-[var(--text-primary)] hover:bg-black/5 dark:hover:bg-white/10;
+    /* Using Royal Violet for outlines too */
+    @apply px-6 py-3 rounded-md font-medium transition-all active:scale-95 shadow-md hover:shadow-lg inline-block text-center cursor-pointer no-underline border-2 border-royal-violet text-royal-violet hover:bg-royal-violet-900/10 dark:hover:bg-royal-violet-900/20;
   }
 
   .card {
     background-color: var(--bg-card);
-    @apply rounded-lg shadow-lg border border-transparent dark:border-prussian-blue-300 transition-colors duration-300;
+    @apply rounded-xl shadow-sm border border-soft-gray-200 dark:border-strong-gray-700 transition-colors duration-300;
   }
 
   .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-cerulean-900/50 dark:hover:shadow-camel-500/10;
-  }
-
-  /* Improved Lego Brick Styles - REMOVED for True 3D */
-  .lego-brick {
-    /* kept empty or minimal if needed, mostly handled by component now */
-  }
-
-  .lego-stud {
-    /* removed */
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:shadow-royal-violet-500/10;
   }
 }

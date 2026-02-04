@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-const COLORS = ["#cba063", "#1e587c", "#3783a0", "#04223f", "#d5b282"];
+const COLORS = ["#8400e2", "#4300ed", "#00d37b", "#ed0062", "#c5f700"];
 
 // Lego Brick 3D Model
 const LegoBrick3D = ({ type = '2x4', color, position, rotation, scale = 1 }) => {
@@ -144,7 +144,7 @@ const ThreeBackground = () => {
       <Canvas camera={{ position: [0, 0, 15], fov: 50 }} gl={{ alpha: true }} transparent>
         <ambientLight intensity={0.8} />
         <directionalLight position={[10, 10, 5]} intensity={1.5} />
-        <pointLight position={[-10, -10, -5]} intensity={0.5} color="#04223f" />
+        <pointLight position={[-10, -10, -5]} intensity={0.5} color="#8400e2" />
         <Scene />
       </Canvas>
     </div>
