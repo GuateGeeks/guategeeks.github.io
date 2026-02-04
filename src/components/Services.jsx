@@ -60,22 +60,13 @@ function Services() {
       deliverables: ["Certificación por horas", "Guías didácticas", "Planificaciones modelo"]
     },
     {
-      title: "Talleres Estudiantes",
-      description: "Experiencias inmersivas que despiertan la curiosidad y desarrollan habilidades clave.",
+      title: "Talleres para Estudiantes y Padres",
+      description: "Experiencias inmersivas para estudiantes y talleres de integración para padres de familia.",
       icon: <StudentIcon />,
       color: "border-emerald",
-      includes: ["Materiales individuales", "Instructores expertos", "Retos y competencias"],
-      implementation: ["Clases curriculares", "Bootcamps de temporada", "Ferias científicas"],
-      deliverables: ["Proyectos funcionales", "Portafolio de evidencias", "Diplomas"]
-    },
-    {
-      title: "Talleres para Padres",
-      description: "Involucramos a las familias en el proceso de transformación digital.",
-      icon: <ParentsIcon />,
-      color: "border-royal-violet",
-      includes: ["Charlas ciberseguridad", "Talleres 'Aprende con tu hijo'", "Recursos para casa"],
-      implementation: ["Sesiones trimestrales", "Webinars informativos", "Demos de tecnología"],
-      deliverables: ["Guías de acompañamiento", "Mejor comunicación", "Comunidad comprometida"]
+      includes: ["Talleres curriculares (alumnos)", "Retos y competencias", "Escuela para padres"],
+      implementation: ["Clases semanales", "Bootcamps de temporada", "Webinars familiares"],
+      deliverables: ["Proyectos funcionales", "Portafolios de evidencia", "Comunidad comprometida"]
     }
   ];
 
@@ -91,7 +82,7 @@ function Services() {
             Acompañamos a tu institución en cada paso del camino hacia la excelencia tecnológica.
           </p>
         </div>
-        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-3">
           {services.map((service, index) => (
             <ServiceCard key={index} {...service} />
           ))}
