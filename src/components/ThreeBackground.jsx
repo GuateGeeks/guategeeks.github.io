@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 
 const COLORS = [
   "#8400e2", // Royal Violet
@@ -11,19 +12,31 @@ const COLORS = [
   "#b854ff", // Lavender
 ];
 
-// Lego Brick 3D with glass-like material
+// Chibi rounded Lego Brick
 const LegoBrick3D = ({ type = '2x4', color, position, rotation, scale = 1 }) => {
   const width = type === '2x4' ? 4 : 2;
   const height = 1.2;
   const depth = 2;
   const studsX = type === '2x4' ? 4 : 2;
   const startX = -((width - 1) / 2);
+  const radius = 0.2;
+
+  // Memoize the rounded box geometry so it's not recreated every frame
+  const bodyGeo = useMemo(
+    () => new RoundedBoxGeometry(width, height, depth, 4, radius),
+    [width, height, depth, radius]
+  );
+
+  // Rounded stud: a short rounded cylinder approximated with a rounded box
+  const studGeo = useMemo(
+    () => new RoundedBoxGeometry(0.65, 0.25, 0.65, 4, 0.12),
+    []
+  );
 
   return (
     <group position={position} rotation={rotation} scale={scale}>
-      {/* Main Block Body */}
-      <mesh>
-        <boxGeometry args={[width, height, depth]} />
+      {/* Main Block Body - rounded */}
+      <mesh geometry={bodyGeo}>
         <meshStandardMaterial color={color} roughness={0.3} metalness={0.1} />
       </mesh>
 
