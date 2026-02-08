@@ -20,18 +20,27 @@ function ContactSection() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('submitting');
-    setTimeout(() => {
-      console.log('Form Data Submitted:', formData);
+    try {
+      const res = await fetch('https://n8n.adawolfs.com/webhook/6cffade5-d1a0-4350-9d56-070530348b3e', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error('Request failed');
       setStatus('success');
       setFormData({
         name: '', role: '', institution: '', whatsapp: '',
         email: '', location: '', interest: '', message: ''
       });
       setTimeout(() => setStatus('idle'), 5000);
-    }, 1500);
+    } catch (err) {
+      console.error('Form submission error:', err);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
   };
 
   const inputClasses = "glass-input";
@@ -82,6 +91,28 @@ function ContactSection() {
                   <div>
                     <p className="text-sm font-semibold text-[var(--text-primary)]">Mensaje enviado con exito</p>
                     <p className="text-xs text-[var(--text-secondary)] mt-0.5">Nuestro equipo se comunicara contigo pronto.</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Error message */}
+            {status === 'error' && (
+              <div className="glass-panel rounded-2xl p-5 mb-6" style={{
+                background: 'rgba(237, 0, 98, 0.1)',
+                border: '1px solid rgba(237, 0, 98, 0.3)',
+              }}>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{ background: 'rgba(237, 0, 98, 0.2)' }}
+                  >
+                    <svg className="w-5 h-5 text-raspberry-red" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-[var(--text-primary)]">Error al enviar el mensaje</p>
+                    <p className="text-xs text-[var(--text-secondary)] mt-0.5">Por favor intenta de nuevo o contactanos por WhatsApp.</p>
                   </div>
                 </div>
               </div>

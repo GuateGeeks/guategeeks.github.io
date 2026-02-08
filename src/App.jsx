@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -9,7 +9,9 @@ import BenefitsSection from './components/BenefitsSection';
 import ContactSection from './components/ContactSection';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Footer from './components/Footer';
-import ThreeBackground from './components/ThreeBackground';
+
+// Lazy-load Three.js background to reduce initial bundle size
+const ThreeBackground = lazy(() => import('./components/ThreeBackground'));
 
 // Intersection Observer hook for scroll-triggered animations
 function useInView(options = {}) {
@@ -79,7 +81,9 @@ function App() {
 
   return (
     <div className="min-h-screen font-sans">
-      <ThreeBackground />
+      <Suspense fallback={null}>
+        <ThreeBackground />
+      </Suspense>
       <div className="relative z-10">
         <Navbar toggleTheme={toggleTheme} isDark={isDark} />
         <Hero />

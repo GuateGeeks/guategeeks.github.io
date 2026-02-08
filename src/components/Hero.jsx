@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import heroImg1 from '../assets/img/spike-kids.png';
-import heroImg2 from '../assets/img/spike-kids02.png';
-import heroImg3 from '../assets/img/spike-kids03.png';
+import heroImg1 from '../assets/img/spike-kids.webp';
+import heroImg2 from '../assets/img/spike-kids02.webp';
+import heroImg3 from '../assets/img/spike-kids03.webp';
 
 function Hero() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
