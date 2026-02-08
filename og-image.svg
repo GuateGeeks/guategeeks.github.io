@@ -1,0 +1,55 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a0a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a0a1a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8400e2" />
+      <stop offset="100%" style="stop-color:#a01bff" />
+    </linearGradient>
+    <linearGradient id="green" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d37b" />
+      <stop offset="100%" style="stop-color:#00b368" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)" />
+  
+  <!-- Decorative circles -->
+  <circle cx="950" cy="150" r="200" fill="#8400e2" opacity="0.08" />
+  <circle cx="200" cy="500" r="150" fill="#4300ed" opacity="0.06" />
+  <circle cx="1050" cy="480" r="120" fill="#00d37b" opacity="0.06" />
+  
+  <!-- Accent line -->
+  <rect x="100" y="200" width="80" height="4" rx="2" fill="url(#accent)" />
+  
+  <!-- Brand name -->
+  <text x="100" y="270" font-family="Inter, system-ui, sans-serif" font-size="72" font-weight="800" fill="white" letter-spacing="-2">
+    GuateGeeks
+  </text>
+  
+  <!-- Tagline -->
+  <text x="100" y="340" font-family="Inter, system-ui, sans-serif" font-size="36" font-weight="600" fill="#a01bff" letter-spacing="-0.5">
+    Aceleración Tecnológica Educativa
+  </text>
+  
+  <!-- Description -->
+  <text x="100" y="410" font-family="Inter, system-ui, sans-serif" font-size="22" fill="#a1a1aa" letter-spacing="0">
+    Robótica · STEAM · Capacitación Docente
+  </text>
+  
+  <!-- Bottom accent -->
+  <rect x="100" y="460" width="400" height="3" rx="1.5" fill="url(#green)" opacity="0.5" />
+  
+  <!-- URL -->
+  <text x="100" y="540" font-family="Inter, system-ui, sans-serif" font-size="18" fill="#636366" letter-spacing="1">
+    guategeeks.com
+  </text>
+  
+  <!-- Border frame -->
+  <rect x="0" y="0" width="1200" height="630" fill="none" stroke="#8400e2" stroke-width="2" opacity="0.2" />
+  <rect x="0" y="626" width="1200" height="4" fill="url(#accent)" />
+</svg>

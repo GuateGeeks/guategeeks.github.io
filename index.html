@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es-GT">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
@@ -13,22 +13,51 @@
     <meta name="author" content="GuateGeeks" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#8400e2" />
+    <link rel="canonical" href="https://guategeeks.com/" />
+
+    <!-- Google Fonts - preconnect + stylesheet (moved from CSS @import for performance) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://guategeeks.com/" />
     <meta property="og:title" content="GuateGeeks | Aceleración Tecnológica Educativa" />
     <meta property="og:description" content="Transformamos instituciones educativas en Guatemala con laboratorios de robótica, metodología STEAM y capacitación docente de alto impacto." />
-    <meta property="og:image" content="https://guategeeks.github.io/logo.svg" />
+    <meta property="og:image" content="https://guategeeks.com/og-image.png" />
     <meta property="og:site_name" content="GuateGeeks" />
     <meta property="og:locale" content="es_GT" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://guategeeks.com/" />
-    <meta property="twitter:title" content="GuateGeeks | Aceleración Tecnológica Educativa" />
-    <meta property="twitter:description" content="Transformamos instituciones educativas en Guatemala con laboratorios de robótica, metodología STEAM y capacitación docente de alto impacto." />
-    <meta property="twitter:image" content="https://guategeeks.github.io/logo.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://guategeeks.com/" />
+    <meta name="twitter:title" content="GuateGeeks | Aceleración Tecnológica Educativa" />
+    <meta name="twitter:description" content="Transformamos instituciones educativas en Guatemala con laboratorios de robótica, metodología STEAM y capacitación docente de alto impacto." />
+    <meta name="twitter:image" content="https://guategeeks.com/og-image.png" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "GuateGeeks",
+      "url": "https://guategeeks.com",
+      "logo": "https://guategeeks.com/logo.svg",
+      "description": "Transformamos instituciones educativas en Guatemala con laboratorios de robótica, metodología STEAM y capacitación docente de alto impacto.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "GT"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+502-3004-4972",
+        "contactType": "sales",
+        "availableLanguage": "es"
+      },
+      "sameAs": []
+    }
+    </script>
 
     <script>
       if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -37,10 +66,16 @@
         document.documentElement.classList.remove('dark')
       }
     </script>
-    <script type="module" crossorigin src="/assets/index-BY8m2ek3.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CYt5TC79.css">
+    <script type="module" crossorigin src="/assets/index-BIxgdqJ5.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-dMqPyzh1.css">
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <div style="padding: 2rem; text-align: center; font-family: system-ui, sans-serif;">
+        <h1>GuateGeeks — Aceleración Tecnológica Educativa</h1>
+        <p>Para ver este sitio, por favor habilita JavaScript en tu navegador.</p>
+      </div>
+    </noscript>
   </body>
 </html>
