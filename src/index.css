@@ -241,7 +241,6 @@
   .glass-panel {
     background: var(--bg-glass);
     backdrop-filter: blur(var(--blur-glass)) saturate(180%);
-    -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(180%);
     border: 1px solid var(--glass-border);
     box-shadow: 
       0 0 0 0.5px var(--glass-border-subtle),
@@ -253,7 +252,6 @@
   .glass-panel-heavy {
     background: var(--bg-card);
     backdrop-filter: blur(var(--blur-glass-heavy)) saturate(200%);
-    -webkit-backdrop-filter: blur(var(--blur-glass-heavy)) saturate(200%);
     border: 1px solid var(--glass-border);
     box-shadow: 
       0 0 0 0.5px var(--glass-border-subtle),
@@ -277,7 +275,6 @@
   .glass-card {
     background: var(--bg-card);
     backdrop-filter: blur(var(--blur-glass)) saturate(180%);
-    -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(180%);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     box-shadow: 
@@ -356,7 +353,6 @@
     @apply px-7 py-3.5 rounded-2xl font-semibold transition-all inline-flex items-center justify-center gap-2 cursor-pointer no-underline;
     background: var(--bg-glass);
     backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
     color: var(--text-primary);
     border: 1px solid var(--glass-border);
     box-shadow: 
@@ -414,7 +410,6 @@
   .glass-input {
     background: var(--bg-glass);
     backdrop-filter: blur(20px) saturate(150%);
-    -webkit-backdrop-filter: blur(20px) saturate(150%);
     border: 1px solid var(--glass-border-subtle);
     border-radius: 14px;
     padding: 14px 18px;
@@ -448,7 +443,6 @@
   .section-glass {
     background: var(--bg-primary);
     backdrop-filter: blur(var(--blur-glass)) saturate(180%);
-    -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(180%);
     @apply transition-all duration-500;
     position: relative;
   }
@@ -473,7 +467,6 @@
     z-index: 5;
     background: var(--bg-primary);
     backdrop-filter: blur(var(--blur-glass)) saturate(180%);
-    -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(180%);
     pointer-events: none;
     transition: mask-image 0.05s linear, -webkit-mask-image 0.05s linear;
   }
@@ -482,7 +475,6 @@
   .card {
     background: var(--bg-card);
     backdrop-filter: blur(var(--blur-glass)) saturate(180%);
-    -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(180%);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     box-shadow: 
