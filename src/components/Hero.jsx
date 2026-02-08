@@ -33,7 +33,7 @@ function Hero() {
         <div 
           className="absolute w-[600px] h-[600px] rounded-full opacity-30 liquid-blob"
           style={{
-            background: 'radial-gradient(circle, rgba(132, 0, 226, 0.4), transparent 70%)',
+            background: 'radial-gradient(circle, rgba(239, 133, 86, 0.4), transparent 70%)',
             top: '-10%',
             right: '-10%',
             transform: `translate(${mousePos.x * -20}px, ${mousePos.y * -20}px)`,
@@ -43,7 +43,7 @@ function Hero() {
         <div 
           className="absolute w-[500px] h-[500px] rounded-full opacity-20 liquid-blob"
           style={{
-            background: 'radial-gradient(circle, rgba(67, 0, 237, 0.4), transparent 70%)',
+            background: 'radial-gradient(circle, rgba(104, 85, 153, 0.4), transparent 70%)',
             bottom: '-15%',
             left: '-10%',
             animationDelay: '2s',
@@ -54,7 +54,7 @@ function Hero() {
         <div 
           className="absolute w-[400px] h-[400px] rounded-full opacity-15 liquid-blob"
           style={{
-            background: 'radial-gradient(circle, rgba(0, 211, 123, 0.3), transparent 70%)',
+            background: 'radial-gradient(circle, rgba(95, 186, 214, 0.3), transparent 70%)',
             top: '40%',
             left: '30%',
             animationDelay: '4s',
@@ -72,7 +72,7 @@ function Hero() {
             <div className="inline-flex items-center gap-2 glass-panel rounded-full px-4 py-2 mb-8"
               style={{ animationDelay: '0.1s' }}
             >
-              <div className="w-2 h-2 rounded-full bg-emerald" />
+              <div className="w-2 h-2 rounded-full bg-coral" />
               <span className="text-sm font-medium text-[var(--text-secondary)]">
                 Educación STEAM en Guatemala
               </span>
@@ -80,7 +80,7 @@ function Hero() {
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05]">
               <span className="block text-[var(--text-primary)]">Aceleración</span>
-              <span className="block text-gradient-violet mt-1">Tecnológica</span>
+              <span className="block text-gradient-coral mt-1">Tecnológica</span>
               <span className="block text-[var(--text-primary)] text-3xl sm:text-4xl md:text-5xl mt-2 font-semibold opacity-80">
                 para tu Institución
               </span>
@@ -98,7 +98,7 @@ function Hero() {
                 </svg>
               </a>
               <a href="https://wa.me/50230044972" target="_blank" rel="noopener noreferrer" className="btn-secondary text-base">
-                <svg className="w-5 h-5 text-emerald" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="w-5 h-5 text-sky" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
                 </svg>
                 <span>Agendar Asesoría</span>
@@ -113,7 +113,7 @@ function Hero() {
                 { number: '5K+', label: 'Estudiantes' },
               ].map((stat, i) => (
                 <div key={i} className="text-center">
-                  <div className="text-2xl font-bold text-gradient-violet">{stat.number}</div>
+                  <div className="text-2xl font-bold text-gradient-coral">{stat.number}</div>
                   <div className="text-xs text-[var(--text-tertiary)] font-medium uppercase tracking-wide">{stat.label}</div>
                 </div>
               ))}
@@ -183,9 +183,9 @@ function Hero() {
               <div 
                 className="absolute -top-4 left-[20%] w-16 h-16 rounded-full z-10"
                 style={{
-                  background: 'radial-gradient(circle, rgba(132, 0, 226, 0.3), rgba(132, 0, 226, 0.05))',
+                  background: 'radial-gradient(circle, rgba(239, 133, 86, 0.3), rgba(239, 133, 86, 0.05))',
                   backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(132, 0, 226, 0.2)',
+                  border: '1px solid rgba(239, 133, 86, 0.2)',
                   transform: `translate(${mousePos.x * -12}px, ${mousePos.y * -12}px)`,
                   transition: 'transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                   animation: 'pulseGlow 4s ease-in-out infinite',
@@ -194,9 +194,9 @@ function Hero() {
               <div 
                 className="absolute -bottom-2 right-[20%] w-12 h-12 rounded-full z-10"
                 style={{
-                  background: 'radial-gradient(circle, rgba(0, 211, 123, 0.3), rgba(0, 211, 123, 0.05))',
+                  background: 'radial-gradient(circle, rgba(95, 186, 214, 0.3), rgba(95, 186, 214, 0.05))',
                   backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(0, 211, 123, 0.2)',
+                  border: '1px solid rgba(95, 186, 214, 0.2)',
                   transform: `translate(${mousePos.x * 10}px, ${mousePos.y * 10}px)`,
                   transition: 'transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 }}
@@ -204,9 +204,9 @@ function Hero() {
               <div 
                 className="absolute top-[45%] -right-4 w-10 h-10 rounded-full z-10"
                 style={{
-                  background: 'radial-gradient(circle, rgba(67, 0, 237, 0.3), rgba(67, 0, 237, 0.05))',
+                  background: 'radial-gradient(circle, rgba(104, 85, 153, 0.3), rgba(104, 85, 153, 0.05))',
                   backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(67, 0, 237, 0.2)',
+                  border: '1px solid rgba(104, 85, 153, 0.2)',
                   transform: `translate(${mousePos.x * -6}px, ${mousePos.y * -6}px)`,
                   transition: 'transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 }}

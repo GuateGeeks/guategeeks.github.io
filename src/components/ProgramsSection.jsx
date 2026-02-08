@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { CheckIcon } from './Icons';
 
-const ProgramCard = ({ title, subtitle, features, recommended, accentColor, accentGlow, index }) => (
+function useDarkMode() {
+  const [isDark, setIsDark] = useState(
+    () => typeof document !== 'undefined' && document.documentElement.classList.contains('dark')
+  );
+  useEffect(() => {
+    const el = document.documentElement;
+    const observer = new MutationObserver(() => {
+      setIsDark(el.classList.contains('dark'));
+    });
+    observer.observe(el, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
+  return isDark;
+}
+
+const ProgramCard = ({ title, subtitle, features, recommended, accentColor, accentColorLight, accentGlow, index }) => {
+  const isDark = useDarkMode();
+  const visibleAccent = isDark ? (accentColorLight || accentColor) : accentColor;
+
+  return (
   <div 
     className={`relative glass-card group ${recommended ? 'lg:scale-105 z-10' : ''}`}
     style={{ animationDelay: `${index * 100}ms` }}
@@ -9,7 +28,7 @@ const ProgramCard = ({ title, subtitle, features, recommended, accentColor, acce
     {/* Background glow for recommended */}
     {recommended && (
       <div className="absolute -inset-[2px] rounded-[22px] -z-10" style={{
-        background: 'linear-gradient(135deg, #8400e2, #a01bff, #4300ed)',
+        background: 'linear-gradient(135deg, #ef8556, #f4a07a, #5fbad6)',
         opacity: 0.6,
         filter: 'blur(0px)',
       }} />
@@ -20,8 +39,8 @@ const ProgramCard = ({ title, subtitle, features, recommended, accentColor, acce
       <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
         <div className="px-4 py-1 rounded-full text-xs font-semibold text-white"
           style={{
-            background: 'linear-gradient(135deg, #8400e2, #a01bff)',
-            boxShadow: '0 4px 16px rgba(132, 0, 226, 0.4)',
+            background: 'linear-gradient(135deg, #ef8556, #f4a07a)',
+            boxShadow: '0 4px 16px rgba(239, 133, 86, 0.4)',
           }}
         >
           Más Popular
@@ -33,7 +52,7 @@ const ProgramCard = ({ title, subtitle, features, recommended, accentColor, acce
       {/* Header */}
       <div className="mb-6">
         <h3 className="text-2xl font-bold text-[var(--text-primary)] tracking-tight">{title}</h3>
-        <p className="mt-1 text-sm font-semibold uppercase tracking-wider" style={{ color: accentColor }}>
+        <p className="mt-1 text-sm font-semibold uppercase tracking-wider" style={{ color: visibleAccent }}>
           {subtitle}
         </p>
       </div>
@@ -44,8 +63,8 @@ const ProgramCard = ({ title, subtitle, features, recommended, accentColor, acce
           <li key={idx} className="flex items-start gap-3">
             <div className="flex-shrink-0 w-5 h-5 rounded-lg flex items-center justify-center mt-0.5"
               style={{
-                background: `${accentColor}20`,
-                color: accentColor,
+                background: `${visibleAccent}20`,
+                color: visibleAccent,
               }}
             >
               <CheckIcon />
@@ -65,8 +84,8 @@ const ProgramCard = ({ title, subtitle, features, recommended, accentColor, acce
               : 'text-[var(--text-primary)] hover:bg-[var(--bg-glass-hover)] hover:-translate-y-0.5'
           }`}
           style={recommended ? {
-            background: 'linear-gradient(135deg, #8400e2, #a01bff)',
-            boxShadow: '0 4px 16px rgba(132, 0, 226, 0.3)',
+            background: 'linear-gradient(135deg, #ef8556, #f4a07a)',
+            boxShadow: '0 4px 16px rgba(239, 133, 86, 0.3)',
           } : {
             background: 'var(--bg-glass)',
             border: '1px solid var(--glass-border-subtle)',
@@ -90,15 +109,17 @@ const ProgramCard = ({ title, subtitle, features, recommended, accentColor, acce
       }}
     />
   </div>
-);
+  );
+};
 
 function ProgramsSection() {
   const programs = [
     {
       title: "Programa Piloto",
       subtitle: "Implementación Corta",
-      accentColor: "#4d7c0f",
-      accentGlow: "radial-gradient(circle, rgba(77, 124, 15, 0.15), transparent 70%)",
+      accentColor: "#3a8fa8",
+      accentColorLight: "#5fbad6",
+      accentGlow: "radial-gradient(circle, rgba(95, 186, 214, 0.15), transparent 70%)",
       features: [
         "Duración: 4 - 8 semanas",
         "1 Taller demostrativo por grado",
@@ -110,8 +131,9 @@ function ProgramsSection() {
     {
       title: "Programa Anual",
       subtitle: "Transformación Integral",
-      accentColor: "#8400e2",
-      accentGlow: "radial-gradient(circle, rgba(132, 0, 226, 0.15), transparent 70%)",
+      accentColor: "#c4552e",
+      accentColorLight: "#f4a07a",
+      accentGlow: "radial-gradient(circle, rgba(239, 133, 86, 0.15), transparent 70%)",
       recommended: true,
       features: [
         "Duración: Ciclo escolar completo",
@@ -125,8 +147,9 @@ function ProgramsSection() {
     {
       title: "Programa Trimestral",
       subtitle: "Módulos Temáticos",
-      accentColor: "#4300ed",
-      accentGlow: "radial-gradient(circle, rgba(67, 0, 237, 0.15), transparent 70%)",
+      accentColor: "#685599",
+      accentColorLight: "#8a78b8",
+      accentGlow: "radial-gradient(circle, rgba(104, 85, 153, 0.15), transparent 70%)",
       features: [
         "Duración: 1 Unidad o Trimestre",
         "Enfoque en proyecto específico",
@@ -142,11 +165,11 @@ function ProgramsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 glass-panel rounded-full px-4 py-1.5 mb-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-royal-violet">Programas</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-coral">Programas</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight">
             Modelos de Implementación{' '}
-            <span className="text-gradient-violet">Flexible</span>
+            <span className="text-gradient-coral">Flexible</span>
           </h2>
           <p className="mt-4 text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
              Elige el formato que mejor se adapte a los objetivos y presupuesto de tu institución.

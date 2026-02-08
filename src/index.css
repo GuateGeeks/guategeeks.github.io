@@ -5,65 +5,65 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* Raspberry Red */
-  --color-raspberry-red-100: #2f0014;
-  --color-raspberry-red-200: #5e0027;
-  --color-raspberry-red-300: #8d003b;
-  --color-raspberry-red-400: #bc004e;
-  --color-raspberry-red-500: #ed0062;
-  --color-raspberry-red-600: #ff237e;
-  --color-raspberry-red-700: #ff5a9f;
-  --color-raspberry-red-800: #ff91bf;
-  --color-raspberry-red-900: #ffc8df;
-  --color-raspberry-red: #ed0062;
+  /* Coral (Primary) — #EF8556 */
+  --color-coral-100: #5c2e1e;
+  --color-coral-200: #6e3019;
+  --color-coral-300: #a34825;
+  --color-coral-400: #d96132;
+  --color-coral-500: #ef8556;
+  --color-coral-600: #f4a07a;
+  --color-coral-700: #f4a98a;
+  --color-coral-800: #f8c4a8;
+  --color-coral-900: #fce2d4;
+  --color-coral: #ef8556;
 
-  /* Blue */
-  --color-blue-100: #0d002f;
-  --color-blue-200: #1b005e;
-  --color-blue-300: #28008d;
-  --color-blue-400: #3500bc;
-  --color-blue-500: #4300ed;
-  --color-blue-600: #6123ff;
-  --color-blue-700: #895aff;
-  --color-blue-800: #b091ff;
-  --color-blue-900: #d8c8ff;
-  --color-blue: #4300ed;
+  /* Sky (Secondary) — #5FBAD6 */
+  --color-sky-100: #1e3d4a;
+  --color-sky-200: #1c5466;
+  --color-sky-300: #2a7e99;
+  --color-sky-400: #3fa0bf;
+  --color-sky-500: #5fbad6;
+  --color-sky-600: #8dd0e4;
+  --color-sky-700: #a8dced;
+  --color-sky-800: #c4e9f3;
+  --color-sky-900: #e1f4f9;
+  --color-sky: #5fbad6;
 
-  /* Emerald */
-  --color-emerald-100: #002a18;
-  --color-emerald-200: #005431;
-  --color-emerald-300: #007d49;
-  --color-emerald-400: #00a762;
-  --color-emerald-500: #00d37b;
-  --color-emerald-600: #0eff9b;
-  --color-emerald-700: #4affb4;
-  --color-emerald-800: #87ffcd;
-  --color-emerald-900: #c3ffe6;
-  --color-emerald: #00d37b;
+  /* Plum (Tertiary) — #685599 */
+  --color-plum-100: #2e2840;
+  --color-plum-200: #332a4e;
+  --color-plum-300: #4d3f75;
+  --color-plum-400: #685599;
+  --color-plum-500: #8270b3;
+  --color-plum-600: #9a8ac4;
+  --color-plum-700: #b3a5d4;
+  --color-plum-800: #ccc0e3;
+  --color-plum-900: #e5dbf1;
+  --color-plum: #685599;
 
-  /* Royal Violet */
-  --color-royal-violet-100: #1a002d;
-  --color-royal-violet-200: #34005a;
-  --color-royal-violet-300: #4f0087;
-  --color-royal-violet-400: #6900b4;
-  --color-royal-violet-500: #8400e2;
-  --color-royal-violet-600: #a01bff;
-  --color-royal-violet-700: #b854ff;
-  --color-royal-violet-800: #cf8dff;
-  --color-royal-violet-900: #e7c6ff;
-  --color-royal-violet: #8400e2;
+  /* Success Green */
+  --color-success-100: #1e3d2c;
+  --color-success-200: #1a4c30;
+  --color-success-300: #277248;
+  --color-success-400: #3a9961;
+  --color-success-500: #4caf7d;
+  --color-success-600: #70c49a;
+  --color-success-700: #94d4b3;
+  --color-success-800: #b8e5cc;
+  --color-success-900: #dcf2e5;
+  --color-success: #4caf7d;
 
-  /* Chartreuse */
-  --color-chartreuse-100: #273100;
-  --color-chartreuse-200: #4e6200;
-  --color-chartreuse-300: #769300;
-  --color-chartreuse-400: #9dc400;
-  --color-chartreuse-500: #c5f700;
-  --color-chartreuse-600: #d5ff2b;
-  --color-chartreuse-700: #dfff60;
-  --color-chartreuse-800: #eaff95;
-  --color-chartreuse-900: #f4ffca;
-  --color-chartreuse: #c5f700;
+  /* Error Red */
+  --color-error-100: #4a2222;
+  --color-error-200: #5a2222;
+  --color-error-300: #873333;
+  --color-error-400: #b44444;
+  --color-error-500: #e05555;
+  --color-error-600: #e87777;
+  --color-error-700: #ef9999;
+  --color-error-800: #f5bbbb;
+  --color-error-900: #fbdddd;
+  --color-error: #e05555;
 
   /* Strong Gray (Preserved) */
   --color-strong-gray-50: #f8fafc;
@@ -74,10 +74,10 @@
   --color-strong-gray-500: #64748b;
   --color-strong-gray-600: #475569;
   --color-strong-gray-700: #334155;
-  --color-strong-gray-800: #1e293b;
-  --color-strong-gray-900: #0f172a;
-  --color-strong-gray-950: #020617;
-  --color-strong-gray: #1e293b;
+  --color-strong-gray-800: #333d4d;
+  --color-strong-gray-900: #2a3040;
+  --color-strong-gray-950: #1e2233;
+  --color-strong-gray: #333d4d;
 
   /* Soft Gray (Preserved) */
   --color-soft-gray-50: #f9fafb;
@@ -88,8 +88,8 @@
   --color-soft-gray-500: #6b7280;
   --color-soft-gray-600: #4b5563;
   --color-soft-gray-700: #374151;
-  --color-soft-gray-800: #1f2937;
-  --color-soft-gray-900: #111827;
+  --color-soft-gray-800: #333d4d;
+  --color-soft-gray-900: #262d3a;
   --color-soft-gray: #6b7280;
 
   --font-sans: "Inter", system-ui, sans-serif;
@@ -164,10 +164,10 @@
   --glass-shadow: rgba(0, 0, 0, 0.08);
   --glass-shadow-lg: rgba(0, 0, 0, 0.12);
   --glass-specular: rgba(255, 255, 255, 0.8);
-  --glass-tint: rgba(132, 0, 226, 0.05);
+  --glass-tint: rgba(239, 133, 86, 0.05);
   
-  --text-primary: #1d1d1f;
-  --text-secondary: #6e6e73;
+  --text-primary: #3a3a3c;
+  --text-secondary: #4a4a4f;
   --text-tertiary: #636366;
   
   --border-color: rgba(0, 0, 0, 0.08);
@@ -178,9 +178,9 @@
 
 .dark {
   /* Dark Mode - Deep Liquid Glass */
-  --bg-primary: rgba(28, 28, 30, 0.65);
-  --bg-secondary: rgba(44, 44, 46, 0.55);
-  --bg-card: rgba(44, 44, 46, 0.6);
+  --bg-primary: rgba(40, 40, 48, 0.65);
+  --bg-secondary: rgba(55, 55, 62, 0.55);
+  --bg-card: rgba(55, 55, 62, 0.6);
   --bg-glass: rgba(255, 255, 255, 0.08);
   --bg-glass-hover: rgba(255, 255, 255, 0.14);
   --bg-glass-active: rgba(255, 255, 255, 0.2);
@@ -190,11 +190,11 @@
   --glass-shadow: rgba(0, 0, 0, 0.3);
   --glass-shadow-lg: rgba(0, 0, 0, 0.5);
   --glass-specular: rgba(255, 255, 255, 0.15);
-  --glass-tint: rgba(132, 0, 226, 0.1);
+  --glass-tint: rgba(239, 133, 86, 0.1);
   
   --text-primary: #f5f5f7;
-  --text-secondary: #a1a1a6;
-  --text-tertiary: #636366;
+  --text-secondary: #c0c0c5;
+  --text-tertiary: #8e8e93;
   
   --border-color: rgba(255, 255, 255, 0.1);
   
@@ -228,11 +228,11 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(132, 0, 226, 0.2);
+    background: rgba(239, 133, 86, 0.2);
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(132, 0, 226, 0.4);
+    background: rgba(239, 133, 86, 0.4);
   }
 }
 
@@ -312,11 +312,11 @@
   /* === BUTTONS === */
   .btn-primary {
     @apply px-7 py-3.5 rounded-2xl font-semibold transition-all inline-flex items-center justify-center gap-2 cursor-pointer no-underline;
-    background: linear-gradient(135deg, #8400e2, #a01bff);
+    background: linear-gradient(135deg, #ef8556, #f4a07a);
     color: white;
     border: none;
     box-shadow: 
-      0 4px 20px rgba(132, 0, 226, 0.35),
+      0 4px 20px rgba(239, 133, 86, 0.35),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
     letter-spacing: -0.01em;
     position: relative;
@@ -341,14 +341,14 @@
   .btn-primary:hover {
     transform: translateY(-2px) scale(1.02);
     box-shadow: 
-      0 8px 32px rgba(132, 0, 226, 0.45),
+      0 8px 32px rgba(239, 133, 86, 0.45),
       inset 0 1px 0 rgba(255, 255, 255, 0.3);
   }
 
   .btn-primary:active {
     transform: translateY(0) scale(0.98);
     box-shadow: 
-      0 2px 12px rgba(132, 0, 226, 0.3),
+      0 2px 12px rgba(239, 133, 86, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
@@ -379,9 +379,9 @@
   .btn-outline {
     @apply px-7 py-3.5 rounded-2xl font-semibold transition-all inline-flex items-center justify-center gap-2 cursor-pointer no-underline;
     background: transparent;
-    color: #8400e2;
-    border: 2px solid rgba(132, 0, 226, 0.3);
-    box-shadow: 0 2px 12px rgba(132, 0, 226, 0.08);
+    color: #d9613a;
+    border: 2px solid rgba(239, 133, 86, 0.3);
+    box-shadow: 0 2px 12px rgba(239, 133, 86, 0.08);
     position: relative;
     overflow: hidden;
   }
@@ -390,7 +390,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(132, 0, 226, 0.05), rgba(132, 0, 226, 0.1));
+    background: linear-gradient(135deg, rgba(239, 133, 86, 0.05), rgba(239, 133, 86, 0.1));
     opacity: 0;
     transition: opacity 0.3s ease;
     border-radius: inherit;
@@ -401,9 +401,9 @@
   }
 
   .btn-outline:hover {
-    border-color: rgba(132, 0, 226, 0.5);
+    border-color: rgba(239, 133, 86, 0.5);
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 6px 24px rgba(132, 0, 226, 0.15);
+    box-shadow: 0 6px 24px rgba(239, 133, 86, 0.15);
   }
 
   .btn-outline:active {
@@ -432,10 +432,16 @@
 
   .glass-input:focus {
     background: var(--bg-glass-hover);
-    border-color: rgba(132, 0, 226, 0.4);
+    border-color: rgba(239, 133, 86, 0.4);
     box-shadow: 
-      0 0 0 3px rgba(132, 0, 226, 0.1),
+      0 0 0 3px rgba(239, 133, 86, 0.1),
       inset 0 1px 0 var(--glass-specular);
+  }
+
+  /* Fix select text contrast in dark mode */
+  .dark .glass-input option {
+    background-color: #333d4d;
+    color: #f5f5f7;
   }
 
   /* === SECTION GLASS === */
@@ -499,25 +505,25 @@
     animation: liquidMorph 8s ease-in-out infinite;
   }
 
-  .glow-violet {
-    box-shadow: 0 0 40px rgba(132, 0, 226, 0.3), 0 0 80px rgba(132, 0, 226, 0.1);
+  .glow-coral {
+    box-shadow: 0 0 40px rgba(239, 133, 86, 0.3), 0 0 80px rgba(239, 133, 86, 0.1);
   }
 
-  .glow-emerald {
-    box-shadow: 0 0 40px rgba(0, 211, 123, 0.3), 0 0 80px rgba(0, 211, 123, 0.1);
+  .glow-success {
+    box-shadow: 0 0 40px rgba(76, 175, 125, 0.3), 0 0 80px rgba(76, 175, 125, 0.1);
   }
 
-  .text-gradient-violet {
-    color: #8400e2;
-    background: linear-gradient(135deg, #8400e2, #b854ff);
+  .text-gradient-coral {
+    color: #d9613a;
+    background: linear-gradient(135deg, #ef8556, #d9613a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .text-gradient-multi {
-    color: #8400e2;
-    background: linear-gradient(135deg, #8400e2, #4300ed, #00d37b);
+    color: #ef8556;
+    background: linear-gradient(135deg, #ef8556, #5fbad6, #685599);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -538,7 +544,7 @@ section[id] {
 
 /* === FOCUS VISIBLE STYLES === */
 :focus-visible {
-  outline: 2px solid #8400e2;
+  outline: 2px solid #ef8556;
   outline-offset: 2px;
   border-radius: 8px;
 }
@@ -549,15 +555,15 @@ section[id] {
   outline: 2px solid white;
   outline-offset: 2px;
   box-shadow: 
-    0 0 0 4px rgba(132, 0, 226, 0.5),
-    0 4px 20px rgba(132, 0, 226, 0.35);
+    0 0 0 4px rgba(239, 133, 86, 0.5),
+    0 4px 20px rgba(239, 133, 86, 0.35);
 }
 
 .glass-input:focus-visible {
   outline: none;
-  border-color: rgba(132, 0, 226, 0.5);
+  border-color: rgba(239, 133, 86, 0.5);
   box-shadow: 
-    0 0 0 3px rgba(132, 0, 226, 0.15),
+    0 0 0 3px rgba(239, 133, 86, 0.15),
     inset 0 1px 0 var(--glass-specular);
 }
 

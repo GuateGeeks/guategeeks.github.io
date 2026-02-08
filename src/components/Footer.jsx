@@ -30,7 +30,7 @@ function Footer() {
                   }}
                   aria-label={social.label}
                 >
-                  <svg className="w-4 h-4 text-[var(--text-secondary)] group-hover:text-royal-violet transition-colors" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <svg className="w-4 h-4 text-[var(--text-secondary)] group-hover:text-coral transition-colors" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path d={social.icon} />
                   </svg>
                 </a>
@@ -46,9 +46,9 @@ function Footer() {
                 <li key={link}>
                   <a 
                     href={`#${link.toLowerCase()}`} 
-                    className="text-sm text-[var(--text-secondary)] hover:text-royal-violet transition-colors duration-300 inline-flex items-center gap-1 group"
+                    className="text-sm text-[var(--text-secondary)] hover:text-coral transition-colors duration-300 inline-flex items-center gap-1 group"
                   >
-                    <span className="w-0 group-hover:w-2 h-px bg-royal-violet transition-all duration-300" />
+                    <span className="w-0 group-hover:w-2 h-px bg-coral transition-all duration-300" />
                     {link}
                   </a>
                 </li>
@@ -63,7 +63,7 @@ function Footer() {
               <li>
                 <a 
                   href="mailto:info@guategeeks.com" 
-                  className="text-sm text-[var(--text-secondary)] hover:text-royal-violet transition-colors duration-300 flex items-center gap-2"
+                  className="text-sm text-[var(--text-secondary)] hover:text-coral transition-colors duration-300 flex items-center gap-2"
                 >
                   <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -74,7 +74,7 @@ function Footer() {
               <li>
                 <a 
                   href="https://wa.me/50230044972" 
-                  className="text-sm text-[var(--text-secondary)] hover:text-emerald transition-colors duration-300 flex items-center gap-2"
+                  className="text-sm text-[var(--text-secondary)] hover:text-sky transition-colors duration-300 flex items-center gap-2"
                 >
                   <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/>

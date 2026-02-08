@@ -122,8 +122,8 @@ function Navbar({ toggleTheme, isDark }) {
                         : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                     }`}
                     style={activeSection === link.id ? {
-                      background: 'linear-gradient(135deg, #8400e2, #a01bff)',
-                      boxShadow: '0 2px 12px rgba(132, 0, 226, 0.3)',
+                      background: 'linear-gradient(135deg, #ef8556, #f4a07a)',
+                      boxShadow: '0 2px 12px rgba(239, 133, 86, 0.3)',
                     } : {}}
                   >
                     {link.label}
@@ -168,7 +168,7 @@ function Navbar({ toggleTheme, isDark }) {
                 onClick={() => setIsOpen(!isOpen)}
                 className="p-2.5 rounded-xl transition-all duration-300"
                 style={{
-                  background: isOpen ? 'linear-gradient(135deg, #8400e2, #a01bff)' : 'var(--bg-glass)',
+                  background: isOpen ? 'linear-gradient(135deg, #ef8556, #f4a07a)' : 'var(--bg-glass)',
                   border: '1px solid var(--glass-border-subtle)',
                   color: isOpen ? 'white' : 'var(--text-primary)',
                 }}
@@ -209,8 +209,8 @@ function Navbar({ toggleTheme, isDark }) {
                     : 'text-[var(--text-primary)] hover:bg-[var(--bg-glass-hover)]'
                 }`}
                 style={activeSection === link.id ? {
-                  background: 'linear-gradient(135deg, #8400e2, #a01bff)',
-                  boxShadow: '0 2px 12px rgba(132, 0, 226, 0.3)',
+                  background: 'linear-gradient(135deg, #ef8556, #f4a07a)',
+                  boxShadow: '0 2px 12px rgba(239, 133, 86, 0.3)',
                 } : {}}
               >
                 {link.label}

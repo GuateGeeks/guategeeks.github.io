@@ -8,11 +8,11 @@ const BenefitItem = ({ icon, title, description, delay }) => (
     <div className="flex-shrink-0">
       <div className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:-rotate-6"
         style={{
-          background: 'linear-gradient(135deg, rgba(132, 0, 226, 0.15), rgba(132, 0, 226, 0.05))',
-          border: '1px solid rgba(132, 0, 226, 0.2)',
+          background: 'linear-gradient(135deg, rgba(239, 133, 86, 0.15), rgba(239, 133, 86, 0.05))',
+          border: '1px solid rgba(239, 133, 86, 0.2)',
         }}
       >
-        <svg className="h-6 w-6 text-royal-violet" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <svg className="h-6 w-6 text-coral" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={icon} />
         </svg>
       </div>
@@ -50,11 +50,11 @@ function BenefitsSection() {
           {/* Left - Benefits */}
           <div>
             <div className="inline-flex items-center gap-2 glass-panel rounded-full px-4 py-1.5 mb-6">
-              <span className="text-xs font-semibold uppercase tracking-wider text-royal-violet">Ventajas</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-coral">Ventajas</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight">
             ¿Por qué elegir{' '}
-              <span className="text-gradient-violet">GuateGeeks?</span>
+               <span className="text-gradient-coral">GuateGeeks?</span>
             </h2>
             <p className="mt-4 text-lg text-[var(--text-secondary)] leading-relaxed">
               No solo vendemos tecnología, garantizamos que se utilice para potenciar el aprendizaje.
@@ -70,37 +70,37 @@ function BenefitsSection() {
           <div className="mt-12 lg:mt-0 relative">
             {/* Ambient glow */}
             <div className="absolute -inset-8 rounded-3xl opacity-30 blur-3xl" style={{
-              background: 'linear-gradient(135deg, rgba(132, 0, 226, 0.3), rgba(67, 0, 237, 0.2))',
+              background: 'linear-gradient(135deg, rgba(239, 133, 86, 0.3), rgba(104, 85, 153, 0.2))',
             }} />
             
             <div className="relative glass-card overflow-hidden">
               {/* Abstract Tech Visualization */}
               <div className="relative aspect-[16/10] overflow-hidden rounded-t-[20px]" style={{
-                background: 'linear-gradient(135deg, #0f172a, #1e293b)',
+                background: 'linear-gradient(135deg, #2a3040, #333d4d)',
               }}>
                 {/* Animated grid */}
                 <svg className="absolute inset-0 w-full h-full opacity-20" aria-hidden="true">
                   <pattern id="glass-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-royal-violet"/>
+                     <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-coral"/>
                   </pattern>
                   <rect width="100%" height="100%" fill="url(#glass-grid)" />
                 </svg>
                 
                 {/* Floating orbs */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full opacity-40 animate-pulse"
-                  style={{ background: 'radial-gradient(circle, rgba(132, 0, 226, 0.6), transparent 70%)' }}
+                  style={{ background: 'radial-gradient(circle, rgba(239, 133, 86, 0.6), transparent 70%)' }}
                 />
                 <div className="absolute top-1/4 right-1/4 w-20 h-20 rounded-full opacity-30 animate-pulse"
-                  style={{ background: 'radial-gradient(circle, rgba(67, 0, 237, 0.6), transparent 70%)', animationDelay: '1s' }}
+                  style={{ background: 'radial-gradient(circle, rgba(104, 85, 153, 0.6), transparent 70%)', animationDelay: '1s' }}
                 />
 
                 {/* Central content */}
                 <div className="relative z-10 flex flex-col items-center justify-center h-full">
                   <div className="w-20 h-20 rounded-2xl flex items-center justify-center mb-4"
                     style={{
-                      background: 'rgba(132, 0, 226, 0.2)',
+                       background: 'rgba(239, 133, 86, 0.2)',
                       backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(132, 0, 226, 0.3)',
+                       border: '1px solid rgba(239, 133, 86, 0.3)',
                     }}
                   >
                     <svg className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -108,12 +108,12 @@ function BenefitsSection() {
                     </svg>
                   </div>
                   <h3 className="text-white font-bold text-xl tracking-wide">Laboratorio 4.0</h3>
-                  <p className="text-royal-violet-800 text-sm mt-1 font-medium">Innovación & Aprendizaje</p>
+                  <p className="text-coral-800 text-sm mt-1 font-medium">Innovación & Aprendizaje</p>
                 </div>
 
                 {/* Decorative dots */}
-                <div className="absolute top-6 right-8 w-2 h-2 bg-blue-700 rounded-full" />
-                <div className="absolute bottom-8 left-10 w-2 h-2 bg-emerald rounded-full" />
+                <div className="absolute top-6 right-8 w-2 h-2 bg-sky rounded-full" />
+                <div className="absolute bottom-8 left-10 w-2 h-2 bg-plum rounded-full" />
               </div>
 
               {/* Testimonial */}
@@ -125,13 +125,13 @@ function BenefitsSection() {
                 </blockquote>
                 <div className="mt-4 flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold"
-                    style={{ background: 'linear-gradient(135deg, #8400e2, #a01bff)' }}
+                    style={{ background: 'linear-gradient(135deg, #ef8556, #f4a07a)' }}
                   >
                     MG
                   </div>
                   <div>
                      <div className="text-sm font-semibold text-[var(--text-primary)]">Lic. María González</div>
-                     <div className="text-xs text-royal-violet font-medium">Directora Académica — Colegio Valle Verde</div>
+                     <div className="text-xs text-coral font-medium">Directora Académica — Colegio Valle Verde</div>
                   </div>
                 </div>
               </div>

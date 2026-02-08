@@ -8,11 +8,11 @@ function About() {
           {/* Header */}
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 glass-panel rounded-full px-4 py-1.5 mb-6">
-              <span className="text-xs font-semibold uppercase tracking-wider text-royal-violet">Sobre Nosotros</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-coral">Sobre Nosotros</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
               <span className="text-[var(--text-primary)]">Experiencias Educativas </span>
-              <span className="text-gradient-violet">Inmersivas</span>
+               <span className="text-gradient-coral">Inmersivas</span>
             </h2>
             <p className="mt-4 text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
               Imaginamos, diseñamos y creamos experiencias centradas en la formación de jóvenes apasionados por el mundo digital.
@@ -23,7 +23,7 @@ function About() {
           <div className="glass-card p-8 sm:p-10 relative overflow-hidden">
             {/* Accent line */}
             <div className="absolute left-0 top-0 bottom-0 w-1 rounded-full" style={{
-              background: 'linear-gradient(to bottom, #8400e2, #4300ed, #00d37b)',
+              background: 'linear-gradient(to bottom, #ef8556, #5fbad6, #685599)',
             }} />
 
             <p className="text-lg text-[var(--text-secondary)] leading-relaxed pl-6">
@@ -33,10 +33,10 @@ function About() {
             {/* Tags */}
             <div className="flex flex-wrap gap-3 mt-6 pl-6">
               {[
-                { label: 'Design Thinking', color: 'rgba(132, 0, 226, 0.15)', textColor: '#8400e2', borderColor: 'rgba(132, 0, 226, 0.3)' },
-                { label: 'STEAM', color: 'rgba(67, 0, 237, 0.15)', textColor: '#4300ed', borderColor: 'rgba(67, 0, 237, 0.3)' },
-                { label: 'Innovación', color: 'rgba(0, 211, 123, 0.15)', textColor: '#00d37b', borderColor: 'rgba(0, 211, 123, 0.3)' },
-                { label: 'Robótica', color: 'rgba(237, 0, 98, 0.15)', textColor: '#ed0062', borderColor: 'rgba(237, 0, 98, 0.3)' },
+                { label: 'Design Thinking', color: 'rgba(239, 133, 86, 0.15)', textColor: '#d9613a', borderColor: 'rgba(239, 133, 86, 0.3)' },
+                { label: 'STEAM', color: 'rgba(95, 186, 214, 0.15)', textColor: '#3a8fa8', borderColor: 'rgba(95, 186, 214, 0.3)' },
+                { label: 'Innovación', color: 'rgba(104, 85, 153, 0.15)', textColor: '#685599', borderColor: 'rgba(104, 85, 153, 0.3)' },
+                { label: 'Robótica', color: 'rgba(217, 97, 58, 0.15)', textColor: '#c4552e', borderColor: 'rgba(217, 97, 58, 0.3)' },
               ].map((tag, i) => (
                 <span 
                   key={i}

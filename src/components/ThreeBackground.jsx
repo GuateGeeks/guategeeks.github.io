@@ -5,12 +5,12 @@ import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeom
 import { usePrefersReducedMotion } from '../App';
 
 const COLORS = [
-  "#8400e2", // Royal Violet
-  "#a01bff", // Lighter violet
-  "#4300ed", // Blue
-  "#6123ff", // Lighter blue
-  "#00d37b", // Emerald
-  "#b854ff", // Lavender
+  "#ef8556", // Coral (primary)
+  "#f4a07a", // Light coral
+  "#5fbad6", // Sky (secondary)
+  "#8dd0e4", // Light sky
+  "#685599", // Plum (tertiary)
+  "#8a78b8", // Light plum
 ];
 
 // Chibi rounded Lego Brick
@@ -172,8 +172,8 @@ const ThreeBackground = () => {
       >
         <ambientLight intensity={0.9} />
         <directionalLight position={[10, 10, 5]} intensity={1.2} color="#ffffff" />
-        <pointLight position={[-10, -10, -5]} intensity={0.5} color="#8400e2" />
-        <pointLight position={[10, -5, 10]} intensity={0.3} color="#4300ed" />
+        <pointLight position={[-10, -10, -5]} intensity={0.5} color="#ef8556" />
+        <pointLight position={[10, -5, 10]} intensity={0.3} color="#685599" />
         <Scene reducedMotion={reducedMotion} />
       </Canvas>
     </div>

@@ -101,7 +101,7 @@ function App() {
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:rounded-2xl focus:text-white focus:text-sm focus:font-semibold focus:outline-none"
-        style={{ background: 'linear-gradient(135deg, #8400e2, #a01bff)' }}
+        style={{ background: 'linear-gradient(135deg, #ef8556, #f4a07a)' }}
       >
         Saltar al contenido
       </a>

@@ -64,11 +64,11 @@ function ContactSection() {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 glass-panel rounded-full px-4 py-1.5 mb-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-royal-violet">Contacto</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-coral">Contacto</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight">
             Hablemos sobre el{' '}
-            <span className="text-gradient-violet">futuro</span>
+            <span className="text-gradient-coral">futuro</span>
           </h2>
           <p className="mt-4 text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
             Agenda una asesoría gratuita o solicita una propuesta personalizada.
@@ -81,8 +81,8 @@ function ContactSection() {
             {/* Success message */}
             {status === 'success' && (
               <div role="alert" aria-live="assertive" className="glass-panel rounded-2xl p-5 mb-6 relative" style={{
-                background: 'rgba(0, 211, 123, 0.1)',
-                border: '1px solid rgba(0, 211, 123, 0.3)',
+                background: 'rgba(76, 175, 125, 0.1)',
+                border: '1px solid rgba(76, 175, 125, 0.3)',
               }}>
                 <button
                   onClick={dismissStatus}
@@ -95,9 +95,9 @@ function ContactSection() {
                 </button>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{ background: 'rgba(0, 211, 123, 0.2)' }}
+                    style={{ background: 'rgba(76, 175, 125, 0.2)' }}
                   >
-                    <svg className="w-5 h-5 text-emerald" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <svg className="w-5 h-5 text-success" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
                   </div>
@@ -112,8 +112,8 @@ function ContactSection() {
             {/* Error message */}
             {status === 'error' && (
               <div role="alert" aria-live="assertive" className="glass-panel rounded-2xl p-5 mb-6 relative" style={{
-                background: 'rgba(237, 0, 98, 0.1)',
-                border: '1px solid rgba(237, 0, 98, 0.3)',
+                background: 'rgba(224, 85, 85, 0.1)',
+                border: '1px solid rgba(224, 85, 85, 0.3)',
               }}>
                 <button
                   onClick={dismissStatus}
@@ -126,9 +126,9 @@ function ContactSection() {
                 </button>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{ background: 'rgba(237, 0, 98, 0.2)' }}
+                    style={{ background: 'rgba(224, 85, 85, 0.2)' }}
                   >
-                    <svg className="w-5 h-5 text-raspberry-red" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <svg className="w-5 h-5 text-error" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                     </svg>
                   </div>
@@ -147,7 +147,7 @@ function ContactSection() {
                   <label 
                     htmlFor={field.name} 
                     className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
-                      focusedField === field.name ? 'text-royal-violet' : 'text-[var(--text-primary)]'
+                      focusedField === field.name ? 'text-coral' : 'text-[var(--text-primary)]'
                     }`}
                   >
                     {field.label}
@@ -173,7 +173,7 @@ function ContactSection() {
                 <label 
                   htmlFor="interest" 
                   className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
-                    focusedField === 'interest' ? 'text-royal-violet' : 'text-[var(--text-primary)]'
+                    focusedField === 'interest' ? 'text-coral' : 'text-[var(--text-primary)]'
                   }`}
                 >
                   Me interesa principalmente
@@ -201,7 +201,7 @@ function ContactSection() {
                 <label 
                   htmlFor="message" 
                   className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
-                    focusedField === 'message' ? 'text-royal-violet' : 'text-[var(--text-primary)]'
+                    focusedField === 'message' ? 'text-coral' : 'text-[var(--text-primary)]'
                   }`}
                 >
                   Mensaje adicional

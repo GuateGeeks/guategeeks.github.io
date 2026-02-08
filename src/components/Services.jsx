@@ -107,8 +107,8 @@ function Services() {
       title: "Provisión de Equipo",
       description: "Equipamos tu institución con la mejor tecnología para el aprendizaje práctico.",
       icon: <RobotIcon />,
-      accentColor: "#ed0062",
-      accentGlow: "radial-gradient(circle, rgba(237, 0, 98, 0.15), transparent 70%)",
+      accentColor: "#c4552e",
+      accentGlow: "radial-gradient(circle, rgba(239, 133, 86, 0.15), transparent 70%)",
       includes: ["Kits de robótica educativa", "Placas electrónicas y sensores", "Impresoras 3D y consumibles"],
       implementation: ["Instalación en laboratorio", "Configuración inicial", "Pruebas de funcionamiento"],
       deliverables: ["Laboratorio funcional", "Inventario detallado", "Manuales de uso"]
@@ -117,8 +117,8 @@ function Services() {
       title: "Capacitación Docente",
       description: "Empoderamos a tus maestros con herramientas y metodologías STEAM innovadoras.",
       icon: <TeacherIcon />,
-      accentColor: "#4300ed",
-      accentGlow: "radial-gradient(circle, rgba(67, 0, 237, 0.15), transparent 70%)",
+      accentColor: "#3a8fa8",
+      accentGlow: "radial-gradient(circle, rgba(95, 186, 214, 0.15), transparent 70%)",
       includes: ["Talleres teórico-prácticos", "Plataforma de recursos", "Material didáctico digital"],
       implementation: ["Sesiones intensivas", "Acompañamiento en aula", "Evaluación continua"],
       deliverables: ["Certificación por horas", "Guías didácticas", "Planificaciones modelo"]
@@ -127,8 +127,8 @@ function Services() {
       title: "Talleres Estudiantes y Padres",
       description: "Experiencias inmersivas para estudiantes y talleres de integración familiar.",
       icon: <StudentIcon />,
-      accentColor: "#00d37b",
-      accentGlow: "radial-gradient(circle, rgba(0, 211, 123, 0.15), transparent 70%)",
+      accentColor: "#685599",
+      accentGlow: "radial-gradient(circle, rgba(104, 85, 153, 0.15), transparent 70%)",
       includes: ["Talleres curriculares", "Retos y competencias", "Escuela para padres"],
       implementation: ["Clases semanales", "Bootcamps de temporada", "Webinars familiares"],
       deliverables: ["Proyectos funcionales", "Portafolios de evidencia", "Comunidad comprometida"]
@@ -140,11 +140,11 @@ function Services() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 glass-panel rounded-full px-4 py-1.5 mb-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-royal-violet">Nuestros Servicios</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-coral">Nuestros Servicios</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight">
             Soluciones Integrales{' '}
-            <span className="text-gradient-violet">STEAM</span>
+            <span className="text-gradient-coral">STEAM</span>
           </h2>
           <p className="mt-4 text-lg text-[var(--text-secondary)] leading-relaxed">
             Acompañamos a tu institución en cada paso hacia la excelencia tecnológica.
