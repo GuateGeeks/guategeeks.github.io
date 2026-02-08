@@ -8,7 +8,7 @@ const FloatingWhatsApp = () => {
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 group"
-      aria-label="Chat on WhatsApp"
+      aria-label="Chatear por WhatsApp"
     >
       {/* Glow ring */}
       <div className="absolute inset-0 rounded-2xl animate-ping opacity-20" style={{
@@ -25,6 +25,16 @@ const FloatingWhatsApp = () => {
       >
         <WhatsAppIcon />
       </div>
+
+      {/* Tooltip */}
+      <span className="absolute bottom-full right-0 mb-2 px-3 py-1.5 rounded-xl text-xs font-medium text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        style={{
+          background: 'rgba(0, 0, 0, 0.75)',
+          backdropFilter: 'blur(8px)',
+        }}
+      >
+        Chatear por WhatsApp
+      </span>
     </a>
   );
 };

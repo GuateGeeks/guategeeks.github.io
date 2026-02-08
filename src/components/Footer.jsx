@@ -8,10 +8,10 @@ function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <a href="#inicio" className="inline-block mb-4 group">
-              <img src="/logo.svg" alt="GuateGeeks" className="h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
+              <img src="/logo.svg" alt="GuateGeeks" className="h-10 w-auto transition-transform duration-300 group-hover:scale-105" width="120" height="40" />
             </a>
             <p className="text-[var(--text-secondary)] text-sm leading-relaxed max-w-sm">
-              Imaginamos, disenamos y creamos el futuro de la educacion tecnologica en Guatemala.
+              Imaginamos, diseñamos y creamos el futuro de la educación tecnológica en Guatemala.
             </p>
             {/* Social Links */}
             <div className="flex gap-3 mt-6">
@@ -22,7 +22,7 @@ function Footer() {
               ].map((social, i) => (
                 <a 
                   key={i}
-                  href="#" 
+                  href="javascript:void(0)" 
                   className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 group"
                   style={{
                     background: 'var(--bg-glass)',
@@ -30,7 +30,7 @@ function Footer() {
                   }}
                   aria-label={social.label}
                 >
-                  <svg className="w-4 h-4 text-[var(--text-secondary)] group-hover:text-royal-violet transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 text-[var(--text-secondary)] group-hover:text-royal-violet transition-colors" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path d={social.icon} />
                   </svg>
                 </a>
@@ -40,7 +40,7 @@ function Footer() {
 
           {/* Links */}
           <div>
-            <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-4 uppercase tracking-wider">Navegacion</h4>
+            <p className="text-sm font-semibold text-[var(--text-primary)] mb-4 uppercase tracking-wider">Navegación</p>
             <ul className="space-y-3">
               {['Inicio', 'Servicios', 'Programas', 'Nosotros', 'Contacto'].map((link) => (
                 <li key={link}>
@@ -58,14 +58,14 @@ function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-4 uppercase tracking-wider">Contacto</h4>
+            <p className="text-sm font-semibold text-[var(--text-primary)] mb-4 uppercase tracking-wider">Contacto</p>
             <ul className="space-y-3">
               <li>
                 <a 
                   href="mailto:info@guategeeks.com" 
                   className="text-sm text-[var(--text-secondary)] hover:text-royal-violet transition-colors duration-300 flex items-center gap-2"
                 >
-                  <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                   info@guategeeks.com
@@ -76,7 +76,7 @@ function Footer() {
                   href="https://wa.me/50230044972" 
                   className="text-sm text-[var(--text-secondary)] hover:text-emerald transition-colors duration-300 flex items-center gap-2"
                 >
-                  <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/>
                   </svg>
                   (+502) 3004-4972

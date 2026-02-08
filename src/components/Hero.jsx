@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import heroImg1 from '../assets/img/spike-kids.webp';
 import heroImg2 from '../assets/img/spike-kids02.webp';
 import heroImg3 from '../assets/img/spike-kids03.webp';
@@ -6,16 +6,24 @@ import heroImg3 from '../assets/img/spike-kids03.webp';
 function Hero() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [loaded, setLoaded] = useState(false);
+  const rafRef = useRef(null);
 
   useEffect(() => {
     setLoaded(true);
     const handleMouseMove = (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 2;
-      const y = (e.clientY / window.innerHeight - 0.5) * 2;
-      setMousePos({ x, y });
+      if (rafRef.current) return; // skip if a frame is already queued
+      rafRef.current = requestAnimationFrame(() => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 2;
+        const y = (e.clientY / window.innerHeight - 0.5) * 2;
+        setMousePos({ x, y });
+        rafRef.current = null;
+      });
     };
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   return (
@@ -64,36 +72,36 @@ function Hero() {
             <div className="inline-flex items-center gap-2 glass-panel rounded-full px-4 py-2 mb-8"
               style={{ animationDelay: '0.1s' }}
             >
-              <div className="w-2 h-2 rounded-full bg-emerald animate-pulse" />
+              <div className="w-2 h-2 rounded-full bg-emerald" />
               <span className="text-sm font-medium text-[var(--text-secondary)]">
-                Educacion STEAM en Guatemala
+                Educación STEAM en Guatemala
               </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05]">
-              <span className="block text-[var(--text-primary)]">Aceleracion</span>
-              <span className="block text-gradient-violet mt-1">Tecnologica</span>
+              <span className="block text-[var(--text-primary)]">Aceleración</span>
+              <span className="block text-gradient-violet mt-1">Tecnológica</span>
               <span className="block text-[var(--text-primary)] text-3xl sm:text-4xl md:text-5xl mt-2 font-semibold opacity-80">
-                para tu Institucion
+                para tu Institución
               </span>
             </h1>
 
             <p className="mt-6 text-lg sm:text-xl text-[var(--text-secondary)] max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Transformamos colegios con robotica, educacion STEAM y capacitacion docente de alto impacto. El futuro comienza hoy.
+              Transformamos colegios con robótica, educación STEAM y capacitación docente de alto impacto. El futuro comienza hoy.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a href="#contacto" className="btn-primary text-base">
                 <span>Solicitar Propuesta</span>
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>
               <a href="https://wa.me/50230044972" target="_blank" rel="noopener noreferrer" className="btn-secondary text-base">
-                <svg className="w-5 h-5 text-emerald" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-emerald" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
                 </svg>
-                <span>Agendar Asesoria</span>
+                <span>Agendar Asesoría</span>
               </a>
             </div>
 
@@ -127,6 +135,8 @@ function Hero() {
                   src={heroImg1} 
                   alt="Estudiantes con robot SPIKE" 
                   className="w-full h-full object-cover rounded-2xl"
+                  width="480"
+                  height="480"
                 />
                 <div className="absolute inset-2 rounded-2xl bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
               </div>
@@ -144,6 +154,9 @@ function Hero() {
                   src={heroImg2} 
                   alt="Estudiantes en laboratorio" 
                   className="w-full h-32 sm:h-40 object-cover rounded-xl"
+                  width="216"
+                  height="160"
+                  loading="lazy"
                 />
               </div>
 
@@ -158,8 +171,11 @@ function Hero() {
               >
                 <img 
                   src={heroImg3} 
-                  alt="Aprendizaje practico" 
+                  alt="Aprendizaje práctico" 
                   className="w-full h-32 sm:h-40 object-cover rounded-xl"
+                  width="216"
+                  height="160"
+                  loading="lazy"
                 />
               </div>
 
@@ -183,7 +199,6 @@ function Hero() {
                   border: '1px solid rgba(0, 211, 123, 0.2)',
                   transform: `translate(${mousePos.x * 10}px, ${mousePos.y * 10}px)`,
                   transition: 'transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                  animation: 'pulseGlow 4s ease-in-out infinite 1s',
                 }}
               />
               <div 
@@ -194,7 +209,6 @@ function Hero() {
                   border: '1px solid rgba(67, 0, 237, 0.2)',
                   transform: `translate(${mousePos.x * -6}px, ${mousePos.y * -6}px)`,
                   transition: 'transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                  animation: 'pulseGlow 4s ease-in-out infinite 2s',
                 }}
               />
             </div>

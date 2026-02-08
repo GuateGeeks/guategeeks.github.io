@@ -4,10 +4,22 @@ import { RobotIcon, TeacherIcon, StudentIcon, CheckIcon } from './Icons';
 const ServiceCard = ({ title, description, icon, includes, implementation, deliverables, accentColor, accentGlow, index }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      setIsExpanded(!isExpanded);
+    }
+  };
+
   return (
     <div 
       className="glass-card group cursor-pointer"
       onClick={() => setIsExpanded(!isExpanded)}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      aria-expanded={isExpanded}
+      aria-label={`${title} - ${isExpanded ? 'Contraer' : 'Expandir'} detalles`}
       style={{ animationDelay: `${index * 100}ms` }}
     >
       {/* Accent glow on hover */}
@@ -44,7 +56,7 @@ const ServiceCard = ({ title, description, icon, includes, implementation, deliv
           <div className="space-y-4 border-t border-[var(--glass-border-subtle)] pt-5">
             {[
               { label: 'Incluye', items: includes },
-              { label: 'Implementacion', items: implementation },
+              { label: 'Implementaci\u00f3n', items: implementation },
               { label: 'Entregables', items: deliverables },
             ].map((section, sIdx) => (
               <div key={sIdx}>
@@ -74,11 +86,12 @@ const ServiceCard = ({ title, description, icon, includes, implementation, deliv
           <a 
             href="#contacto" 
             onClick={(e) => e.stopPropagation()}
+            onKeyDown={(e) => e.stopPropagation()}
             className="text-sm font-semibold transition-all duration-300 hover:gap-2 inline-flex items-center gap-1"
             style={{ color: accentColor }}
           >
             Solicitar Info
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </a>
@@ -91,28 +104,28 @@ const ServiceCard = ({ title, description, icon, includes, implementation, deliv
 function Services() {
   const services = [
     {
-      title: "Provision de Equipo",
-      description: "Equipamos tu institucion con la mejor tecnologia para el aprendizaje practico.",
+      title: "Provisi\u00f3n de Equipo",
+      description: "Equipamos tu instituci\u00f3n con la mejor tecnolog\u00eda para el aprendizaje pr\u00e1ctico.",
       icon: <RobotIcon />,
       accentColor: "#ed0062",
       accentGlow: "radial-gradient(circle, rgba(237, 0, 98, 0.15), transparent 70%)",
-      includes: ["Kits de robotica educativa", "Placas electronicas y sensores", "Impresoras 3D y consumibles"],
-      implementation: ["Instalacion en laboratorio", "Configuracion inicial", "Pruebas de funcionamiento"],
+      includes: ["Kits de rob\u00f3tica educativa", "Placas electr\u00f3nicas y sensores", "Impresoras 3D y consumibles"],
+      implementation: ["Instalaci\u00f3n en laboratorio", "Configuraci\u00f3n inicial", "Pruebas de funcionamiento"],
       deliverables: ["Laboratorio funcional", "Inventario detallado", "Manuales de uso"]
     },
     {
-      title: "Capacitacion Docente",
-      description: "Empoderamos a tus maestros con herramientas y metodologias STEAM innovadoras.",
+      title: "Capacitaci\u00f3n Docente",
+      description: "Empoderamos a tus maestros con herramientas y metodolog\u00edas STEAM innovadoras.",
       icon: <TeacherIcon />,
       accentColor: "#4300ed",
       accentGlow: "radial-gradient(circle, rgba(67, 0, 237, 0.15), transparent 70%)",
-      includes: ["Talleres teorico-practicos", "Plataforma de recursos", "Material didactico digital"],
-      implementation: ["Sesiones intensivas", "Acompanamiento en aula", "Evaluacion continua"],
-      deliverables: ["Certificacion por horas", "Guias didacticas", "Planificaciones modelo"]
+      includes: ["Talleres te\u00f3rico-pr\u00e1cticos", "Plataforma de recursos", "Material did\u00e1ctico digital"],
+      implementation: ["Sesiones intensivas", "Acompa\u00f1amiento en aula", "Evaluaci\u00f3n continua"],
+      deliverables: ["Certificaci\u00f3n por horas", "Gu\u00edas did\u00e1cticas", "Planificaciones modelo"]
     },
     {
       title: "Talleres Estudiantes y Padres",
-      description: "Experiencias inmersivas para estudiantes y talleres de integracion familiar.",
+      description: "Experiencias inmersivas para estudiantes y talleres de integraci\u00f3n familiar.",
       icon: <StudentIcon />,
       accentColor: "#00d37b",
       accentGlow: "radial-gradient(circle, rgba(0, 211, 123, 0.15), transparent 70%)",
@@ -134,7 +147,7 @@ function Services() {
             <span className="text-gradient-violet">STEAM</span>
           </h2>
           <p className="mt-4 text-lg text-[var(--text-secondary)] leading-relaxed">
-            Acompanamos a tu institucion en cada paso hacia la excelencia tecnologica.
+            Acompa\u00f1amos a tu instituci\u00f3n en cada paso hacia la excelencia tecnol\u00f3gica.
           </p>
         </div>
         <div className="grid gap-6 grid-cols-1 md:grid-cols-3">

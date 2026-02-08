@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
-/* Import Inter for Apple-like typography + Barlow for brand continuity */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Barlow:wght@300;400;500;700&display=swap');
+/* Inter font is loaded via <link> in index.html for performance */
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -93,7 +92,7 @@
   --color-soft-gray-900: #111827;
   --color-soft-gray: #6b7280;
 
-  --font-sans: "Inter", "Barlow", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
   
   --animate-fade-in-down: fadeInDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   --animate-float: float 6s ease-in-out infinite;
@@ -169,7 +168,7 @@
   
   --text-primary: #1d1d1f;
   --text-secondary: #6e6e73;
-  --text-tertiary: #86868b;
+  --text-tertiary: #636366;
   
   --border-color: rgba(0, 0, 0, 0.08);
   
@@ -195,7 +194,7 @@
   
   --text-primary: #f5f5f7;
   --text-secondary: #a1a1a6;
-  --text-tertiary: #86868b;
+  --text-tertiary: #636366;
   
   --border-color: rgba(255, 255, 255, 0.1);
   
@@ -268,6 +267,9 @@
       0 0 0 0.5px var(--glass-border),
       0 8px 40px var(--glass-shadow-lg),
       inset 0 1px 0 var(--glass-specular);
+  }
+
+  .glass-panel.interactive:hover {
     transform: translateY(-2px);
   }
 
@@ -506,6 +508,7 @@
   }
 
   .text-gradient-violet {
+    color: #8400e2;
     background: linear-gradient(135deg, #8400e2, #b854ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -513,6 +516,7 @@
   }
 
   .text-gradient-multi {
+    color: #8400e2;
     background: linear-gradient(135deg, #8400e2, #4300ed, #00d37b);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -525,4 +529,58 @@
   .stagger-3 { animation-delay: 0.3s; }
   .stagger-4 { animation-delay: 0.4s; }
   .stagger-5 { animation-delay: 0.5s; }
+}
+
+/* === SCROLL MARGIN for fixed navbar === */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* === FOCUS VISIBLE STYLES === */
+:focus-visible {
+  outline: 2px solid #8400e2;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.btn-outline:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+  box-shadow: 
+    0 0 0 4px rgba(132, 0, 226, 0.5),
+    0 4px 20px rgba(132, 0, 226, 0.35);
+}
+
+.glass-input:focus-visible {
+  outline: none;
+  border-color: rgba(132, 0, 226, 0.5);
+  box-shadow: 
+    0 0 0 3px rgba(132, 0, 226, 0.15),
+    inset 0 1px 0 var(--glass-specular);
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .liquid-blob,
+  .glass-shimmer,
+  .animate-float,
+  .animate-pulse,
+  .animate-ping,
+  .animate-bounce {
+    animation: none !important;
+  }
+
+  .glass-card:hover,
+  .glass-panel:hover {
+    transform: none !important;
+  }
 }

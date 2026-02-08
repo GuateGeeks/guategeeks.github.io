@@ -15,7 +15,7 @@ function About() {
               <span className="text-gradient-violet">Inmersivas</span>
             </h2>
             <p className="mt-4 text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
-              Imaginamos, disenamos y creamos experiencias centradas en la formacion de jovenes apasionados por el mundo digital.
+              Imaginamos, diseñamos y creamos experiencias centradas en la formación de jóvenes apasionados por el mundo digital.
             </p>
           </div>
 
@@ -27,7 +27,7 @@ function About() {
             }} />
 
             <p className="text-lg text-[var(--text-secondary)] leading-relaxed pl-6">
-              Nuestra metodologia pretende que los estudiantes encuentren satisfaccion en descubrir lo que piensan, establezcan nuevas relaciones, adquieran conocimientos, encuentren nuevas formas de hacer las cosas y de comunicar sus ideas.
+              Nuestra metodología pretende que los estudiantes encuentren satisfacción en descubrir lo que piensan, establezcan nuevas relaciones, adquieran conocimientos, encuentren nuevas formas de hacer las cosas y de comunicar sus ideas.
             </p>
 
             {/* Tags */}
@@ -35,8 +35,8 @@ function About() {
               {[
                 { label: 'Design Thinking', color: 'rgba(132, 0, 226, 0.15)', textColor: '#8400e2', borderColor: 'rgba(132, 0, 226, 0.3)' },
                 { label: 'STEAM', color: 'rgba(67, 0, 237, 0.15)', textColor: '#4300ed', borderColor: 'rgba(67, 0, 237, 0.3)' },
-                { label: 'Innovacion', color: 'rgba(0, 211, 123, 0.15)', textColor: '#00d37b', borderColor: 'rgba(0, 211, 123, 0.3)' },
-                { label: 'Robotica', color: 'rgba(237, 0, 98, 0.15)', textColor: '#ed0062', borderColor: 'rgba(237, 0, 98, 0.3)' },
+                { label: 'Innovación', color: 'rgba(0, 211, 123, 0.15)', textColor: '#00d37b', borderColor: 'rgba(0, 211, 123, 0.3)' },
+                { label: 'Robótica', color: 'rgba(237, 0, 98, 0.15)', textColor: '#ed0062', borderColor: 'rgba(237, 0, 98, 0.3)' },
               ].map((tag, i) => (
                 <span 
                   key={i}
@@ -57,13 +57,13 @@ function About() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
             {[
               { 
-                title: 'Mision',
-                desc: 'Democratizar la educacion tecnologica en Guatemala.',
+                title: 'Misión',
+                desc: 'Democratizar la educación tecnológica en Guatemala.',
                 icon: '🎯',
               },
               { 
-                title: 'Vision',
-                desc: 'Cada estudiante guatemalteco como creador de tecnologia.',
+                title: 'Visión',
+                desc: 'Cada estudiante guatemalteco como creador de tecnología.',
                 icon: '🌟',
               },
               { 
@@ -74,7 +74,7 @@ function About() {
             ].map((item, i) => (
               <div key={i} className="glass-panel rounded-2xl p-5 text-center group cursor-default">
                 <div className="text-3xl mb-3 transition-transform duration-300 group-hover:scale-125">{item.icon}</div>
-                <h4 className="text-sm font-bold text-[var(--text-primary)] mb-1 tracking-tight">{item.title}</h4>
+                <h3 className="text-sm font-bold text-[var(--text-primary)] mb-1 tracking-tight">{item.title}</h3>
                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed">{item.desc}</p>
               </div>
             ))}

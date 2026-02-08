@@ -24,7 +24,7 @@ const ProgramCard = ({ title, subtitle, features, recommended, accentColor, acce
             boxShadow: '0 4px 16px rgba(132, 0, 226, 0.4)',
           }}
         >
-          Mas Popular
+          Más Popular
         </div>
       </div>
     )}
@@ -56,23 +56,28 @@ const ProgramCard = ({ title, subtitle, features, recommended, accentColor, acce
       </ul>
       
       {/* CTA */}
-      <a 
-        href="#contacto" 
-        className={`block w-full py-3.5 text-center rounded-2xl font-semibold text-sm transition-all duration-300 ${
-          recommended 
-            ? 'text-white hover:shadow-lg hover:-translate-y-0.5' 
-            : 'text-[var(--text-primary)] hover:bg-[var(--bg-glass-hover)] hover:-translate-y-0.5'
-        }`}
-        style={recommended ? {
-          background: 'linear-gradient(135deg, #8400e2, #a01bff)',
-          boxShadow: '0 4px 16px rgba(132, 0, 226, 0.3)',
-        } : {
-          background: 'var(--bg-glass)',
-          border: '1px solid var(--glass-border-subtle)',
-        }}
-      >
-        Solicitar Detalles
-      </a>
+      <div className="space-y-3">
+        <a 
+          href="#contacto" 
+          className={`block w-full py-3.5 text-center rounded-2xl font-semibold text-sm transition-all duration-300 ${
+            recommended 
+              ? 'text-white hover:shadow-lg hover:-translate-y-0.5' 
+              : 'text-[var(--text-primary)] hover:bg-[var(--bg-glass-hover)] hover:-translate-y-0.5'
+          }`}
+          style={recommended ? {
+            background: 'linear-gradient(135deg, #8400e2, #a01bff)',
+            boxShadow: '0 4px 16px rgba(132, 0, 226, 0.3)',
+          } : {
+            background: 'var(--bg-glass)',
+            border: '1px solid var(--glass-border-subtle)',
+          }}
+        >
+          Solicitar Detalles
+        </a>
+        <p className="text-center text-xs text-[var(--text-tertiary)] font-medium">
+          Solicita tu cotización sin compromiso
+        </p>
+      </div>
     </div>
 
     {/* Subtle hover glow */}
@@ -91,42 +96,42 @@ function ProgramsSection() {
   const programs = [
     {
       title: "Programa Piloto",
-      subtitle: "Implementacion Corta",
-      accentColor: "#c5f700",
-      accentGlow: "radial-gradient(circle, rgba(197, 247, 0, 0.15), transparent 70%)",
+      subtitle: "Implementación Corta",
+      accentColor: "#4d7c0f",
+      accentGlow: "radial-gradient(circle, rgba(77, 124, 15, 0.15), transparent 70%)",
       features: [
-        "Duracion: 4 - 8 semanas",
+        "Duración: 4 - 8 semanas",
         "1 Taller demostrativo por grado",
-        "Capacitacion basica docente",
-        "Uso de equipo en prestamo",
-        "Evaluacion de viabilidad"
+        "Capacitación básica docente",
+        "Uso de equipo en préstamo",
+        "Evaluación de viabilidad"
       ]
     },
     {
       title: "Programa Anual",
-      subtitle: "Transformacion Integral",
+      subtitle: "Transformación Integral",
       accentColor: "#8400e2",
       accentGlow: "radial-gradient(circle, rgba(132, 0, 226, 0.15), transparent 70%)",
       recommended: true,
       features: [
-        "Duracion: Ciclo escolar completo",
-        "Curricula STEAM integrada",
+        "Duración: Ciclo escolar completo",
+        "Currícula STEAM integrada",
         "Laboratorio permanente",
-        "Certificacion docente completa",
-        "Club de robotica y competencias",
+        "Certificación docente completa",
+        "Club de robótica y competencias",
         "Escuela para padres trimestral"
       ]
     },
     {
       title: "Programa Trimestral",
-      subtitle: "Modulos Tematicos",
+      subtitle: "Módulos Temáticos",
       accentColor: "#4300ed",
       accentGlow: "radial-gradient(circle, rgba(67, 0, 237, 0.15), transparent 70%)",
       features: [
-        "Duracion: 1 Unidad o Trimestre",
-        "Enfoque en proyecto especifico",
+        "Duración: 1 Unidad o Trimestre",
+        "Enfoque en proyecto específico",
         "Materiales consumibles incluidos",
-        "Acompanamiento semanal",
+        "Acompañamiento semanal",
         "Feria de cierre de unidad"
       ]
     }
@@ -140,11 +145,11 @@ function ProgramsSection() {
             <span className="text-xs font-semibold uppercase tracking-wider text-royal-violet">Programas</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight">
-            Modelos de Implementacion{' '}
+            Modelos de Implementación{' '}
             <span className="text-gradient-violet">Flexible</span>
           </h2>
           <p className="mt-4 text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
-            Elige el formato que mejor se adapte a los objetivos y presupuesto de tu institucion.
+             Elige el formato que mejor se adapte a los objetivos y presupuesto de tu institución.
           </p>
         </div>
         

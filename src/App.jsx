@@ -35,15 +35,31 @@ function useInView(options = {}) {
   return [ref, isInView];
 }
 
-// Animated section wrapper
+// Hook to detect prefers-reduced-motion
+function usePrefersReducedMotion() {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  
+  useEffect(() => {
+    const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mql.matches);
+    const handler = (e) => setPrefersReducedMotion(e.matches);
+    mql.addEventListener('change', handler);
+    return () => mql.removeEventListener('change', handler);
+  }, []);
+  
+  return prefersReducedMotion;
+}
+
+// Animated section wrapper - respects prefers-reduced-motion
 function AnimatedSection({ children, className = '', delay = 0 }) {
   const [ref, isInView] = useInView();
+  const prefersReducedMotion = usePrefersReducedMotion();
   
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ${className}`}
-      style={{
+      className={`${prefersReducedMotion ? '' : 'transition-all duration-700'} ${className}`}
+      style={prefersReducedMotion ? {} : {
         opacity: isInView ? 1 : 0,
         transform: isInView ? 'translateY(0)' : 'translateY(40px)',
         transitionDelay: `${delay}ms`,
@@ -81,30 +97,41 @@ function App() {
 
   return (
     <div className="min-h-screen font-sans">
+      {/* Skip to content link for keyboard/screen reader users */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:rounded-2xl focus:text-white focus:text-sm focus:font-semibold focus:outline-none"
+        style={{ background: 'linear-gradient(135deg, #8400e2, #a01bff)' }}
+      >
+        Saltar al contenido
+      </a>
+
       <Suspense fallback={null}>
         <ThreeBackground />
       </Suspense>
       <div className="relative z-10">
         <Navbar toggleTheme={toggleTheme} isDark={isDark} />
-        <Hero />
-        <AnimatedSection>
-          <Services />
-        </AnimatedSection>
-        <AnimatedSection delay={100}>
-          <ProcessSection />
-        </AnimatedSection>
-        <AnimatedSection delay={100}>
-          <ProgramsSection />
-        </AnimatedSection>
-        <AnimatedSection delay={100}>
-          <BenefitsSection />
-        </AnimatedSection>
-        <AnimatedSection delay={100}>
-          <About />
-        </AnimatedSection>
-        <AnimatedSection delay={100}>
-          <ContactSection />
-        </AnimatedSection>
+        <main id="main-content">
+          <Hero />
+          <AnimatedSection>
+            <Services />
+          </AnimatedSection>
+          <AnimatedSection delay={100}>
+            <ProcessSection />
+          </AnimatedSection>
+          <AnimatedSection delay={100}>
+            <ProgramsSection />
+          </AnimatedSection>
+          <AnimatedSection delay={100}>
+            <BenefitsSection />
+          </AnimatedSection>
+          <AnimatedSection delay={100}>
+            <About />
+          </AnimatedSection>
+          <AnimatedSection delay={100}>
+            <ContactSection />
+          </AnimatedSection>
+        </main>
         <FloatingWhatsApp />
         <Footer />
       </div>
@@ -112,5 +139,5 @@ function App() {
   );
 }
 
-export { AnimatedSection, useInView };
+export { AnimatedSection, useInView, usePrefersReducedMotion };
 export default App;

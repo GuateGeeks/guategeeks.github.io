@@ -1,27 +1,75 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { MenuIcon, CloseIcon, MoonIcon, SunIcon } from './Icons';
 
 function Navbar({ toggleTheme, isDark }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('inicio');
+  const mobileMenuRef = useRef(null);
+  const menuButtonRef = useRef(null);
 
   useEffect(() => {
+    const sectionIds = ['inicio', 'servicios', 'programas', 'nosotros', 'contacto'];
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
       
-      // Detect active section
-      const sections = ['inicio', 'servicios', 'programas', 'nosotros', 'contacto'];
-      for (const id of sections.reverse()) {
-        const el = document.getElementById(id);
+      // Detect active section - iterate from bottom to top
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionIds[i]);
         if (el && el.getBoundingClientRect().top <= 100) {
-          setActiveSection(id);
+          setActiveSection(sectionIds[i]);
           break;
         }
       }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close mobile menu on Escape key
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
+  // Close mobile menu on outside click
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleClickOutside = (e) => {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(e.target) &&
+        menuButtonRef.current &&
+        !menuButtonRef.current.contains(e.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isOpen]);
+
+  // Focus trap inside mobile menu
+  const handleMenuKeyDown = useCallback((e) => {
+    if (e.key !== 'Tab' || !mobileMenuRef.current) return;
+    const focusable = mobileMenuRef.current.querySelectorAll('a, button');
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   }, []);
 
   const navLinks = [
@@ -37,7 +85,7 @@ function Navbar({ toggleTheme, isDark }) {
       scrolled 
         ? 'py-2' 
         : 'py-4'
-    }`}>
+    }`} aria-label="Navegaci\u00f3n principal">
       <div className={`max-w-6xl mx-auto px-4 transition-all duration-500 ${scrolled ? 'px-4' : 'px-6'}`}>
         <div className={`glass-panel-heavy rounded-2xl px-6 transition-all duration-500 ${
           scrolled ? 'shadow-lg' : ''
@@ -50,7 +98,9 @@ function Navbar({ toggleTheme, isDark }) {
               <img 
                 src="/logo.svg" 
                 alt="GuateGeeks" 
-                className="h-10 w-auto transition-transform duration-300 group-hover:scale-110" 
+                className="h-10 w-auto transition-transform duration-300 group-hover:scale-110"
+                width="120"
+                height="40"
               />
             </a>
 
@@ -59,11 +109,13 @@ function Navbar({ toggleTheme, isDark }) {
               <div className="flex items-center gap-0.5 p-1 rounded-xl" style={{
                 background: 'var(--bg-glass)',
                 border: '1px solid var(--glass-border-subtle)',
-              }}>
+              }} role="list">
                 {navLinks.map((link) => (
                   <a
                     key={link.id}
                     href={`#${link.id}`}
+                    role="listitem"
+                    aria-current={activeSection === link.id ? 'true' : undefined}
                     className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 relative ${
                       activeSection === link.id
                         ? 'text-white'
@@ -87,14 +139,14 @@ function Navbar({ toggleTheme, isDark }) {
                   background: 'var(--bg-glass)',
                   border: '1px solid var(--glass-border-subtle)',
                 }}
-                aria-label="Toggle Dark Mode"
+                aria-label={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
               >
                 {isDark ? <SunIcon /> : <MoonIcon />}
               </button>
 
               {/* CTA */}
               <a href="#contacto" className="btn-primary ml-3 text-sm py-2.5 px-5">
-                Agendar
+                Agendar Asesoria
               </a>
             </div>
 
@@ -107,17 +159,22 @@ function Navbar({ toggleTheme, isDark }) {
                   background: 'var(--bg-glass)',
                   border: '1px solid var(--glass-border-subtle)',
                 }}
+                aria-label={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
               >
                 {isDark ? <SunIcon /> : <MoonIcon />}
               </button>
-              <button 
-                onClick={() => setIsOpen(!isOpen)} 
+              <button
+                ref={menuButtonRef}
+                onClick={() => setIsOpen(!isOpen)}
                 className="p-2.5 rounded-xl transition-all duration-300"
                 style={{
                   background: isOpen ? 'linear-gradient(135deg, #8400e2, #a01bff)' : 'var(--bg-glass)',
                   border: '1px solid var(--glass-border-subtle)',
                   color: isOpen ? 'white' : 'var(--text-primary)',
                 }}
+                aria-label={isOpen ? 'Cerrar men\u00fa' : 'Abrir men\u00fa'}
+                aria-expanded={isOpen}
+                aria-controls="mobile-menu"
               >
                 {isOpen ? <CloseIcon /> : <MenuIcon />}
               </button>
@@ -127,16 +184,25 @@ function Navbar({ toggleTheme, isDark }) {
       </div>
       
       {/* Mobile Menu - Glass Dropdown */}
-      <div className={`md:hidden transition-all duration-500 overflow-hidden ${
-        isOpen ? 'max-h-[400px] opacity-100 mt-2' : 'max-h-0 opacity-0 mt-0'
-      }`}>
+      <div
+        id="mobile-menu"
+        ref={mobileMenuRef}
+        onKeyDown={handleMenuKeyDown}
+        className={`md:hidden transition-all duration-500 overflow-hidden ${
+          isOpen ? 'max-h-[400px] opacity-100 mt-2' : 'max-h-0 opacity-0 mt-0'
+        }`}
+        role="menu"
+        aria-hidden={!isOpen}
+      >
         <div className="max-w-6xl mx-auto px-4">
           <div className="glass-panel-heavy rounded-2xl p-4 space-y-1">
-            {navLinks.map((link, i) => (
+            {navLinks.map((link) => (
               <a 
                 key={link.id}
                 href={`#${link.id}`} 
                 onClick={() => setIsOpen(false)} 
+                role="menuitem"
+                tabIndex={isOpen ? 0 : -1}
                 className={`block px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 ${
                   activeSection === link.id
                     ? 'text-white'
@@ -145,10 +211,7 @@ function Navbar({ toggleTheme, isDark }) {
                 style={activeSection === link.id ? {
                   background: 'linear-gradient(135deg, #8400e2, #a01bff)',
                   boxShadow: '0 2px 12px rgba(132, 0, 226, 0.3)',
-                  animationDelay: `${i * 0.05}s`,
-                } : {
-                  animationDelay: `${i * 0.05}s`,
-                }}
+                } : {}}
               >
                 {link.label}
               </a>
@@ -156,6 +219,8 @@ function Navbar({ toggleTheme, isDark }) {
             <a 
               href="#contacto" 
               onClick={() => setIsOpen(false)} 
+              role="menuitem"
+              tabIndex={isOpen ? 0 : -1}
               className="btn-primary block text-center mt-2"
             >
               Agendar Asesoria

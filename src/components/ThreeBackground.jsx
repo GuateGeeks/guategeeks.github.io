@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
+import { usePrefersReducedMotion } from '../App';
 
 const COLORS = [
   "#8400e2", // Royal Violet
@@ -57,13 +58,23 @@ const LegoBrick3D = ({ type = '2x4', color, position, rotation, scale = 1 }) => 
   );
 };
 
+// Determine block count based on device capability
+function getBlockCount() {
+  if (typeof window === 'undefined') return 20;
+  const cores = navigator.hardwareConcurrency || 2;
+  const isSmallScreen = window.innerWidth < 768;
+  if (isSmallScreen || cores <= 2) return 12;
+  if (cores <= 4) return 20;
+  return 30;
+}
+
 // Scene Controller that reacts to scroll
-const Scene = () => {
+const Scene = ({ reducedMotion }) => {
   const groupRef = useRef();
   const [scrollProgress, setScrollProgress] = useState(0);
 
   const blocks = useMemo(() => {
-    const count = 30;
+    const count = getBlockCount();
     return Array.from({ length: count }).map((_, i) => ({
       id: i,
       type: Math.random() > 0.5 ? '2x4' : '2x2',
@@ -103,14 +114,17 @@ const Scene = () => {
 
   useFrame((state) => {
     if (groupRef.current) {
-      const time = state.clock.elapsedTime;
-
-      // Smooth parallax based on scroll
+      // Smooth parallax based on scroll (always active — not animation)
       const targetY = 5 - scrollProgress * 25;
       const targetX = scrollProgress * 5;
       groupRef.current.position.y = THREE.MathUtils.lerp(groupRef.current.position.y, targetY, 0.05);
       groupRef.current.position.x = THREE.MathUtils.lerp(groupRef.current.position.x, targetX, 0.05);
       groupRef.current.rotation.z = scrollProgress * 0.15;
+
+      // Skip continuous animation if user prefers reduced motion
+      if (reducedMotion) return;
+
+      const time = state.clock.elapsedTime;
 
       // Animate individual blocks: gentle rotation + floating
       groupRef.current.children.forEach((child, i) => {
@@ -148,6 +162,8 @@ const Scene = () => {
 };
 
 const ThreeBackground = () => {
+  const reducedMotion = usePrefersReducedMotion();
+
   return (
     <div className="fixed inset-0 z-0 pointer-events-none">
       <Canvas
@@ -158,7 +174,7 @@ const ThreeBackground = () => {
         <directionalLight position={[10, 10, 5]} intensity={1.2} color="#ffffff" />
         <pointLight position={[-10, -10, -5]} intensity={0.5} color="#8400e2" />
         <pointLight position={[10, -5, 10]} intensity={0.3} color="#4300ed" />
-        <Scene />
+        <Scene reducedMotion={reducedMotion} />
       </Canvas>
     </div>
   );

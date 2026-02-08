@@ -42,36 +42,36 @@ const ProcessStep = ({ number, title, description, icon, isLast, index }) => (
 function ProcessSection() {
   const steps = [
     {
-      title: "Diagnostico",
+      title: "Diagnóstico",
       description: "Evaluamos infraestructura y necesidades de tu comunidad educativa.",
       icon: "🔍",
     },
     {
       title: "Propuesta",
-      description: "Disenamos un plan de implementacion a medida con equipo y curricula ideal.",
+      description: "Diseñamos un plan de implementación a medida con equipo y currícula ideal.",
       icon: "📋",
     },
     {
-      title: "Implementacion",
-      description: "Instalamos laboratorios y realizamos capacitacion intensiva docente.",
+      title: "Implementación",
+      description: "Instalamos laboratorios y realizamos capacitación intensiva docente.",
       icon: "🚀",
     },
     {
       title: "Seguimiento",
-      description: "Soporte continuo, actualizaciones y medicion de impacto en el aprendizaje.",
+      description: "Soporte continuo, actualizaciones y medición de impacto en el aprendizaje.",
       icon: "📊",
     }
   ];
 
   return (
-    <section className="py-20 section-glass">
+    <section id="proceso" className="py-20 section-glass">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 glass-panel rounded-full px-4 py-1.5 mb-6">
             <span className="text-xs font-semibold uppercase tracking-wider text-royal-violet">Nuestro Proceso</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight">
-            Como Transformamos{' '}
+            Cómo Transformamos{' '}
             <span className="text-gradient-violet">tu Colegio</span>
           </h2>
         </div>
