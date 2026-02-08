@@ -56,7 +56,7 @@ const ServiceCard = ({ title, description, icon, includes, implementation, deliv
           <div className="space-y-4 border-t border-[var(--glass-border-subtle)] pt-5">
             {[
               { label: 'Incluye', items: includes },
-              { label: 'Implementaci\u00f3n', items: implementation },
+              { label: 'Implementación', items: implementation },
               { label: 'Entregables', items: deliverables },
             ].map((section, sIdx) => (
               <div key={sIdx}>
@@ -104,28 +104,28 @@ const ServiceCard = ({ title, description, icon, includes, implementation, deliv
 function Services() {
   const services = [
     {
-      title: "Provisi\u00f3n de Equipo",
-      description: "Equipamos tu instituci\u00f3n con la mejor tecnolog\u00eda para el aprendizaje pr\u00e1ctico.",
+      title: "Provisión de Equipo",
+      description: "Equipamos tu institución con la mejor tecnología para el aprendizaje práctico.",
       icon: <RobotIcon />,
       accentColor: "#ed0062",
       accentGlow: "radial-gradient(circle, rgba(237, 0, 98, 0.15), transparent 70%)",
-      includes: ["Kits de rob\u00f3tica educativa", "Placas electr\u00f3nicas y sensores", "Impresoras 3D y consumibles"],
-      implementation: ["Instalaci\u00f3n en laboratorio", "Configuraci\u00f3n inicial", "Pruebas de funcionamiento"],
+      includes: ["Kits de robótica educativa", "Placas electrónicas y sensores", "Impresoras 3D y consumibles"],
+      implementation: ["Instalación en laboratorio", "Configuración inicial", "Pruebas de funcionamiento"],
       deliverables: ["Laboratorio funcional", "Inventario detallado", "Manuales de uso"]
     },
     {
-      title: "Capacitaci\u00f3n Docente",
-      description: "Empoderamos a tus maestros con herramientas y metodolog\u00edas STEAM innovadoras.",
+      title: "Capacitación Docente",
+      description: "Empoderamos a tus maestros con herramientas y metodologías STEAM innovadoras.",
       icon: <TeacherIcon />,
       accentColor: "#4300ed",
       accentGlow: "radial-gradient(circle, rgba(67, 0, 237, 0.15), transparent 70%)",
-      includes: ["Talleres te\u00f3rico-pr\u00e1cticos", "Plataforma de recursos", "Material did\u00e1ctico digital"],
-      implementation: ["Sesiones intensivas", "Acompa\u00f1amiento en aula", "Evaluaci\u00f3n continua"],
-      deliverables: ["Certificaci\u00f3n por horas", "Gu\u00edas did\u00e1cticas", "Planificaciones modelo"]
+      includes: ["Talleres teórico-prácticos", "Plataforma de recursos", "Material didáctico digital"],
+      implementation: ["Sesiones intensivas", "Acompañamiento en aula", "Evaluación continua"],
+      deliverables: ["Certificación por horas", "Guías didácticas", "Planificaciones modelo"]
     },
     {
       title: "Talleres Estudiantes y Padres",
-      description: "Experiencias inmersivas para estudiantes y talleres de integraci\u00f3n familiar.",
+      description: "Experiencias inmersivas para estudiantes y talleres de integración familiar.",
       icon: <StudentIcon />,
       accentColor: "#00d37b",
       accentGlow: "radial-gradient(circle, rgba(0, 211, 123, 0.15), transparent 70%)",
@@ -147,7 +147,7 @@ function Services() {
             <span className="text-gradient-violet">STEAM</span>
           </h2>
           <p className="mt-4 text-lg text-[var(--text-secondary)] leading-relaxed">
-            Acompa\u00f1amos a tu instituci\u00f3n en cada paso hacia la excelencia tecnol\u00f3gica.
+            Acompañamos a tu institución en cada paso hacia la excelencia tecnológica.
           </p>
         </div>
         <div className="grid gap-6 grid-cols-1 md:grid-cols-3">

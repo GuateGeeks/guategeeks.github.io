@@ -85,7 +85,7 @@ function Navbar({ toggleTheme, isDark }) {
       scrolled 
         ? 'py-2' 
         : 'py-4'
-    }`} aria-label="Navegaci\u00f3n principal">
+    }`} aria-label="Navegación principal">
       <div className={`max-w-6xl mx-auto px-4 transition-all duration-500 ${scrolled ? 'px-4' : 'px-6'}`}>
         <div className={`glass-panel-heavy rounded-2xl px-6 transition-all duration-500 ${
           scrolled ? 'shadow-lg' : ''
@@ -172,7 +172,7 @@ function Navbar({ toggleTheme, isDark }) {
                   border: '1px solid var(--glass-border-subtle)',
                   color: isOpen ? 'white' : 'var(--text-primary)',
                 }}
-                aria-label={isOpen ? 'Cerrar men\u00fa' : 'Abrir men\u00fa'}
+                aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
                 aria-expanded={isOpen}
                 aria-controls="mobile-menu"
               >
