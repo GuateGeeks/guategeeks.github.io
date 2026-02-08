@@ -172,7 +172,7 @@
   
   --border-color: rgba(0, 0, 0, 0.08);
   
-  --blur-glass: 40px;
+  --blur-glass: 2px;
   --blur-glass-heavy: 80px;
 }
 
@@ -475,6 +475,7 @@
     backdrop-filter: blur(var(--blur-glass)) saturate(180%);
     -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(180%);
     pointer-events: none;
+    transition: mask-image 0.05s linear, -webkit-mask-image 0.05s linear;
   }
 
   /* Legacy support */

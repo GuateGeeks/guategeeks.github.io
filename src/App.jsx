@@ -73,7 +73,9 @@ function AnimatedSection({ children, className = '', delay = 0 }) {
 function App() {
     const [isDark, setIsDark] = useState(false);
     const glassRef = useRef(null);
-    const rafRef = useRef(null);
+    const cursorPos = useRef({ x: -500, y: -500 });
+    const smoothPos = useRef({ x: -500, y: -500 });
+    const animating = useRef(false);
     const prefersReducedMotion = usePrefersReducedMotion();
 
     useEffect(() => {
@@ -86,35 +88,67 @@ function App() {
         }
     }, []);
 
-    // Track mouse position and apply mask to glass overlay
-    const handleMouseMove = useCallback((e) => {
-      if (prefersReducedMotion || !glassRef.current) return;
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(() => {
-        const x = e.clientX;
-        const y = e.clientY;
-        glassRef.current.style.maskImage =
-          `radial-gradient(circle 120px at ${x}px ${y}px, transparent 0%, transparent 40%, black 100%)`;
-        glassRef.current.style.webkitMaskImage =
-          `radial-gradient(circle 120px at ${x}px ${y}px, transparent 0%, transparent 40%, black 100%)`;
-      });
-    }, [prefersReducedMotion]);
+    // Smooth animation loop — lerps toward actual cursor position
+    const animate = useCallback(() => {
+      const glass = glassRef.current;
+      if (!glass) return;
 
-    const handleMouseLeave = useCallback(() => {
-      if (!glassRef.current) return;
-      glassRef.current.style.maskImage = 'none';
-      glassRef.current.style.webkitMaskImage = 'none';
+      const dx = cursorPos.current.x - smoothPos.current.x;
+      const dy = cursorPos.current.y - smoothPos.current.y;
+      // Ease factor — lower = smoother/laggier
+      const ease = 0.12;
+      smoothPos.current.x += dx * ease;
+      smoothPos.current.y += dy * ease;
+
+      const sx = smoothPos.current.x;
+      const sy = smoothPos.current.y;
+
+      // Speed-based radius: faster movement = slightly larger hole
+      const speed = Math.sqrt(dx * dx + dy * dy);
+      const radius = Math.min(180, 140 + speed * 0.5);
+
+      // Glass mask — peek-through hole
+      glass.style.maskImage =
+        `radial-gradient(circle ${radius}px at ${sx}px ${sy}px, transparent 0%, transparent 35%, rgba(0,0,0,0.4) 55%, black 75%)`;
+      glass.style.webkitMaskImage =
+        `radial-gradient(circle ${radius}px at ${sx}px ${sy}px, transparent 0%, transparent 35%, rgba(0,0,0,0.4) 55%, black 75%)`;
+
+      // Keep animating if still moving
+      if (Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1) {
+        requestAnimationFrame(animate);
+      } else {
+        animating.current = false;
+      }
     }, []);
 
+    const startAnimation = useCallback(() => {
+      if (!animating.current) {
+        animating.current = true;
+        requestAnimationFrame(animate);
+      }
+    }, [animate]);
+
+    const handleMouseMove = useCallback((e) => {
+      if (prefersReducedMotion) return;
+      cursorPos.current.x = e.clientX;
+      cursorPos.current.y = e.clientY;
+      startAnimation();
+    }, [prefersReducedMotion, startAnimation]);
+
+    const handleMouseLeave = useCallback(() => {
+      cursorPos.current = { x: -500, y: -500 };
+      startAnimation();
+    }, [startAnimation]);
+
     useEffect(() => {
+      if (prefersReducedMotion) return;
       window.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseleave', handleMouseLeave);
       return () => {
         window.removeEventListener('mousemove', handleMouseMove);
         document.removeEventListener('mouseleave', handleMouseLeave);
-        if (rafRef.current) cancelAnimationFrame(rafRef.current);
       };
-    }, [handleMouseMove, handleMouseLeave]);
+    }, [handleMouseMove, handleMouseLeave, prefersReducedMotion]);
 
     const toggleTheme = () => {
         if (isDark) {
@@ -143,7 +177,7 @@ function App() {
         <ThreeBackground />
       </Suspense>
 
-      {/* Glass overlay — masked with a circular hole at cursor position */}
+      {/* Glass overlay — masked with a peek-through hole at cursor */}
       <div ref={glassRef} className="glass-surface-overlay" aria-hidden="true" />
 
       {/* Content layer — always visible, sits on top of glass */}
