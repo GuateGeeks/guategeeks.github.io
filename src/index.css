@@ -464,11 +464,17 @@
   }
 
   /* === UNIFIED GLASS SURFACE === */
-  /* Single glass layer covering all content over the Three.js background */
-  .glass-surface {
+  /* Full-page glass overlay that sits between Three.js bg and content.
+     A CSS mask with radial-gradient creates a circular peek-through
+     hole at the cursor position, revealing the raw 3D background. */
+  .glass-surface-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
     background: var(--bg-primary);
     backdrop-filter: blur(var(--blur-glass)) saturate(180%);
     -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(180%);
+    pointer-events: none;
   }
 
   /* Legacy support */

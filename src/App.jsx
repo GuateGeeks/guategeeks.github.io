@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
+import React, { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -72,6 +72,9 @@ function AnimatedSection({ children, className = '', delay = 0 }) {
 
 function App() {
     const [isDark, setIsDark] = useState(false);
+    const glassRef = useRef(null);
+    const rafRef = useRef(null);
+    const prefersReducedMotion = usePrefersReducedMotion();
 
     useEffect(() => {
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -82,6 +85,36 @@ function App() {
             document.documentElement.classList.remove('dark');
         }
     }, []);
+
+    // Track mouse position and apply mask to glass overlay
+    const handleMouseMove = useCallback((e) => {
+      if (prefersReducedMotion || !glassRef.current) return;
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => {
+        const x = e.clientX;
+        const y = e.clientY;
+        glassRef.current.style.maskImage =
+          `radial-gradient(circle 120px at ${x}px ${y}px, transparent 0%, transparent 40%, black 100%)`;
+        glassRef.current.style.webkitMaskImage =
+          `radial-gradient(circle 120px at ${x}px ${y}px, transparent 0%, transparent 40%, black 100%)`;
+      });
+    }, [prefersReducedMotion]);
+
+    const handleMouseLeave = useCallback(() => {
+      if (!glassRef.current) return;
+      glassRef.current.style.maskImage = 'none';
+      glassRef.current.style.webkitMaskImage = 'none';
+    }, []);
+
+    useEffect(() => {
+      window.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseleave', handleMouseLeave);
+      return () => {
+        window.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseleave', handleMouseLeave);
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      };
+    }, [handleMouseMove, handleMouseLeave]);
 
     const toggleTheme = () => {
         if (isDark) {
@@ -109,7 +142,12 @@ function App() {
       <Suspense fallback={null}>
         <ThreeBackground />
       </Suspense>
-      <div className="relative z-10 glass-surface">
+
+      {/* Glass overlay — masked with a circular hole at cursor position */}
+      <div ref={glassRef} className="glass-surface-overlay" aria-hidden="true" />
+
+      {/* Content layer — always visible, sits on top of glass */}
+      <div className="relative z-10">
         <Navbar toggleTheme={toggleTheme} isDark={isDark} />
         <main id="main-content">
           <Hero />
