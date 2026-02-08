@@ -1,34 +1,89 @@
 import React from 'react';
 import { CheckIcon } from './Icons';
 
-const ProgramCard = ({ title, subtitle, features, recommended, color }) => (
-  <div className={`relative flex flex-col bg-[var(--bg-card)] rounded-2xl shadow-xl overflow-hidden border-2 ${recommended ? 'border-royal-violet scale-105 z-10' : 'border-transparent'} transition-transform duration-300 hover:scale-[1.02]`}>
+const ProgramCard = ({ title, subtitle, features, recommended, accentColor, accentGlow, index }) => (
+  <div 
+    className={`relative glass-card group ${recommended ? 'lg:scale-105 z-10' : ''}`}
+    style={{ animationDelay: `${index * 100}ms` }}
+  >
+    {/* Background glow for recommended */}
     {recommended && (
-      <div className="absolute top-0 right-0 bg-royal-violet text-white text-xs font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">
-        Más Popular
+      <div className="absolute -inset-[2px] rounded-[22px] -z-10" style={{
+        background: 'linear-gradient(135deg, #8400e2, #a01bff, #4300ed)',
+        opacity: 0.6,
+        filter: 'blur(0px)',
+      }} />
+    )}
+
+    {/* Recommended badge */}
+    {recommended && (
+      <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
+        <div className="px-4 py-1 rounded-full text-xs font-semibold text-white"
+          style={{
+            background: 'linear-gradient(135deg, #8400e2, #a01bff)',
+            boxShadow: '0 4px 16px rgba(132, 0, 226, 0.4)',
+          }}
+        >
+          Mas Popular
+        </div>
       </div>
     )}
-    <div className={`p-8 ${recommended ? 'bg-royal-violet/5' : ''}`}>
-      <h3 className="text-2xl font-bold text-[var(--text-primary)]">{title}</h3>
-      <p className={`mt-2 text-sm font-medium uppercase tracking-wide ${color.replace('bg-', 'text-')}`}>{subtitle}</p>
+
+    <div className="p-7 pt-8">
+      {/* Header */}
+      <div className="mb-6">
+        <h3 className="text-2xl font-bold text-[var(--text-primary)] tracking-tight">{title}</h3>
+        <p className="mt-1 text-sm font-semibold uppercase tracking-wider" style={{ color: accentColor }}>
+          {subtitle}
+        </p>
+      </div>
       
-      <ul className="mt-8 space-y-4">
+      {/* Features */}
+      <ul className="space-y-3.5 mb-8">
         {features.map((feature, idx) => (
-          <li key={idx} className="flex items-start">
-            <span className={`flex-shrink-0 h-6 w-6 rounded-full flex items-center justify-center ${color} text-white`}>
+          <li key={idx} className="flex items-start gap-3">
+            <div className="flex-shrink-0 w-5 h-5 rounded-lg flex items-center justify-center mt-0.5"
+              style={{
+                background: `${accentColor}20`,
+                color: accentColor,
+              }}
+            >
               <CheckIcon />
-            </span>
-            <span className="ml-3 text-[var(--text-secondary)]">{feature}</span>
+            </div>
+            <span className="text-sm text-[var(--text-secondary)] leading-relaxed">{feature}</span>
           </li>
         ))}
       </ul>
       
-      <div className="mt-8">
-        <a href="#contacto" className={`block w-full py-3 px-6 text-center rounded-md shadow font-bold text-white transition-colors ${recommended ? 'bg-royal-violet hover:bg-royal-violet-600' : 'bg-strong-gray-500 hover:bg-strong-gray-600'}`}>
-          Solicitar Detalles
-        </a>
-      </div>
+      {/* CTA */}
+      <a 
+        href="#contacto" 
+        className={`block w-full py-3.5 text-center rounded-2xl font-semibold text-sm transition-all duration-300 ${
+          recommended 
+            ? 'text-white hover:shadow-lg hover:-translate-y-0.5' 
+            : 'text-[var(--text-primary)] hover:bg-[var(--bg-glass-hover)] hover:-translate-y-0.5'
+        }`}
+        style={recommended ? {
+          background: 'linear-gradient(135deg, #8400e2, #a01bff)',
+          boxShadow: '0 4px 16px rgba(132, 0, 226, 0.3)',
+        } : {
+          background: 'var(--bg-glass)',
+          border: '1px solid var(--glass-border-subtle)',
+        }}
+      >
+        Solicitar Detalles
+      </a>
     </div>
+
+    {/* Subtle hover glow */}
+    <div 
+      className="absolute inset-0 rounded-[20px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
+      style={{ 
+        background: accentGlow,
+        filter: 'blur(40px)',
+        transform: 'scale(0.9)',
+      }}
+    />
   </div>
 );
 
@@ -36,60 +91,66 @@ function ProgramsSection() {
   const programs = [
     {
       title: "Programa Piloto",
-      subtitle: "Implementación Corta",
-      color: "bg-chartreuse",
+      subtitle: "Implementacion Corta",
+      accentColor: "#c5f700",
+      accentGlow: "radial-gradient(circle, rgba(197, 247, 0, 0.15), transparent 70%)",
       features: [
-        "Duración: 4 - 8 semanas",
+        "Duracion: 4 - 8 semanas",
         "1 Taller demostrativo por grado",
-        "Capacitación básica docente",
-        "Uso de equipo en préstamo",
-        "Evaluación de viabilidad"
+        "Capacitacion basica docente",
+        "Uso de equipo en prestamo",
+        "Evaluacion de viabilidad"
       ]
     },
     {
       title: "Programa Anual",
-      subtitle: "Transformación Integral",
-      color: "bg-royal-violet",
+      subtitle: "Transformacion Integral",
+      accentColor: "#8400e2",
+      accentGlow: "radial-gradient(circle, rgba(132, 0, 226, 0.15), transparent 70%)",
       recommended: true,
       features: [
-        "Duración: Ciclo escolar completo",
-        "Currícula STEAM integrada",
+        "Duracion: Ciclo escolar completo",
+        "Curricula STEAM integrada",
         "Laboratorio permanente",
-        "Certificación docente completa",
-        "Club de robótica y competencias",
+        "Certificacion docente completa",
+        "Club de robotica y competencias",
         "Escuela para padres trimestral"
       ]
     },
     {
       title: "Programa Trimestral",
-      subtitle: "Módulos Temáticos",
-      color: "bg-blue",
+      subtitle: "Modulos Tematicos",
+      accentColor: "#4300ed",
+      accentGlow: "radial-gradient(circle, rgba(67, 0, 237, 0.15), transparent 70%)",
       features: [
-        "Duración: 1 Unidad o Trimestre",
-        "Enfoque en proyecto específico",
+        "Duracion: 1 Unidad o Trimestre",
+        "Enfoque en proyecto especifico",
         "Materiales consumibles incluidos",
-        "Acompañamiento semanal",
+        "Acompanamiento semanal",
         "Feria de cierre de unidad"
       ]
     }
   ];
 
   return (
-    <section id="programas" className="py-16 sm:py-24 bg-[var(--bg-secondary)] backdrop-blur-md transition-colors duration-300">
+    <section id="programas" className="py-20 sm:py-28 section-glass">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-base text-royal-violet font-semibold tracking-wide uppercase">Programas para Colegios</h2>
-          <p className="mt-2 text-3xl font-extrabold text-[var(--text-primary)] sm:text-4xl">
-            Modelos de Implementación Flexible
-          </p>
-          <p className="mt-4 text-xl text-[var(--text-secondary)] max-w-2xl mx-auto">
-            Elige el formato que mejor se adapte a los objetivos y presupuesto de tu institución.
+          <div className="inline-flex items-center gap-2 glass-panel rounded-full px-4 py-1.5 mb-6">
+            <span className="text-xs font-semibold uppercase tracking-wider text-royal-violet">Programas</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight">
+            Modelos de Implementacion{' '}
+            <span className="text-gradient-violet">Flexible</span>
+          </h2>
+          <p className="mt-4 text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
+            Elige el formato que mejor se adapte a los objetivos y presupuesto de tu institucion.
           </p>
         </div>
         
-        <div className="grid gap-8 grid-cols-1 md:grid-cols-3 max-w-6xl mx-auto items-center">
+        <div className="grid gap-6 grid-cols-1 md:grid-cols-3 max-w-6xl mx-auto items-start">
           {programs.map((prog, index) => (
-            <ProgramCard key={index} {...prog} />
+            <ProgramCard key={index} {...prog} index={index} />
           ))}
         </div>
       </div>

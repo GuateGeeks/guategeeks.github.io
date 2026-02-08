@@ -1,56 +1,89 @@
 import React from 'react';
 
-const ProcessStep = ({ number, title, description, isLast }) => (
-  <div className="relative flex flex-col items-center p-6 text-center z-10">
-    <div className="w-16 h-16 rounded-full bg-royal-violet text-white flex items-center justify-center text-2xl font-bold mb-4 shadow-lg ring-4 ring-white dark:ring-strong-gray-800 z-10">
-      {number}
-    </div>
-    <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">{title}</h3>
-    <p className="text-[var(--text-secondary)]">{description}</p>
-    
+const ProcessStep = ({ number, title, description, icon, isLast, index }) => (
+  <div className="relative group">
+    {/* Connector line */}
     {!isLast && (
-      <div className="hidden lg:block absolute top-14 left-1/2 w-full h-1 bg-gray-200 dark:bg-strong-gray-700 -z-0" />
+      <div className="hidden lg:block absolute top-8 left-[calc(50%+32px)] w-[calc(100%-64px)] h-[2px]">
+        <div className="w-full h-full rounded-full" style={{
+          background: 'linear-gradient(90deg, rgba(132, 0, 226, 0.3), rgba(132, 0, 226, 0.1))',
+        }} />
+        <div className="absolute top-0 left-0 h-full rounded-full glass-shimmer" style={{
+          width: '30%',
+          background: 'linear-gradient(90deg, transparent, rgba(132, 0, 226, 0.5), transparent)',
+        }} />
+      </div>
     )}
+
+    <div className="glass-card p-6 text-center relative overflow-visible" style={{
+      animationDelay: `${index * 150}ms`,
+    }}>
+      {/* Step number - floating glass badge */}
+      <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-10">
+        <div className="w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold text-white"
+          style={{
+            background: 'linear-gradient(135deg, #8400e2, #a01bff)',
+            boxShadow: '0 4px 16px rgba(132, 0, 226, 0.35)',
+          }}
+        >
+          {number}
+        </div>
+      </div>
+
+      {/* Icon */}
+      <div className="mt-4 mb-4 text-3xl">{icon}</div>
+
+      <h3 className="text-lg font-bold text-[var(--text-primary)] mb-2 tracking-tight">{title}</h3>
+      <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{description}</p>
+    </div>
   </div>
 );
 
 function ProcessSection() {
   const steps = [
     {
-      title: "Diagnóstico",
-      description: "Evaluamos la infraestructura actual y las necesidades específicas de tu comunidad educativa."
+      title: "Diagnostico",
+      description: "Evaluamos infraestructura y necesidades de tu comunidad educativa.",
+      icon: "🔍",
     },
     {
       title: "Propuesta",
-      description: "Diseñamos un plan de implementación a medida, seleccionando el equipo y currícula ideal."
+      description: "Disenamos un plan de implementacion a medida con equipo y curricula ideal.",
+      icon: "📋",
     },
     {
-      title: "Implementación",
-      description: "Ejecutamos la instalación de laboratorios y realizamos la capacitación intensiva docente."
+      title: "Implementacion",
+      description: "Instalamos laboratorios y realizamos capacitacion intensiva docente.",
+      icon: "🚀",
     },
     {
       title: "Seguimiento",
-      description: "Brindamos soporte continuo, actualizaciones y medición de impacto en el aprendizaje."
+      description: "Soporte continuo, actualizaciones y medicion de impacto en el aprendizaje.",
+      icon: "📊",
     }
   ];
 
   return (
-    <section className="py-16 bg-[var(--bg-primary)] backdrop-blur-md transition-colors duration-300">
+    <section className="py-20 section-glass">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-base text-royal-violet font-semibold tracking-wide uppercase">Nuestro Proceso</h2>
-          <p className="mt-2 text-3xl font-extrabold text-[var(--text-primary)] sm:text-4xl">
-            Cómo Transformamos tu Colegio
-          </p>
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 glass-panel rounded-full px-4 py-1.5 mb-6">
+            <span className="text-xs font-semibold uppercase tracking-wider text-royal-violet">Nuestro Proceso</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight">
+            Como Transformamos{' '}
+            <span className="text-gradient-violet">tu Colegio</span>
+          </h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
           {steps.map((step, index) => (
             <ProcessStep 
               key={index} 
               number={index + 1} 
               {...step} 
-              isLast={index === steps.length - 1} 
+              isLast={index === steps.length - 1}
+              index={index}
             />
           ))}
         </div>

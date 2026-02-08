@@ -1,60 +1,168 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MenuIcon, CloseIcon, MoonIcon, SunIcon } from './Icons';
 
 function Navbar({ toggleTheme, isDark }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('inicio');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+      
+      // Detect active section
+      const sections = ['inicio', 'servicios', 'programas', 'nosotros', 'contacto'];
+      for (const id of sections.reverse()) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= 100) {
+          setActiveSection(id);
+          break;
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { id: 'inicio', label: 'Inicio' },
+    { id: 'servicios', label: 'Servicios' },
+    { id: 'programas', label: 'Programas' },
+    { id: 'nosotros', label: 'Nosotros' },
+    { id: 'contacto', label: 'Contacto' },
+  ];
 
   return (
-    <nav className="bg-[var(--bg-primary)] backdrop-blur-md border-b-4 border-royal-violet sticky top-0 z-50 shadow-sm transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20 items-center">
-          <div className="flex-shrink-0 flex items-center">
-            <a href="#inicio" className="flex items-center gap-2">
-                <img src="/logo.svg" alt="GuateGeeks Logo" className="h-12 w-auto" />
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      scrolled 
+        ? 'py-2' 
+        : 'py-4'
+    }`}>
+      <div className={`max-w-6xl mx-auto px-4 transition-all duration-500 ${scrolled ? 'px-4' : 'px-6'}`}>
+        <div className={`glass-panel-heavy rounded-2xl px-6 transition-all duration-500 ${
+          scrolled ? 'shadow-lg' : ''
+        }`} style={{
+          borderRadius: '20px',
+        }}>
+          <div className="flex justify-between h-16 items-center">
+            {/* Logo */}
+            <a href="#inicio" className="flex items-center gap-2 group">
+              <img 
+                src="/logo.svg" 
+                alt="GuateGeeks" 
+                className="h-10 w-auto transition-transform duration-300 group-hover:scale-110" 
+              />
             </a>
-          </div>
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#inicio" className="text-[var(--text-primary)] hover:text-royal-violet font-bold text-lg transition-colors">Inicio</a>
-            <a href="#servicios" className="text-[var(--text-primary)] hover:text-royal-violet font-bold text-lg transition-colors">Servicios</a>
-            <a href="#programas" className="text-[var(--text-primary)] hover:text-royal-violet font-bold text-lg transition-colors">Programas</a>
-            <a href="#nosotros" className="text-[var(--text-primary)] hover:text-royal-violet font-bold text-lg transition-colors">Nosotros</a>
-            <a href="#contacto" className="text-[var(--text-primary)] hover:text-royal-violet font-bold text-lg transition-colors">Contacto</a>
-            <button 
+
+            {/* Desktop Navigation - Glass Pills */}
+            <div className="hidden md:flex items-center gap-1">
+              <div className="flex items-center gap-0.5 p-1 rounded-xl" style={{
+                background: 'var(--bg-glass)',
+                border: '1px solid var(--glass-border-subtle)',
+              }}>
+                {navLinks.map((link) => (
+                  <a
+                    key={link.id}
+                    href={`#${link.id}`}
+                    className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 relative ${
+                      activeSection === link.id
+                        ? 'text-white'
+                        : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                    }`}
+                    style={activeSection === link.id ? {
+                      background: 'linear-gradient(135deg, #8400e2, #a01bff)',
+                      boxShadow: '0 2px 12px rgba(132, 0, 226, 0.3)',
+                    } : {}}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+
+              {/* Theme Toggle */}
+              <button 
                 onClick={toggleTheme} 
-                className="p-2 rounded-full text-[var(--text-primary)] hover:bg-gray-100 dark:hover:bg-strong-gray-300 transition-colors"
+                className="ml-2 p-2.5 rounded-xl transition-all duration-300 hover:scale-110 active:scale-95"
+                style={{
+                  background: 'var(--bg-glass)',
+                  border: '1px solid var(--glass-border-subtle)',
+                }}
                 aria-label="Toggle Dark Mode"
-            >
+              >
                 {isDark ? <SunIcon /> : <MoonIcon />}
-            </button>
-            <a href="#contacto" className="btn-primary">Agendar</a>
-          </div>
-          <div className="md:hidden flex items-center gap-4">
-             <button 
+              </button>
+
+              {/* CTA */}
+              <a href="#contacto" className="btn-primary ml-3 text-sm py-2.5 px-5">
+                Agendar
+              </a>
+            </div>
+
+            {/* Mobile Controls */}
+            <div className="md:hidden flex items-center gap-2">
+              <button 
                 onClick={toggleTheme} 
-                className="p-2 rounded-full text-[var(--text-primary)] hover:bg-gray-100 dark:hover:bg-strong-gray-300 transition-colors"
-            >
+                className="p-2.5 rounded-xl transition-all duration-300"
+                style={{
+                  background: 'var(--bg-glass)',
+                  border: '1px solid var(--glass-border-subtle)',
+                }}
+              >
                 {isDark ? <SunIcon /> : <MoonIcon />}
-            </button>
-            <button onClick={() => setIsOpen(!isOpen)} className="text-[var(--text-primary)] hover:text-soft-gray p-2 focus:outline-none focus:ring-2 focus:ring-soft-gray rounded-md">
-              {isOpen ? <CloseIcon /> : <MenuIcon />}
-            </button>
+              </button>
+              <button 
+                onClick={() => setIsOpen(!isOpen)} 
+                className="p-2.5 rounded-xl transition-all duration-300"
+                style={{
+                  background: isOpen ? 'linear-gradient(135deg, #8400e2, #a01bff)' : 'var(--bg-glass)',
+                  border: '1px solid var(--glass-border-subtle)',
+                  color: isOpen ? 'white' : 'var(--text-primary)',
+                }}
+              >
+                {isOpen ? <CloseIcon /> : <MenuIcon />}
+              </button>
+            </div>
           </div>
         </div>
       </div>
       
-      {/* Mobile menu */}
-      {isOpen && (
-        <div className="md:hidden absolute top-20 left-0 w-full bg-[var(--bg-primary)] backdrop-blur-md shadow-lg border-b-4 border-royal-violet animate-fade-in-down z-40">
-          <div className="px-4 py-4 space-y-2 text-center">
-            <a href="#inicio" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-strong-gray-200 hover:text-royal-violet">Inicio</a>
-            <a href="#servicios" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-strong-gray-200 hover:text-royal-violet">Servicios</a>
-            <a href="#programas" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-strong-gray-200 hover:text-royal-violet">Programas</a>
-            <a href="#nosotros" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-strong-gray-200 hover:text-royal-violet">Nosotros</a>
-            <a href="#contacto" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-lg font-bold text-[var(--text-primary)] hover:bg-gray-50 dark:hover:bg-strong-gray-200 hover:text-royal-violet">Contacto</a>
-             <a href="#contacto" onClick={() => setIsOpen(false)} className="block px-3 py-3 mt-4 rounded-md text-lg font-bold bg-royal-violet text-strong-gray-100 hover:bg-royal-violet-600">Agendar Asesoría</a>
+      {/* Mobile Menu - Glass Dropdown */}
+      <div className={`md:hidden transition-all duration-500 overflow-hidden ${
+        isOpen ? 'max-h-[400px] opacity-100 mt-2' : 'max-h-0 opacity-0 mt-0'
+      }`}>
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="glass-panel-heavy rounded-2xl p-4 space-y-1">
+            {navLinks.map((link, i) => (
+              <a 
+                key={link.id}
+                href={`#${link.id}`} 
+                onClick={() => setIsOpen(false)} 
+                className={`block px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 ${
+                  activeSection === link.id
+                    ? 'text-white'
+                    : 'text-[var(--text-primary)] hover:bg-[var(--bg-glass-hover)]'
+                }`}
+                style={activeSection === link.id ? {
+                  background: 'linear-gradient(135deg, #8400e2, #a01bff)',
+                  boxShadow: '0 2px 12px rgba(132, 0, 226, 0.3)',
+                  animationDelay: `${i * 0.05}s`,
+                } : {
+                  animationDelay: `${i * 0.05}s`,
+                }}
+              >
+                {link.label}
+              </a>
+            ))}
+            <a 
+              href="#contacto" 
+              onClick={() => setIsOpen(false)} 
+              className="btn-primary block text-center mt-2"
+            >
+              Agendar Asesoria
+            </a>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 }

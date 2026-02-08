@@ -1,96 +1,206 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import heroImg1 from '../assets/img/spike-kids.png';
 import heroImg2 from '../assets/img/spike-kids02.png';
 import heroImg3 from '../assets/img/spike-kids03.png';
 
 function Hero() {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+    const handleMouseMove = (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 2;
+      const y = (e.clientY / window.innerHeight - 0.5) * 2;
+      setMousePos({ x, y });
+    };
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
-    <section id="inicio" className="relative bg-transparent overflow-hidden transition-colors duration-300 min-h-[700px] flex items-center">
-      <div className="max-w-7xl mx-auto w-full">
-        <div className="relative z-10 pb-12 bg-transparent sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32 pt-10 px-4 sm:px-6 lg:px-8 text-center sm:text-left transition-colors duration-300">
-          <main className="mt-8 mx-auto max-w-7xl sm:mt-12 md:mt-16 lg:mt-20 xl:mt-28">
-            <div className="">
-              <h1 className="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl">
-                <span className="block text-strong-gray-900 dark:text-white xl:inline">Aceleración Tecnológica</span>{' '}
-                <span className="block text-royal-violet xl:inline">para Instituciones Educativas</span>
-              </h1>
-              <p className="mt-4 text-base text-[var(--text-secondary)] sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-0 md:mt-5 md:text-xl">
-                Transformamos tu colegio con educación STEAM, robótica y capacitación docente de alto impacto. Preparamos a tus estudiantes para el futuro hoy.
-              </p>
-              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                <a href="#contacto" className="btn-primary w-full sm:w-auto">
-                  Solicitar Propuesta
-                </a>
-                <a href="https://wa.me/50230044972" target="_blank" rel="noopener noreferrer" className="btn-outline w-full sm:w-auto flex items-center justify-center gap-2">
-                   Agendar Asesoría
-                </a>
-              </div>
-
-              {/* Mobile Image View (Visible only on < lg screens) */}
-              <div className="mt-12 relative max-w-sm mx-auto w-full lg:hidden">
-                <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3] rotate-2 hover:rotate-0 transition-transform duration-500">
-                    <img src={heroImg1} alt="Estudiantes STEAM" className="object-cover w-full h-full" />
-                    {/* Overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-royal-violet/20 to-transparent pointer-events-none"></div>
-                </div>
-                {/* Floating decorative mini-images */}
-                <div className="absolute -bottom-6 -right-4 w-24 h-24 rounded-lg overflow-hidden shadow-lg border-2 border-white dark:border-strong-gray-800 rotate-[-6deg] animate-float" style={{ animationDelay: '1s' }}>
-                    <img src={heroImg2} alt="Detalle clase" className="object-cover w-full h-full" />
-                </div>
-                {/* Decorative glows */}
-                <div className="absolute -top-4 -left-4 w-20 h-20 bg-chartreuse/30 rounded-full blur-2xl -z-10"></div>
-                <div className="absolute -bottom-4 right-10 w-20 h-20 bg-blue/30 rounded-full blur-2xl -z-10"></div>
-              </div>
-
-            </div>
-          </main>
-        </div>
-      </div>
-      
-      {/* Hero Image Collage */}
-      <div className="hidden lg:flex lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 items-center justify-center p-4">
-        <div className="relative w-full h-[600px] perspective-1000">
-            {/* Image 2: Top Right - Floating behind */}
-            <div 
-                className="absolute top-12 right-8 w-64 h-48 rounded-2xl overflow-hidden shadow-2xl z-10 animate-float"
-                style={{ animationDelay: '0s' }}
-            >
-                <img src={heroImg2} alt="Estudiantes en laboratorio" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-royal-violet/10"></div>
-            </div>
-
-            {/* Image 3: Bottom Left - Floating in front */}
-            <div 
-                className="absolute bottom-24 left-12 w-64 h-48 rounded-2xl overflow-hidden shadow-2xl z-30 animate-float"
-                style={{ animationDelay: '2s' }}
-            >
-                <img src={heroImg3} alt="Aprendizaje práctico" className="w-full h-full object-cover" />
-                 <div className="absolute inset-0 border-4 border-white/20 rounded-2xl"></div>
-            </div>
-
-            {/* Image 1: Center Main - Largest */}
-            <div 
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 sm:w-96 sm:h-96 rounded-full overflow-hidden shadow-royal-violet/30 shadow-2xl z-20 animate-float border-8 border-white dark:border-strong-gray-800"
-                style={{ animationDelay: '1s' }}
-            >
-                <img src={heroImg1} alt="Estudiantes con robot SPIKE" className="w-full h-full object-cover scale-110 hover:scale-125 transition-transform duration-700" />
-            </div>
-
-            {/* Decorative Elements */}
-            <div className="absolute top-1/4 left-1/4 w-4 h-4 bg-emerald rounded-full animate-bounce delay-700"></div>
-            <div className="absolute bottom-1/3 right-1/4 w-6 h-6 bg-blue rounded-full animate-pulse"></div>
-            <div className="absolute top-1/3 right-10 w-3 h-3 bg-raspberry-red rounded-full animate-ping"></div>
-        </div>
+    <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden pt-24">
+      {/* Ambient gradient blobs - liquid background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div 
+          className="absolute w-[600px] h-[600px] rounded-full opacity-30 liquid-blob"
+          style={{
+            background: 'radial-gradient(circle, rgba(132, 0, 226, 0.4), transparent 70%)',
+            top: '-10%',
+            right: '-10%',
+            transform: `translate(${mousePos.x * -20}px, ${mousePos.y * -20}px)`,
+            transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          }}
+        />
+        <div 
+          className="absolute w-[500px] h-[500px] rounded-full opacity-20 liquid-blob"
+          style={{
+            background: 'radial-gradient(circle, rgba(67, 0, 237, 0.4), transparent 70%)',
+            bottom: '-15%',
+            left: '-10%',
+            animationDelay: '2s',
+            transform: `translate(${mousePos.x * 15}px, ${mousePos.y * 15}px)`,
+            transition: 'transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          }}
+        />
+        <div 
+          className="absolute w-[400px] h-[400px] rounded-full opacity-15 liquid-blob"
+          style={{
+            background: 'radial-gradient(circle, rgba(0, 211, 123, 0.3), transparent 70%)',
+            top: '40%',
+            left: '30%',
+            animationDelay: '4s',
+            transform: `translate(${mousePos.x * 10}px, ${mousePos.y * 10}px)`,
+            transition: 'transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          }}
+        />
       </div>
 
-       {/* Mobile background decoration */}
-       <div className="absolute top-0 right-0 -z-10 w-full h-full opacity-5 sm:hidden pointer-events-none">
-          <div className="grid grid-cols-4 gap-4 p-4">
-             <div className="w-full h-20 bg-royal-violet rounded-lg"></div>
-             <div className="w-full h-20 bg-blue rounded-lg col-span-2"></div>
-             <div className="w-full h-20 bg-emerald rounded-lg"></div>
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Text Content */}
+          <div className={`text-center lg:text-left transition-all duration-1000 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 glass-panel rounded-full px-4 py-2 mb-8"
+              style={{ animationDelay: '0.1s' }}
+            >
+              <div className="w-2 h-2 rounded-full bg-emerald animate-pulse" />
+              <span className="text-sm font-medium text-[var(--text-secondary)]">
+                Educacion STEAM en Guatemala
+              </span>
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05]">
+              <span className="block text-[var(--text-primary)]">Aceleracion</span>
+              <span className="block text-gradient-violet mt-1">Tecnologica</span>
+              <span className="block text-[var(--text-primary)] text-3xl sm:text-4xl md:text-5xl mt-2 font-semibold opacity-80">
+                para tu Institucion
+              </span>
+            </h1>
+
+            <p className="mt-6 text-lg sm:text-xl text-[var(--text-secondary)] max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              Transformamos colegios con robotica, educacion STEAM y capacitacion docente de alto impacto. El futuro comienza hoy.
+            </p>
+
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a href="#contacto" className="btn-primary text-base">
+                <span>Solicitar Propuesta</span>
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+              <a href="https://wa.me/50230044972" target="_blank" rel="noopener noreferrer" className="btn-secondary text-base">
+                <svg className="w-5 h-5 text-emerald" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+                </svg>
+                <span>Agendar Asesoria</span>
+              </a>
+            </div>
+
+            {/* Trust indicators */}
+            <div className="mt-10 flex flex-wrap items-center gap-6 justify-center lg:justify-start">
+              {[
+                { number: '50+', label: 'Colegios' },
+                { number: '200+', label: 'Docentes' },
+                { number: '5K+', label: 'Estudiantes' },
+              ].map((stat, i) => (
+                <div key={i} className="text-center">
+                  <div className="text-2xl font-bold text-gradient-violet">{stat.number}</div>
+                  <div className="text-xs text-[var(--text-tertiary)] font-medium uppercase tracking-wide">{stat.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
-       </div>
+
+          {/* Image Composition - Glass Frames */}
+          <div className={`relative transition-all duration-1000 delay-300 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+            <div className="relative w-full aspect-square max-w-lg mx-auto">
+              {/* Main Image - Large Glass Frame */}
+              <div 
+                className="absolute inset-[10%] rounded-3xl overflow-hidden glass-card p-2 z-20"
+                style={{
+                  transform: `translate(${mousePos.x * 5}px, ${mousePos.y * 5}px)`,
+                  transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                }}
+              >
+                <img 
+                  src={heroImg1} 
+                  alt="Estudiantes con robot SPIKE" 
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+                <div className="absolute inset-2 rounded-2xl bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+              </div>
+
+              {/* Floating Image 2 - Top Right */}
+              <div 
+                className="absolute top-0 right-0 w-[45%] rounded-2xl overflow-hidden glass-card p-1.5 z-30 animate-float"
+                style={{
+                  animationDelay: '0.5s',
+                  transform: `translate(${mousePos.x * -8}px, ${mousePos.y * -8}px)`,
+                  transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                }}
+              >
+                <img 
+                  src={heroImg2} 
+                  alt="Estudiantes en laboratorio" 
+                  className="w-full h-32 sm:h-40 object-cover rounded-xl"
+                />
+              </div>
+
+              {/* Floating Image 3 - Bottom Left */}
+              <div 
+                className="absolute bottom-0 left-0 w-[45%] rounded-2xl overflow-hidden glass-card p-1.5 z-30 animate-float"
+                style={{
+                  animationDelay: '1.5s',
+                  transform: `translate(${mousePos.x * 8}px, ${mousePos.y * 8}px)`,
+                  transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                }}
+              >
+                <img 
+                  src={heroImg3} 
+                  alt="Aprendizaje practico" 
+                  className="w-full h-32 sm:h-40 object-cover rounded-xl"
+                />
+              </div>
+
+              {/* Decorative Glass Orbs */}
+              <div 
+                className="absolute -top-4 left-[20%] w-16 h-16 rounded-full z-10"
+                style={{
+                  background: 'radial-gradient(circle, rgba(132, 0, 226, 0.3), rgba(132, 0, 226, 0.05))',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(132, 0, 226, 0.2)',
+                  transform: `translate(${mousePos.x * -12}px, ${mousePos.y * -12}px)`,
+                  transition: 'transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  animation: 'pulseGlow 4s ease-in-out infinite',
+                }}
+              />
+              <div 
+                className="absolute -bottom-2 right-[20%] w-12 h-12 rounded-full z-10"
+                style={{
+                  background: 'radial-gradient(circle, rgba(0, 211, 123, 0.3), rgba(0, 211, 123, 0.05))',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(0, 211, 123, 0.2)',
+                  transform: `translate(${mousePos.x * 10}px, ${mousePos.y * 10}px)`,
+                  transition: 'transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  animation: 'pulseGlow 4s ease-in-out infinite 1s',
+                }}
+              />
+              <div 
+                className="absolute top-[45%] -right-4 w-10 h-10 rounded-full z-10"
+                style={{
+                  background: 'radial-gradient(circle, rgba(67, 0, 237, 0.3), rgba(67, 0, 237, 0.05))',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(67, 0, 237, 0.2)',
+                  transform: `translate(${mousePos.x * -6}px, ${mousePos.y * -6}px)`,
+                  transition: 'transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  animation: 'pulseGlow 4s ease-in-out infinite 2s',
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
