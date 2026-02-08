@@ -27,7 +27,7 @@ function Hero() {
   }, []);
 
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden pt-24">
+    <section id="inicio" className="min-h-screen flex items-center overflow-hidden pt-24">
       {/* Ambient gradient blobs - liquid background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div 

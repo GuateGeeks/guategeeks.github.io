@@ -44,7 +44,7 @@ function BenefitsSection() {
   ];
 
   return (
-    <section className="py-20 section-glass">
+    <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
           {/* Left - Benefits */}

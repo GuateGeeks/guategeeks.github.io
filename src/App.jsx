@@ -109,7 +109,7 @@ function App() {
       <Suspense fallback={null}>
         <ThreeBackground />
       </Suspense>
-      <div className="relative z-10">
+      <div className="relative z-10 glass-surface">
         <Navbar toggleTheme={toggleTheme} isDark={isDark} />
         <main id="main-content">
           <Hero />

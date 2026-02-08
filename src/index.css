@@ -463,6 +463,14 @@
     background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
   }
 
+  /* === UNIFIED GLASS SURFACE === */
+  /* Single glass layer covering all content over the Three.js background */
+  .glass-surface {
+    background: var(--bg-primary);
+    backdrop-filter: blur(var(--blur-glass)) saturate(180%);
+    -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(180%);
+  }
+
   /* Legacy support */
   .card {
     background: var(--bg-card);
