@@ -146,7 +146,7 @@ function Navbar({ toggleTheme, isDark }) {
 
               {/* CTA */}
               <a href="#contacto" className="btn-primary ml-3 text-sm py-2.5 px-5">
-                Agendar Asesoria
+                Agendar asesoría
               </a>
             </div>
 
@@ -223,7 +223,7 @@ function Navbar({ toggleTheme, isDark }) {
               tabIndex={isOpen ? 0 : -1}
               className="btn-primary block text-center mt-2"
             >
-              Agendar Asesoria
+              Agendar asesoría
             </a>
           </div>
         </div>

@@ -91,7 +91,7 @@ const ServiceCard = ({ title, description, icon, includes, implementation, deliv
             className="text-sm font-semibold transition-all duration-300 hover:gap-2 inline-flex items-center gap-1"
             style={{ color: accentColor }}
           >
-            Solicitar Info
+            Solicitar información
             <HiChevronRight className="w-4 h-4" aria-hidden="true" />
           </a>
         </div>
@@ -103,34 +103,34 @@ const ServiceCard = ({ title, description, icon, includes, implementation, deliv
 function Services() {
   const services = [
     {
-      title: "Provisión de Equipo",
-      description: "Equipamos tu institución con la mejor tecnología para el aprendizaje práctico.",
+      title: "Laboratorios & Equipamiento",
+      description: "Infraestructura tecnológica llave en mano con las mejores marcas del mercado (LEGO Education, Arduino).",
       icon: <RobotIcon />,
       accentColor: "#c4552e",
       accentGlow: "radial-gradient(circle, rgba(239, 133, 86, 0.15), transparent 70%)",
-      includes: ["Kits de robótica educativa", "Placas electrónicas y sensores", "Impresoras 3D y consumibles"],
-      implementation: ["Instalación en laboratorio", "Configuración inicial", "Pruebas de funcionamiento"],
-      deliverables: ["Laboratorio funcional", "Inventario detallado", "Manuales de uso"]
+      includes: ["Kits de robótica educativa", "Impresoras 3D y corte láser", "Mobiliario y diseño de espacios"],
+      implementation: ["Instalación y configuración", "Puesta en marcha técnica", "Garantía y soporte local"],
+      deliverables: ["Laboratorio 4.0 funcional", "Inventario digital", "Manuales operativos"]
     },
     {
-      title: "Capacitación Docente",
-      description: "Empoderamos a tus maestros con herramientas y metodologías STEAM innovadoras.",
+      title: "Formación & Empoderamiento",
+      description: "Transformamos a tu claustro docente en líderes de innovación educativa digital.",
       icon: <TeacherIcon />,
       accentColor: "#3a8fa8",
       accentGlow: "radial-gradient(circle, rgba(95, 186, 214, 0.15), transparent 70%)",
-      includes: ["Talleres teórico-prácticos", "Plataforma de recursos", "Material didáctico digital"],
-      implementation: ["Sesiones intensivas", "Acompañamiento en aula", "Evaluación continua"],
-      deliverables: ["Certificación por horas", "Guías didácticas", "Planificaciones modelo"]
+      includes: ["Certificación en metodologías STEAM", "Acompañamiento en el aula", "Recursos didácticos listos para usar"],
+      implementation: ["Talleres presenciales intensivos", "Mentoria continua", "Evaluación de competencias"],
+      deliverables: ["Docentes certificados", "Confianza tecnológica", "Planificaciones curriculares"]
     },
     {
-      title: "Talleres Estudiantes y Padres",
-      description: "Experiencias inmersivas para estudiantes y talleres de integración familiar.",
+      title: "Ecosistema & Cultura Digital",
+      description: "Involucramos a padres y alumnos para crear una verdadera comunidad tecnológica.",
       icon: <StudentIcon />,
       accentColor: "#685599",
       accentGlow: "radial-gradient(circle, rgba(104, 85, 153, 0.15), transparent 70%)",
-      includes: ["Talleres curriculares", "Retos y competencias", "Escuela para padres"],
-      implementation: ["Clases semanales", "Bootcamps de temporada", "Webinars familiares"],
-      deliverables: ["Proyectos funcionales", "Portafolios de evidencia", "Comunidad comprometida"]
+      includes: ["Charlas para padres de familia", "Talleres demostrativos para alumnos", "Ferias de tecnología"],
+      implementation: ["Eventos de lanzamiento", "Webinars educativos", "Retos interescolares"],
+      deliverables: ["Padres comprometidos", "Alumnos motivados", "Cultura de innovación"]
     }
   ];
 
@@ -139,14 +139,14 @@ function Services() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 glass-panel rounded-full px-4 py-1.5 mb-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-coral">Nuestros Servicios</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-coral">Nuestra Propuesta de Valor</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight">
-            Soluciones Integrales{' '}
-            <span className="text-gradient-coral">STEAM</span>
+            Todo lo que necesitas para{' '}
+            <span className="text-gradient-coral">Innovar</span>
           </h2>
           <p className="mt-4 text-lg text-[var(--text-secondary)] leading-relaxed">
-            Acompañamos a tu institución en cada paso hacia la excelencia tecnológica.
+            Desde el primer tornillo hasta la primera línea de código, te acompañamos en la transformación digital de tu colegio.
           </p>
         </div>
         <div className="grid gap-6 grid-cols-1 md:grid-cols-3">

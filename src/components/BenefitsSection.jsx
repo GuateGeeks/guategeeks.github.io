@@ -27,18 +27,18 @@ function BenefitsSection() {
   const benefits = [
     {
       Icon: HiOutlineCheckCircle,
-      title: "Metodología Propia",
-      description: "Contenido adaptado al contexto local y alineado a estándares internacionales.",
+      title: "Adopción Acelerada",
+      description: "Infraestructura lista para usar que permite iniciar clases prácticas desde el día uno.",
     },
     {
       Icon: HiOutlineOfficeBuilding,
-      title: "Soporte Local",
-      description: "Respuesta rápida y técnica presencial en Guatemala.",
+      title: "Soporte Local Garantizado",
+      description: "Técnicos expertos en Guatemala para instalación, mantenimiento y resolución de dudas.",
     },
     {
       Icon: HiTrendingUp,
-      title: "Resultados Medibles",
-      description: "Evaluamos el progreso de estudiantes y docentes con métricas claras.",
+      title: "Retorno de Inversión",
+      description: "Equipamiento durable y capacitación que aseguran que la tecnología no termine guardada en cajas.",
     },
   ];
 
@@ -49,14 +49,14 @@ function BenefitsSection() {
           {/* Left - Benefits */}
           <div>
             <div className="inline-flex items-center gap-2 glass-panel rounded-full px-4 py-1.5 mb-6">
-              <span className="text-xs font-semibold uppercase tracking-wider text-coral">Ventajas</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-coral">Por qué elegirnos</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight">
-            ¿Por qué elegir{' '}
-               <span className="text-gradient-coral">GuateGeeks?</span>
+              Tecnología que sí{' '}
+              <span className="text-gradient-coral">funciona</span>
             </h2>
             <p className="mt-4 text-lg text-[var(--text-secondary)] leading-relaxed">
-              No solo vendemos tecnología, garantizamos que se utilice para potenciar el aprendizaje.
+              Sabemos que la tecnología educativa suele fallar por falta de acompañamiento. Nosotros cerramos esa brecha.
             </p>
             <div className="mt-8 space-y-4">
               {benefits.map((benefit, i) => (
@@ -105,7 +105,7 @@ function BenefitsSection() {
                     <HiOutlineBeaker className="h-10 w-10 text-white" aria-hidden="true" />
                   </div>
                   <h3 className="text-white font-bold text-xl tracking-wide">Laboratorio 4.0</h3>
-                  <p className="text-coral-800 text-sm mt-1 font-medium">Innovación & Aprendizaje</p>
+                  <p className="text-coral-800 text-sm mt-1 font-medium">Robótica · Electrónica · 3D · Computación</p>
                 </div>
 
                 {/* Decorative dots */}
@@ -117,18 +117,18 @@ function BenefitsSection() {
               <div className="p-6">
                 <blockquote>
                   <p className="text-base text-[var(--text-primary)] italic leading-relaxed">
-                     "La implementación de GuateGeeks transformó la dinámica de nuestras clases. Los estudiantes ahora son creadores activos de tecnología."
+                     "El laboratorio dejó de ser un cuarto cerrado: ahora es el centro de proyectos STEAM, con docentes seguros y estudiantes creando cada semana."
                   </p>
                 </blockquote>
                 <div className="mt-4 flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold"
                     style={{ background: 'linear-gradient(135deg, #ef8556, #f4a07a)' }}
                   >
-                    MG
+                    CA
                   </div>
                   <div>
-                     <div className="text-sm font-semibold text-[var(--text-primary)]">Lic. María González</div>
-                     <div className="text-xs text-coral font-medium">Directora Académica — Colegio Valle Verde</div>
+                     <div className="text-sm font-semibold text-[var(--text-primary)]">Dirección Académica</div>
+                     <div className="text-xs text-coral font-medium">Colegio aliado — Guatemala</div>
                   </div>
                 </div>
               </div>

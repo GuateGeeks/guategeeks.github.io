@@ -12,11 +12,11 @@ function About() {
               <span className="text-xs font-semibold uppercase tracking-wider text-coral">Sobre Nosotros</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
-              <span className="text-[var(--text-primary)]">Experiencias Educativas </span>
-               <span className="text-gradient-coral">Inmersivas</span>
+              <span className="text-[var(--text-primary)]">Tecnología con </span>
+              <span className="text-gradient-coral">Propósito</span>
             </h2>
             <p className="mt-4 text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
-              Imaginamos, diseñamos y creamos experiencias centradas en la formación de jóvenes apasionados por el mundo digital.
+              En GuateGeeks, cerramos la brecha digital entre la educación tradicional y la industria 4.0, equipando a las futuras generaciones con las herramientas del mañana.
             </p>
           </div>
 
@@ -28,16 +28,16 @@ function About() {
             }} />
 
             <p className="text-lg text-[var(--text-secondary)] leading-relaxed pl-6">
-              Nuestra metodología pretende que los estudiantes encuentren satisfacción en descubrir lo que piensan, establezcan nuevas relaciones, adquieran conocimientos, encuentren nuevas formas de hacer las cosas y de comunicar sus ideas.
+              Nuestra misión es democratizar el acceso a laboratorios de alta tecnología en Guatemala, asegurando que cada inversión en equipo se traduzca en empoderamiento docente y aprendizaje significativo para el estudiante.
             </p>
 
             {/* Tags */}
             <div className="flex flex-wrap gap-3 mt-6 pl-6">
               {[
-                { label: 'Design Thinking', color: 'rgba(239, 133, 86, 0.15)', textColor: '#d9613a', borderColor: 'rgba(239, 133, 86, 0.3)' },
-                { label: 'STEAM', color: 'rgba(95, 186, 214, 0.15)', textColor: '#3a8fa8', borderColor: 'rgba(95, 186, 214, 0.3)' },
+                { label: 'Infraestructura', color: 'rgba(239, 133, 86, 0.15)', textColor: '#d9613a', borderColor: 'rgba(239, 133, 86, 0.3)' },
+                { label: 'Formación Docente', color: 'rgba(95, 186, 214, 0.15)', textColor: '#3a8fa8', borderColor: 'rgba(95, 186, 214, 0.3)' },
                 { label: 'Innovación', color: 'rgba(104, 85, 153, 0.15)', textColor: '#685599', borderColor: 'rgba(104, 85, 153, 0.3)' },
-                { label: 'Robótica', color: 'rgba(217, 97, 58, 0.15)', textColor: '#c4552e', borderColor: 'rgba(217, 97, 58, 0.3)' },
+                { label: 'Robótica Educativa', color: 'rgba(217, 97, 58, 0.15)', textColor: '#c4552e', borderColor: 'rgba(217, 97, 58, 0.3)' },
               ].map((tag, i) => (
                 <span 
                   key={i}
@@ -59,17 +59,17 @@ function About() {
             {[
               { 
                 title: 'Misión',
-                desc: 'Democratizar la educación tecnológica en Guatemala.',
+                desc: 'Equipar y capacitar a la próxima generación de creadores tecnológicos.',
                 Icon: HiOutlineCursorClick,
               },
               { 
                 title: 'Visión',
-                desc: 'Cada estudiante guatemalteco como creador de tecnología.',
+                desc: 'Un laboratorio STEAM funcional en cada colegio de Guatemala.',
                 Icon: HiOutlineSparkles,
               },
               { 
                 title: 'Impacto',
-                desc: 'Comunidades educativas transformadas y empoderadas.',
+                desc: 'Docentes seguros, alumnos motivados, instituciones líderes.',
                 Icon: HiOutlineLightBulb,
               },
             ].map((item, i) => (

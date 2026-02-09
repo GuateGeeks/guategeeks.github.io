@@ -13,7 +13,7 @@ function Footer() {
               <img src="/logo.svg" alt="GuateGeeks" className="h-10 w-auto transition-transform duration-300 group-hover:scale-105" width="120" height="40" />
             </a>
             <p className="text-[var(--text-secondary)] text-sm leading-relaxed max-w-sm">
-              Imaginamos, diseñamos y creamos el futuro de la educación tecnológica en Guatemala.
+              Robótica, electrónica, impresión 3D y computación para transformar el aprendizaje en Guatemala.
             </p>
             {/* Social Links */}
             <div className="flex gap-3 mt-6">

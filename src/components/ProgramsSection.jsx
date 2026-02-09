@@ -121,11 +121,11 @@ function ProgramsSection() {
       accentColorLight: "#5fbad6",
       accentGlow: "radial-gradient(circle, rgba(95, 186, 214, 0.15), transparent 70%)",
       features: [
-        "Duración: 4 - 8 semanas",
-        "1 Taller demostrativo por grado",
-        "Capacitación básica docente",
-        "Uso de equipo en préstamo",
-        "Evaluación de viabilidad"
+        "Duración: 4 a 8 semanas",
+        "Diagnóstico + plan de escalamiento",
+        "Taller demostrativo por grado/nivel",
+        "Uso de kits en préstamo (según disponibilidad)",
+        "Reporte de resultados y recomendación de equipo"
       ]
     },
     {
@@ -136,12 +136,12 @@ function ProgramsSection() {
       accentGlow: "radial-gradient(circle, rgba(239, 133, 86, 0.15), transparent 70%)",
       recommended: true,
       features: [
-        "Duración: Ciclo escolar completo",
-        "Currícula STEAM integrada",
-        "Laboratorio permanente",
-        "Certificación docente completa",
-        "Club de robótica y competencias",
-        "Escuela para padres trimestral"
+        "Duración: ciclo escolar completo",
+        "Currícula STEAM integrada por unidades",
+        "Laboratorio permanente (equipo + instalación)",
+        "Capacitación docente + acompañamiento en aula",
+        "Club de robótica, ferias y competencias",
+        "Medición de impacto + plan de sostenibilidad"
       ]
     },
     {
@@ -151,11 +151,11 @@ function ProgramsSection() {
       accentColorLight: "#8a78b8",
       accentGlow: "radial-gradient(circle, rgba(104, 85, 153, 0.15), transparent 70%)",
       features: [
-        "Duración: 1 Unidad o Trimestre",
-        "Enfoque en proyecto específico",
-        "Materiales consumibles incluidos",
-        "Acompañamiento semanal",
-        "Feria de cierre de unidad"
+        "Duración: 1 unidad o trimestre",
+        "Módulo por tema: robótica, electrónica, 3D o programación",
+        "Materiales y consumibles incluidos",
+        "Sesiones semanales + mentoría de proyectos",
+        "Feria de cierre + portafolio de evidencias"
       ]
     }
   ];
@@ -168,11 +168,11 @@ function ProgramsSection() {
             <span className="text-xs font-semibold uppercase tracking-wider text-coral">Programas</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight">
-            Modelos de Implementación{' '}
-            <span className="text-gradient-coral">Flexible</span>
+            Modelos de implementación{' '}
+            <span className="text-gradient-coral">flexibles</span>
           </h2>
           <p className="mt-4 text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
-             Elige el formato que mejor se adapte a los objetivos y presupuesto de tu institución.
+             Inicia con un piloto, escala a un plan anual o trabaja por módulos, según tus objetivos y presupuesto.
           </p>
         </div>
         

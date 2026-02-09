@@ -69,11 +69,11 @@ function ContactSection() {
             <span className="text-xs font-semibold uppercase tracking-wider text-coral">Contacto</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight">
-            Hablemos sobre el{' '}
-            <span className="text-gradient-coral">futuro</span>
+            Hablemos de tu{' '}
+            <span className="text-gradient-coral">laboratorio</span>
           </h2>
           <p className="mt-4 text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
-            Agenda una asesoría gratuita o solicita una propuesta personalizada.
+            Cuéntanos tu contexto y te enviaremos una propuesta con equipo, currícula y capacitación.
           </p>
         </div>
 
@@ -101,7 +101,7 @@ function ContactSection() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-[var(--text-primary)]">Mensaje enviado con éxito</p>
-                    <p className="text-xs text-[var(--text-secondary)] mt-0.5">Nuestro equipo se comunicará contigo pronto.</p>
+                    <p className="text-xs text-[var(--text-secondary)] mt-0.5">Te contactaremos pronto por WhatsApp o correo.</p>
                   </div>
                 </div>
               </div>
@@ -182,11 +182,10 @@ function ContactSection() {
                   className={inputClasses}
                 >
                   <option value="" disabled>Selecciona una opción</option>
-                  <option>Equipamiento (Robótica/Laboratorios)</option>
-                  <option>Capacitación Docente</option>
-                  <option>Programa Anual Completo</option>
-                  <option>Talleres Específicos</option>
-                  <option>Asesoría General</option>
+                  <option>Laboratorios & Equipamiento (Robótica, 3D, Makerspace)</option>
+                  <option>Formación & Empoderamiento Docente</option>
+                  <option>Ecosistema & Cultura Digital (Talleres, eventos)</option>
+                  <option>Asesoría General / Otro</option>
                 </select>
               </div>
 
@@ -227,7 +226,7 @@ function ContactSection() {
                     </span>
                   ) : (
                     <span className="flex items-center justify-center gap-2">
-                      Enviar Solicitud
+                      Enviar solicitud
                       <HiArrowRight className="w-5 h-5" aria-hidden="true" />
                     </span>
                   )}

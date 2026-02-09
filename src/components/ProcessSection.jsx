@@ -47,22 +47,22 @@ function ProcessSection() {
   const steps = [
     {
       title: "Diagnóstico",
-      description: "Evaluamos infraestructura y necesidades de tu comunidad educativa.",
+      description: "Evaluamos infraestructura, conectividad y objetivos por nivel para definir el laboratorio ideal.",
       Icon: HiOutlineSearch,
     },
     {
-      title: "Propuesta",
-      description: "Diseñamos un plan de implementación a medida con equipo y currícula ideal.",
+      title: "Diseño Integral",
+      description: "Seleccionamos equipo, currícula y calendario; todo alineado al contexto real de tu institución.",
       Icon: HiOutlineClipboardList,
     },
     {
       title: "Implementación",
-      description: "Instalamos laboratorios y realizamos capacitación intensiva docente.",
+      description: "Instalamos el laboratorio, configuramos todo y dejamos a tu equipo docente listo para iniciar.",
       Icon: IoRocketOutline,
     },
     {
-      title: "Seguimiento",
-      description: "Soporte continuo, actualizaciones y medición de impacto en el aprendizaje.",
+      title: "Acompañamiento",
+      description: "Soporte local, reposición de consumibles y medición de impacto para sostener resultados.",
       Icon: HiOutlineChartBar,
     }
   ];
@@ -72,11 +72,11 @@ function ProcessSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 glass-panel rounded-full px-4 py-1.5 mb-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-coral">Nuestro Proceso</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-coral">Ruta de Activación</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight">
-            Cómo Transformamos{' '}
-            <span className="text-gradient-coral">tu Colegio</span>
+            Cómo activamos{' '}
+            <span className="text-gradient-coral">tu laboratorio</span>
           </h2>
         </div>
         

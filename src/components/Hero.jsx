@@ -82,19 +82,19 @@ function Hero() {
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05]">
               <span className="block text-[var(--text-primary)]">Aceleración</span>
-              <span className="block text-gradient-coral mt-1">Tecnológica</span>
-              <span className="block text-[var(--text-primary)] text-3xl sm:text-4xl md:text-5xl mt-2 font-semibold opacity-80">
-                para tu Institución
+              <span className="block text-gradient-coral mt-1 pb-2">Tecnológica</span>
+              <span className="block text-[var(--text-primary)] text-3xl sm:text-4xl md:text-5xl font-semibold opacity-80">
+               para tu Institución
               </span>
             </h1>
 
             <p className="mt-6 text-lg sm:text-xl text-[var(--text-secondary)] max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Transformamos colegios con robótica, educación STEAM y capacitación docente de alto impacto. El futuro comienza hoy.
+              Implementamos laboratorios de robótica y STEAM, capacitamos a tu equipo docente y aceleramos la adopción digital con metodología y seguimiento.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a href="#contacto" className="btn-primary text-base">
-                <span>Solicitar Propuesta</span>
+                <span>Solicitar propuesta</span>
                 <HiArrowRight className="w-5 h-5" aria-hidden="true" />
               </a>
               <a href="https://wa.me/50230044972" target="_blank" rel="noopener noreferrer" className="btn-secondary text-base">
@@ -106,9 +106,9 @@ function Hero() {
             {/* Trust indicators */}
             <div className="mt-10 flex flex-wrap items-center gap-6 justify-center lg:justify-start">
               {[
-                { number: '50+', label: 'Colegios' },
-                { number: '200+', label: 'Docentes' },
-                { number: '5K+', label: 'Estudiantes' },
+                { number: '5+', label: 'Años de experiencia' },
+                { number: '20+', label: 'Docentes formados' },
+                { number: '1K+', label: 'Estudiantes impactados' },
               ].map((stat, i) => (
                 <div key={i} className="text-center">
                   <div className="text-2xl font-bold text-gradient-coral">{stat.number}</div>
