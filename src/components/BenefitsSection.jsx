@@ -1,6 +1,7 @@
 import React from 'react';
+import { HiOutlineCheckCircle, HiOutlineOfficeBuilding, HiTrendingUp, HiOutlineBeaker } from 'react-icons/hi';
 
-const BenefitItem = ({ icon, title, description, delay }) => (
+const BenefitItem = ({ Icon, title, description, delay }) => (
   <div 
     className="flex gap-4 glass-panel rounded-2xl p-5 group cursor-default"
     style={{ animationDelay: `${delay}ms` }}
@@ -12,9 +13,7 @@ const BenefitItem = ({ icon, title, description, delay }) => (
           border: '1px solid rgba(239, 133, 86, 0.2)',
         }}
       >
-        <svg className="h-6 w-6 text-coral" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={icon} />
-        </svg>
+        <Icon className="h-6 w-6 text-coral" aria-hidden="true" />
       </div>
     </div>
     <div>
@@ -27,17 +26,17 @@ const BenefitItem = ({ icon, title, description, delay }) => (
 function BenefitsSection() {
   const benefits = [
     {
-      icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
+      Icon: HiOutlineCheckCircle,
       title: "Metodología Propia",
       description: "Contenido adaptado al contexto local y alineado a estándares internacionales.",
     },
     {
-      icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
+      Icon: HiOutlineOfficeBuilding,
       title: "Soporte Local",
       description: "Respuesta rápida y técnica presencial en Guatemala.",
     },
     {
-      icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6",
+      Icon: HiTrendingUp,
       title: "Resultados Medibles",
       description: "Evaluamos el progreso de estudiantes y docentes con métricas claras.",
     },
@@ -103,9 +102,7 @@ function BenefitsSection() {
                        border: '1px solid rgba(239, 133, 86, 0.3)',
                     }}
                   >
-                    <svg className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                    </svg>
+                    <HiOutlineBeaker className="h-10 w-10 text-white" aria-hidden="true" />
                   </div>
                   <h3 className="text-white font-bold text-xl tracking-wide">Laboratorio 4.0</h3>
                   <p className="text-coral-800 text-sm mt-1 font-medium">Innovación & Aprendizaje</p>

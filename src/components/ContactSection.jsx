@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { HiX, HiCheckCircle, HiXCircle, HiArrowRight } from 'react-icons/hi';
+import { CgSpinner } from 'react-icons/cg';
 
 function ContactSection() {
   const [formData, setFormData] = useState({
@@ -89,17 +91,13 @@ function ContactSection() {
                   className="absolute top-3 right-3 w-6 h-6 flex items-center justify-center rounded-lg text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
                   aria-label="Cerrar mensaje"
                 >
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                  <HiX className="w-4 h-4" aria-hidden="true" />
                 </button>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
                     style={{ background: 'rgba(76, 175, 125, 0.2)' }}
                   >
-                    <svg className="w-5 h-5 text-success" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
+                    <HiCheckCircle className="w-5 h-5 text-success" aria-hidden="true" />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-[var(--text-primary)]">Mensaje enviado con éxito</p>
@@ -120,17 +118,13 @@ function ContactSection() {
                   className="absolute top-3 right-3 w-6 h-6 flex items-center justify-center rounded-lg text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
                   aria-label="Cerrar mensaje"
                 >
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                  <HiX className="w-4 h-4" aria-hidden="true" />
                 </button>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
                     style={{ background: 'rgba(224, 85, 85, 0.2)' }}
                   >
-                    <svg className="w-5 h-5 text-error" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                    </svg>
+                    <HiXCircle className="w-5 h-5 text-error" aria-hidden="true" />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-[var(--text-primary)]">Error al enviar el mensaje</p>
@@ -228,18 +222,13 @@ function ContactSection() {
                 >
                   {isSubmitting ? (
                     <span className="flex items-center justify-center gap-3">
-                      <svg className="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                      </svg>
+                      <CgSpinner className="animate-spin h-5 w-5 text-white" aria-hidden="true" />
                       Enviando...
                     </span>
                   ) : (
                     <span className="flex items-center justify-center gap-2">
                       Enviar Solicitud
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
+                      <HiArrowRight className="w-5 h-5" aria-hidden="true" />
                     </span>
                   )}
                 </button>

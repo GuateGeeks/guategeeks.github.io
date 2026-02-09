@@ -1,6 +1,8 @@
 import React from 'react';
+import { HiOutlineSearch, HiOutlineClipboardList, HiOutlineChartBar } from 'react-icons/hi';
+import { IoRocketOutline } from 'react-icons/io5';
 
-const ProcessStep = ({ number, title, description, icon, isLast, index }) => (
+const ProcessStep = ({ number, title, description, Icon, isLast, index }) => (
   <div className="relative group">
     {/* Connector line */}
     {!isLast && (
@@ -31,7 +33,9 @@ const ProcessStep = ({ number, title, description, icon, isLast, index }) => (
       </div>
 
       {/* Icon */}
-      <div className="mt-4 mb-4 text-3xl">{icon}</div>
+      <div className="mt-4 mb-4 flex justify-center">
+        <Icon className="w-8 h-8 text-coral" aria-hidden="true" />
+      </div>
 
       <h3 className="text-lg font-bold text-[var(--text-primary)] mb-2 tracking-tight">{title}</h3>
       <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{description}</p>
@@ -44,22 +48,22 @@ function ProcessSection() {
     {
       title: "Diagnóstico",
       description: "Evaluamos infraestructura y necesidades de tu comunidad educativa.",
-      icon: "🔍",
+      Icon: HiOutlineSearch,
     },
     {
       title: "Propuesta",
       description: "Diseñamos un plan de implementación a medida con equipo y currícula ideal.",
-      icon: "📋",
+      Icon: HiOutlineClipboardList,
     },
     {
       title: "Implementación",
       description: "Instalamos laboratorios y realizamos capacitación intensiva docente.",
-      icon: "🚀",
+      Icon: IoRocketOutline,
     },
     {
       title: "Seguimiento",
       description: "Soporte continuo, actualizaciones y medición de impacto en el aprendizaje.",
-      icon: "📊",
+      Icon: HiOutlineChartBar,
     }
   ];
 

@@ -1,4 +1,6 @@
 import React from 'react';
+import { FaFacebookF, FaInstagram, FaTiktok, FaWhatsapp } from 'react-icons/fa';
+import { HiOutlineMail } from 'react-icons/hi';
 
 function Footer() {
   return (
@@ -16,9 +18,9 @@ function Footer() {
             {/* Social Links */}
             <div className="flex gap-3 mt-6">
               {[
-                { label: 'Facebook', icon: 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z' },
-                { label: 'Instagram', icon: 'M16 4H8a4 4 0 00-4 4v8a4 4 0 004 4h8a4 4 0 004-4V8a4 4 0 00-4-4zm-4 11a3 3 0 110-6 3 3 0 010 6zm4.5-7.5a1 1 0 110-2 1 1 0 010 2z' },
-                { label: 'TikTok', icon: 'M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-5 12a3 3 0 01-3-3V8h2v4a1 1 0 002 0V6h2v2a3 3 0 003 3v2a5 5 0 01-3-1v3a3 3 0 01-3 3z' },
+                { label: 'Facebook', Icon: FaFacebookF },
+                { label: 'Instagram', Icon: FaInstagram },
+                { label: 'TikTok', Icon: FaTiktok },
               ].map((social, i) => (
                 <a 
                   key={i}
@@ -30,9 +32,7 @@ function Footer() {
                   }}
                   aria-label={social.label}
                 >
-                  <svg className="w-4 h-4 text-[var(--text-secondary)] group-hover:text-coral transition-colors" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d={social.icon} />
-                  </svg>
+                  <social.Icon className="w-4 h-4 text-[var(--text-secondary)] group-hover:text-coral transition-colors" aria-hidden="true" />
                 </a>
               ))}
             </div>
@@ -65,9 +65,7 @@ function Footer() {
                   href="mailto:info@guategeeks.com" 
                   className="text-sm text-[var(--text-secondary)] hover:text-coral transition-colors duration-300 flex items-center gap-2"
                 >
-                  <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
+                  <HiOutlineMail className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
                   info@guategeeks.com
                 </a>
               </li>
@@ -76,9 +74,7 @@ function Footer() {
                   href="https://wa.me/50230044972" 
                   className="text-sm text-[var(--text-secondary)] hover:text-sky transition-colors duration-300 flex items-center gap-2"
                 >
-                  <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/>
-                  </svg>
+                  <FaWhatsapp className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
                   (+502) 3004-4972
                 </a>
               </li>

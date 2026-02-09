@@ -1,4 +1,5 @@
 import React from 'react';
+import { HiOutlineCursorClick, HiOutlineSparkles, HiOutlineLightBulb } from 'react-icons/hi';
 
 function About() {
   return (
@@ -59,21 +60,23 @@ function About() {
               { 
                 title: 'Misión',
                 desc: 'Democratizar la educación tecnológica en Guatemala.',
-                icon: '🎯',
+                Icon: HiOutlineCursorClick,
               },
               { 
                 title: 'Visión',
                 desc: 'Cada estudiante guatemalteco como creador de tecnología.',
-                icon: '🌟',
+                Icon: HiOutlineSparkles,
               },
               { 
                 title: 'Impacto',
                 desc: 'Comunidades educativas transformadas y empoderadas.',
-                icon: '💡',
+                Icon: HiOutlineLightBulb,
               },
             ].map((item, i) => (
               <div key={i} className="glass-panel rounded-2xl p-5 text-center group cursor-default">
-                <div className="text-3xl mb-3 transition-transform duration-300 group-hover:scale-125">{item.icon}</div>
+                <div className="mb-3 flex justify-center">
+                  <item.Icon className="w-8 h-8 text-coral transition-transform duration-300 group-hover:scale-125" aria-hidden="true" />
+                </div>
                 <h3 className="text-sm font-bold text-[var(--text-primary)] mb-1 tracking-tight">{item.title}</h3>
                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed">{item.desc}</p>
               </div>

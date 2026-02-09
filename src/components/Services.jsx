@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { HiChevronRight } from 'react-icons/hi';
 import { RobotIcon, TeacherIcon, StudentIcon, CheckIcon } from './Icons';
 
 const ServiceCard = ({ title, description, icon, includes, implementation, deliverables, accentColor, accentGlow, index }) => {
@@ -91,9 +92,7 @@ const ServiceCard = ({ title, description, icon, includes, implementation, deliv
             style={{ color: accentColor }}
           >
             Solicitar Info
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
+            <HiChevronRight className="w-4 h-4" aria-hidden="true" />
           </a>
         </div>
       </div>
