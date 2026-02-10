@@ -30,7 +30,7 @@ function ContactSection() {
     e.preventDefault();
     setStatus('submitting');
     try {
-      const res = await fetch('https://n8n.adawolfs.com/webhook/6cffade5-d1a0-4350-9d56-070530348b3e', {
+      const res = await fetch('https://n8n-cloud.adawolfs.com/webhook/834a58dd-d0ae-4a02-93cb-4c91c2abcfa8', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
