@@ -17,21 +17,23 @@ function Footer() {
             </p>
             {/* Social Links */}
             <div className="flex gap-3 mt-6">
-              {[
-                { label: 'Facebook', Icon: FaFacebookF },
-                { label: 'Instagram', Icon: FaInstagram },
-                { label: 'TikTok', Icon: FaTiktok },
-              ].map((social, i) => (
-                <a 
-                  key={i}
-                  href="javascript:void(0)" 
-                  className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 group"
-                  style={{
-                    background: 'var(--bg-glass)',
-                    border: '1px solid var(--glass-border-subtle)',
-                  }}
-                  aria-label={social.label}
-                >
+{[
+                 { label: 'Facebook', Icon: FaFacebookF, url: 'https://www.facebook.com/GuateGeeksGT/' },
+                 { label: 'Instagram', Icon: FaInstagram, url: 'https://www.instagram.com/guategeeks/' },
+                 { label: 'TikTok', Icon: FaTiktok, url: 'https://www.tiktok.com/@guategeeks' },
+               ].map((social, i) => (
+<a 
+                   key={i}
+                   href={social.url}
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 group"
+                   style={{
+                     background: 'var(--bg-glass)',
+                     border: '1px solid var(--glass-border-subtle)',
+                   }}
+                   aria-label={social.label}
+                 >
                   <social.Icon className="w-4 h-4 text-[var(--text-secondary)] group-hover:text-coral transition-colors" aria-hidden="true" />
                 </a>
               ))}
